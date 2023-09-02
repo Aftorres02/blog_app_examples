@@ -1,0 +1,395 @@
+{
+  "id":"26"
+ ,"Identification":{
+    "Name":"PlugIn Alertify"
+   ,"Title":"PlugIn Alertify"
+  }
+ ,"Appearance":{
+    "Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Unrestricted"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"11024501980924706841"
+     ,"Identification":{
+        "Title":"Demo Alertify"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"35616622227287854941"
+     ,"Identification":{
+        "Title":"Referencia Blog"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ca href=\"https:\/\/aflorestorres.blogspot.com\/2018\/07\/como-integrar-y-usar-plug-in-en-apex.html\" target=\"_blank\" \u003E Mira este tutorial aqui \u003C\/a\u003E\n\u003Cp\u003E Veremos como integrar el plug-in alertify en oracle apex  \u003C\/p\u003E"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"REGION_POSITION_01"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Page Items":[
+    {
+      "id":"11024502048271706842"
+     ,"Identification":{
+        "Name":"P26_TIENE_VALOR"
+       ,"Type":"Text Field"
+      }
+     ,"Label":{
+        "Label":"Tiene Valor"
+       ,"Alignment":"Left"
+      }
+     ,"Settings":{
+        "Subtype":"Text"
+       ,"Trim Spaces":"Leading and Trailing"
+       ,"Text Case":"NO CHANGE"
+       ,"Submit when Enter pressed":false
+       ,"Disabled":false
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Demo Alertify (11024501980924706841)"
+       ,"Position":"BODY"
+       ,"Alignment":"Left"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Label Column Span":"Page Template Default"
+      }
+     ,"Appearance":{
+        "Template":"Optional (25436700760668906716)"
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+       ,"Width":30
+      }
+     ,"Validation":{
+        "Value Required":false
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"Null"
+       ,"Used":"Only when current value in session state is null"
+      }
+     ,"Session State":{
+        "Storage":"Per Session (Persistent)"
+      }
+     ,"Quick Picks":{
+        "Show Quick Picks":false
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":false
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"11024502132178706843"
+     ,"Identification":{
+        "Button Name":"Comprobar_Custom"
+       ,"Label":"Comprobar Custom"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Demo Alertify (11024501980924706841)"
+       ,"Position":"BELOW_BOX"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Horizontal Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"11024502817118706850"
+     ,"Identification":{
+        "Button Name":"comprobar_no_custom"
+       ,"Label":"Comprobar no custom"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Region":"Demo Alertify (11024501980924706841)"
+       ,"Position":"BELOW_BOX"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Horizontal Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"11024502291850706844"
+     ,"Identification":{
+        "Name":"Comprobar JS"
+      }
+     ,"Execution":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"Comprobar_Custom (11024502132178706843)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"11024502311326706845"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"if ($(\"#P26_TIENE_VALOR\").val())\n{\n  $.event.trigger(\"mostrar_mensaje_correcto\");\n}\nelse{\n  $.event.trigger(\"mostrar_mensaje_error\"); \n}"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"Comprobar JS (11024502291850706844)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"11024502461702706846"
+     ,"Identification":{
+        "Name":"mostrar_mensaje_error"
+      }
+     ,"Execution":{
+        "Sequence":20
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.CUSTOM.CUSTOM"
+       ,"Custom Event":"mostrar_mensaje_error"
+       ,"Selection Type":"JavaScript Expression"
+       ,"JavaScript Expression":"document"
+      }
+     ,"Execution":{
+        "Event Scope":"Dynamic"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"11024502595686706847"
+         ,"Identification":{
+            "Action":"Alertify"
+          }
+         ,"Settings":{
+            "Message Type":"Notification"
+           ,"Notification Type":"Error"
+           ,"Message":"No tiene valor"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"mostrar_mensaje_error (11024502461702706846)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+           ,"Wait For Result":true
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"11024502696054706848"
+     ,"Identification":{
+        "Name":"mostrar_mensaje_correcto"
+      }
+     ,"Execution":{
+        "Sequence":30
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.CUSTOM.CUSTOM"
+       ,"Custom Event":"mostrar_mensaje_correcto"
+       ,"Selection Type":"JavaScript Expression"
+       ,"JavaScript Expression":"document"
+      }
+     ,"Execution":{
+        "Event Scope":"Dynamic"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"11024502751304706849"
+         ,"Identification":{
+            "Action":"Alertify"
+          }
+         ,"Settings":{
+            "Message Type":"Notification"
+           ,"Notification Type":"Success"
+           ,"Message":"Si tiene valor"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"mostrar_mensaje_correcto (11024502696054706848)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+           ,"Wait For Result":true
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"12166902101562871101"
+     ,"Identification":{
+        "Name":"no custom"
+      }
+     ,"Execution":{
+        "Sequence":40
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"comprobar_no_custom (11024502817118706850)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"12166902233410871102"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"\/\/ alert dialog\n\/\/alertify.alert(\"esto es un mensaje\");\n\n\n\/\/ success notification\n\/\/ shorthand for alertify.log(\"Notification\", \"success\");\nalertify.success(\"Success notification\");"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"no custom (12166902101562871101)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+}

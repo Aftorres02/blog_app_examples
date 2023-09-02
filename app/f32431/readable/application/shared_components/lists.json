@@ -1,0 +1,749 @@
+[
+  {
+    "id":"25436659836122906683"
+   ,"Identification":{
+      "Name":"Desktop Navigation Menu"
+    }
+   ,"Source":{
+      "Type":"Static Values"
+    }
+   ,"Entries":[
+      {
+        "id":"10888132002717419660"
+       ,"Label":{
+          "Label":"CheckBox Apex_Item 1"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-check-square-o"
+        }
+       ,"Layout":{
+          "Sequence":130
+         ,"Parent Entry":"Apex Item (29550747558165887242)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "20"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:20:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"20"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"11023592620759602164"
+       ,"Label":{
+          "Label":"CheckBox Ajax Paginacion Apex Item 2"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-check-square-o"
+        }
+       ,"Layout":{
+          "Sequence":140
+         ,"Parent Entry":"Apex Item (29550747558165887242)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "22"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:22:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"22"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"12165626822714079061"
+       ,"Label":{
+          "Label":"Plug-In Alertify"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-circle-arrow-in-east"
+        }
+       ,"Layout":{
+          "Sequence":160
+         ,"Parent Entry":"Plug-Ins (29550778920462911260)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "26"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:26:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"26"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"12641307511598240771"
+       ,"Label":{
+          "Label":"Apex Item 3"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-badges"
+        }
+       ,"Layout":{
+          "Sequence":150
+         ,"Parent Entry":"Apex Item (29550747558165887242)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "24"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:24:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"24"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"17658018059038177805"
+       ,"Label":{
+          "Label":"Alert Region Din\u00E1mico"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-dynamic-content"
+        }
+       ,"Layout":{
+          "Sequence":2152
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "500"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:500:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"500"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"24033797833164819300"
+       ,"Label":{
+          "Label":"Retornar valor de modal en IG"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-external-link"
+        }
+       ,"Layout":{
+          "Sequence":2162
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "510"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:510:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"510"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"24738853631347674132"
+       ,"Label":{
+          "Label":"Job Demo 1"
+        }
+       ,"Layout":{
+          "Sequence":2132
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "401"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:401:\u0026SESSION.::\u0026DEBUG."
+           ,"Page":"401"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"24786776686343076766"
+       ,"Label":{
+          "Label":"Preview Image"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-image"
+        }
+       ,"Layout":{
+          "Sequence":120
+         ,"Parent Entry":"Manejo de Imagenes (29550647882500871755)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "27"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:27:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"27"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"25436713442357906732"
+       ,"Label":{
+          "Label":"Home"
+        }
+       ,"Layout":{
+          "Sequence":10
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "1"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:1:\u0026APP_SESSION.::\u0026DEBUG.:"
+           ,"Page":"1"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"25436791615304967370"
+       ,"Label":{
+          "Label":"Carrousel Img"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-ellipsis-h"
+        }
+       ,"Layout":{
+          "Sequence":110
+         ,"Parent Entry":"Manejo de Imagenes (29550647882500871755)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "10"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:10:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"10"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"25793694341999074490"
+       ,"Label":{
+          "Label":"Config- Upload Img"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-file-image-o"
+        }
+       ,"Layout":{
+          "Sequence":90
+         ,"Parent Entry":"Main Tables (25811908186853504509)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "4"
+           ,"5"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:4:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"4"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"25802088116200369246"
+       ,"Label":{
+          "Label":"Download Txt"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-file-arrow-down"
+        }
+       ,"Layout":{
+          "Sequence":50
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "11"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:11:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"11"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"25811908186853504509"
+       ,"Label":{
+          "Label":"Main Tables"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-fire"
+        }
+       ,"Layout":{
+          "Sequence":60
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+       ,"Server-side Condition":{
+          "Type":"Never"
+        }
+      }
+     ,{
+        "id":"25811939391328515724"
+       ,"Label":{
+          "Label":"File txt"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-file-arrow-up"
+        }
+       ,"Layout":{
+          "Sequence":100
+         ,"Parent Entry":"Main Tables (25811908186853504509)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "6"
+           ,"7"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:6:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"6"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"26886911957743333497"
+       ,"Label":{
+          "Label":"LeaftLeft"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-map-marker"
+        }
+       ,"Layout":{
+          "Sequence":42
+         ,"Parent Entry":"Mapas (29550790477067922615)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "12"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:12:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"12"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"27090541080847244459"
+       ,"Label":{
+          "Label":"Jet 6.1 Ajax"
+        }
+       ,"Layout":{
+          "Sequence":211
+         ,"Parent Entry":"Oracle Jet (27094976257534264329)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "305"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:305:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"305"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"27092633511061823331"
+       ,"Label":{
+          "Label":"Jet 5.1"
+        }
+       ,"Layout":{
+          "Sequence":210
+         ,"Parent Entry":"Oracle Jet (27094976257534264329)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "300"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:300:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"300"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"27094081810717844593"
+       ,"Label":{
+          "Label":"Jet 7.1 + Ajax + Gantt"
+        }
+       ,"Layout":{
+          "Sequence":2112
+         ,"Parent Entry":"Oracle Jet (27094976257534264329)"
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "310"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:310:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"310"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"27094976257534264329"
+       ,"Label":{
+          "Label":"Oracle Jet"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-fighter-jet"
+        }
+       ,"Layout":{
+          "Sequence":200
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"28524527313551852464"
+       ,"Label":{
+          "Label":"Calendar CookBook"
+        }
+       ,"Layout":{
+          "Sequence":2122
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "400"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:400:\u0026SESSION.::\u0026DEBUG."
+           ,"Page":"400"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"29550647882500871755"
+       ,"Label":{
+          "Label":"Manejo de Imagenes"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-image"
+        }
+       ,"Layout":{
+          "Sequence":20
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"29550747558165887242"
+       ,"Label":{
+          "Label":"Apex Item"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-apex"
+        }
+       ,"Layout":{
+          "Sequence":30
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"29550778920462911260"
+       ,"Label":{
+          "Label":"Plug-Ins"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-code-group"
+        }
+       ,"Layout":{
+          "Sequence":40
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"29550790477067922615"
+       ,"Label":{
+          "Label":"Mapas"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-map-o"
+        }
+       ,"Layout":{
+          "Sequence":41
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"32450223971927154840"
+       ,"Label":{
+          "Label":"Ordenamiento"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-sort"
+        }
+       ,"Layout":{
+          "Sequence":2142
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "2"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:2:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"2"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+     ,{
+        "id":"39891429951208791374"
+       ,"Label":{
+          "Label":"Click Derecho ContextMenu"
+        }
+       ,"Icon":{
+          "Image\/Icon CSS Classes":"fa-calendar-pointer"
+        }
+       ,"Layout":{
+          "Sequence":80
+        }
+       ,"Is Current":{
+          "Type":"Pages"
+         ,"Pages":[
+            "13"
+          ]
+        }
+       ,"Link":{
+          "Target":{
+            "url":"f?p=\u0026APP_ID.:13:\u0026SESSION.::\u0026DEBUG.::::"
+           ,"Page":"13"
+          }
+        }
+       ,"Click Counting":{
+          "Count Clicks":false
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+    ]
+  }
+ ,{
+    "id":"25436711947796906726"
+   ,"Identification":{
+      "Name":"Desktop Navigation Bar"
+    }
+   ,"Source":{
+      "Type":"Static Values"
+    }
+   ,"Entries":[
+      {
+        "id":"25436712191204906727"
+       ,"Label":{
+          "Label":"Log Out"
+        }
+       ,"Layout":{
+          "Sequence":10
+        }
+       ,"Is Current":{
+          "Type":"Target Page"
+        }
+       ,"Link":{
+          "Target":"\u0026LOGOUT_URL."
+        }
+       ,"User Defined Attributes":{
+          "Translatable":false
+        }
+      }
+    ]
+  }
+]

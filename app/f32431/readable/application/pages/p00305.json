@@ -1,0 +1,295 @@
+{
+  "id":"305"
+ ,"Identification":{
+    "Name":"Jet 6.1 + Ajax"
+   ,"Title":"Jet 6.1 + Ajax"
+  }
+ ,"Appearance":{
+    "Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "File URLs":[
+      "https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/knockout\/knockout-3.4.2.js"
+    ]
+   ,"Function and Global Variable Declaration":"var dataArray;"
+  }
+ ,"CSS":{
+    "File URLs":[
+      "#JET_CSS_DIRECTORY#\/alta\/oj-alta-notag-min.css?v=18.1.0.00.45"
+    ]
+  }
+ ,"HTML Header":{
+    "HTML Header":"\u003Cscript\u003E  \n        if (!document.createElement) {  \n          document.createElement = document.constructor.prototype.createElement;  \n          document.createElementNS = document.constructor.prototype.createElementNS;  \n          document.importNode = document.constructor.prototype.importNode;  \n        }   \n        window[\"oj_whenReady\"] = true;  \n\u003C\/script\u003E  \n"
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Unrestricted"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"54192097411224126804"
+     ,"Identification":{
+        "Title":"demo ajax"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cdiv id=\"sampleDemo\" style=\"\" class=\"demo-padding demo-container\"\u003E  \n  \u003Cdiv id=\"componentDemoContent\" style=\"width: 1px; min-width: 100%;\"\u003E  \n      \n    \u003Ch3\u003ETable\u003C\/h3\u003E  \n    \u003Coj-table id=\"table\" aria-label=\"Revenue Table\"  \n                                    data=\u0027[[dataprovider]]\u0027   \n                                    columns-default=\u0027{\"sortable\": \"disabled\"}\u0027   \n                                    columns=\u0027[{\"headerText\": \"Year\", \"field\": \"Year\"},  \n                                              {\"headerText\": \"Q1\", \"field\": \"Q1\"},  \n                                              {\"headerText\": \"Q2\", \"field\": \"Q2\"},  \n                                              {\"headerText\": \"Q3\", \"field\": \"Q3\"},  \n                                              {\"headerText\": \"Q4\", \"field\": \"Q4\"}]\u0027  \n                                    selection-mode=\u0027{\"row\": \"single\"}\u0027  \n                                    dnd.drag.rows.data-types=\u0027[\"application\/ojtablerows+json\"]\u0027  \n                                    dnd.drop.rows.data-types=\u0027[\"application\/ojtablerows+json\"]\u0027  \n                                    dnd.drop.rows.drop=\u0027[[handleDropRows]]\u0027\u003E  \n    \u003C\/oj-table\u003E  \n  \n      \n  \u003C\/div\u003E  \n\u003C\/div\u003E \n"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"76171402163469498918"
+     ,"Identification":{
+        "Title":"Referencia Blog"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ca href=\"https:\/\/www.aflorestorres.com\/2019\/08\/integrando-oracle-jet-71-gantt-data.html\" target=\"_blank\" \u003E Mira este tutorial aqui \u003C\/a\u003E\n\u003Cp\u003E En este tutorial vamos a ver como podemos integrar Oracle Jet en APEX \u003C\/p\u003E"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"REGION_POSITION_01"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"27090541732258244470"
+     ,"Identification":{
+        "Button Name":"CARGAR_DATA"
+       ,"Label":"Cargar Data"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"demo ajax (54192097411224126804)"
+       ,"Position":"BELOW_BOX"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Horizontal Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"27090542983027244490"
+     ,"Identification":{
+        "Name":"init js"
+      }
+     ,"Execution":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.READY"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+      }
+     ,"Actions":[
+        {
+          "id":"27090543495892244492"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"define(\"knockout\",[],function(){return ko;});    \nrequirejs.config({    \n  \/\/ Path mappings for the logical module names    \n  paths: {    \n    \u0027knockout\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/knockout\/knockout-3.4.2\u0027,    \n    \u0027jquery\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/jquery\/jquery-3.3.1.min\u0027,    \n    \u0027jqueryui-amd\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/jquery\/jqueryui-amd-1.12.1.min\u0027,    \n    \u0027touchr\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/touchr\/touchr\u0027,  \n    \u0027ojs\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/default\/js\/min\u0027,    \n    \u0027ojL10n\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/default\/js\/ojL10n\u0027,    \n    \u0027ojtranslations\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/default\/js\/resources\u0027, \n    \u0027text\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/require\/text\u0027,    \n    \u0027promise\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/es6-promise\/es6-promise.min\u0027,    \n    \u0027hammerjs\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/hammer\/hammer-2.0.8.min\u0027,    \n    \u0027signals\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/js-signals\/signals.min\u0027,    \n    \u0027ojdnd\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/dnd-polyfill\/dnd-polyfill-1.0.0.min\u0027,    \n    \u0027css\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/require-css\/css.min\u0027,    \n    \u0027customElements\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/webcomponents\/custom-elements.min\u0027,    \n    \u0027proj4js\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v6.1.0\/3rdparty\/proj4js\/dist\/proj4\u0027    \n  },    \n  \/\/ Shim configurations for modules that do not expose AMD    \n  shim: {    \n    \u0027jquery\u0027: {    \n      exports: [\u0027jQuery\u0027, \u0027$\u0027]    \n    }    \n  }    \n}); \n"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"init js (27090542983027244490)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+       ,{
+          "id":"27090543904806244493"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"require([\u0027ojs\/ojcore\u0027, \u0027knockout\u0027, \u0027jquery\u0027, \u0027ojs\/ojarraydataprovider\u0027, \u0027ojs\/ojknockout\u0027, \u0027ojs\/ojtable\u0027],  \nfunction(oj, ko, $, ArrayDataProvider)  \n{     \n  function tableViewModel(dataArray)  \n  {  \n    var self = this;  \n    self.dataprovider = new ArrayDataProvider(dataArray, {keyAttributes: \u0027Year\u0027});  \n      \n    self.handleDropRows = function(event, ui) {  \n      var dragData = event.dataTransfer.getData(\u0027application\/ojtablerows+json\u0027);  \n        \n      if (dragData)  \n      {  \n        var rowDataArray = JSON.parse(dragData);  \n        var toRowIndex = ui[\u0027rowIndex\u0027];  \n        var fromRowIndex = rowDataArray[0][\u0027index\u0027];  \n        dataArray.splice(fromRowIndex, 1);  \n        if (fromRowIndex \u003C toRowIndex)  \n        {  \n          dataArray.splice(toRowIndex - 1, 0, rowDataArray[0][\u0027data\u0027]);  \n        }  \n        else  \n        {  \n          dataArray.splice(toRowIndex, 0, rowDataArray[0][\u0027data\u0027]);    \n        }  \n      }  \n    };  \n  }  \n  \n  $(document).ready  \n  (  \n    function()  \n    {  \n      dataArray = ko.observableArray([]);  \n      ko.applyBindings(new tableViewModel(dataArray), document.getElementById(\u0027table\u0027));  \n    }  \n  );  \n});  \n"
+          }
+         ,"Execution":{
+            "Sequence":20
+           ,"Event":"init js (27090542983027244490)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"27090544371084244494"
+     ,"Identification":{
+        "Name":"Llamada Ajax"
+      }
+     ,"Execution":{
+        "Sequence":20
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"CARGAR_DATA (27090541732258244470)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"27090544874318244494"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"    apex.server.process(\"LOAD_DATA\", {     \n      },   \n      {  \n        success: function(pData) {   \n         console.log(pData);\n          dataArray(pData);\n        }  \n      }                          \n    ); \/\/ apex process  \n"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"Llamada Ajax (27090544371084244494)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+ ,"Processes":[
+    {
+      "id":"27090542116934244487"
+     ,"Identification":{
+        "Name":"init"
+       ,"Type":"Execute Code"
+       ,"Execution Chain":"None"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"begin\n    APEX_JAVASCRIPT.add_requirejs();\nend;\n"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"After Header"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+   ,{
+      "id":"27090542522598244489"
+     ,"Identification":{
+        "Name":"LOAD_DATA"
+       ,"Type":"Execute Code"
+       ,"Execution Chain":"None"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"declare\n  l_year number := 2010;\nbegin\n   apex_json.open_array();  \n    for i in 1..10\n    loop      \n      -- this is just for data test.\n      apex_json.open_object;  \n      apex_json.write(\u0027Year\u0027, l_year + i);  \n      apex_json.write(\u0027Q1\u0027, 1+i+TO_NUMBER(TO_CHAR(sysdate, \u0027HHSS\u0027)) );  \n      apex_json.write(\u0027Q2\u0027, 2+i+TO_NUMBER(TO_CHAR(sysdate, \u0027SSSSS\u0027)));  \n      apex_json.write(\u0027Q3\u0027, 2+i+TO_NUMBER(TO_CHAR(sysdate, \u0027SSSS\u0027)));  \n      apex_json.write(\u0027Q4\u0027, 2+i+TO_NUMBER(TO_CHAR(sysdate, \u0027HHSS\u0027)));  \n      apex_json.close_object;  \n    end loop;\n  apex_json.close_array();  \nend;"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"Ajax Callback"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+  ]
+}

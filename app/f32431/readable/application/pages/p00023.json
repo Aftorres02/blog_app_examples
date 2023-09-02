@@ -1,0 +1,798 @@
+{
+  "id":"23"
+ ,"Identification":{
+    "Name":"CheckBox Ajax paginacion detalle"
+   ,"Title":"CheckBox Ajax paginacion detalle"
+  }
+ ,"Appearance":{
+    "Page Mode":"Modal Dialog"
+   ,"Dialog Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Dialog":{
+    "Chained":true
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Unrestricted"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"10888171864367452641"
+     ,"Identification":{
+        "Title":"Departamento"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"10888172478592452647"
+     ,"Identification":{
+        "Title":"Reporte Empleados"
+       ,"Type":"Interactive Report"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"SQL Query"
+       ,"SQL Query":"select seq_id\n     , c001  empno\n     , c002  ename\n     , c003  deptno\n     , c004  sal\n     , apex_item.hidden(p_idx   =\u003E 1\n                      , p_value =\u003E seq_id) ||\n       apex_item.checkbox2(p_idx   =\u003E 2\n                         , p_value =\u003E c005\n                         , p_checked_values =\u003E 1)  pertenece\n     , c006  ind_cambio\n  from apex_collections\n where collection_name = \u0027EMPLEADOS_COL\u0027"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Interactive Report (25436677951057906700)"
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"empleados_col"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "id":"10888172584200452648"
+       ,"Link":{
+          "Link Column":"Exclude Link Column"
+        }
+       ,"Appearance":{
+          "Show Null Values as":"-"
+        }
+       ,"Pagination":{
+          "Type":"Row Ranges X to Y"
+         ,"Display Position":"Bottom - Right"
+        }
+       ,"Performance":{
+          "Lazy Loading":false
+         ,"Maximum Rows to Process":1000000
+        }
+       ,"Search Bar":{
+          "Include Search Bar":true
+         ,"Search Field":true
+         ,"Finder Drop Down":true
+         ,"Reports Select List":true
+         ,"Rows Per Page Selector":false
+        }
+       ,"Actions Menu":{
+          "Include Actions Menu":true
+         ,"Filter":true
+         ,"Select Columns":true
+         ,"Rows Per Page":true
+         ,"Sort":true
+         ,"Control Break":true
+         ,"Highlight":true
+         ,"Compute":true
+         ,"Aggregate":true
+         ,"Chart":true
+         ,"Group By":true
+         ,"Pivot":true
+         ,"Flashback":true
+         ,"Save Report":true
+         ,"Save Public Report":false
+         ,"Reset":true
+         ,"Help":true
+         ,"Download":true
+         ,"Subscription":true
+        }
+       ,"Download":{
+          "Formats":[
+            "CSV"
+           ,"HTML"
+           ,"Excel"
+           ,"PDF"
+          ]
+         ,"Send as Email":true
+        }
+       ,"Heading":{
+          "Fixed To":"Page"
+        }
+       ,"Icon View":{
+          "Show":false
+        }
+       ,"Detail View":{
+          "Show":false
+        }
+       ,"Saved Reports":[
+          {
+            "id":"11024506536379707669"
+           ,"Identification":{
+              "Name":"Primary Report"
+             ,"Alias":"110245066"
+            }
+          }
+        ]
+       ,"Columns":[
+          {
+            "id":"10888172639541452649"
+           ,"Identification":{
+              "Column Name":"SEQ_ID"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Seq Id"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":10
+             ,"Column Alignment":"end"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":true
+            }
+          }
+         ,{
+            "id":"10888172733474452650"
+           ,"Identification":{
+              "Column Name":"EMPNO"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Empno"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":20
+             ,"Column Alignment":"start"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":true
+            }
+          }
+         ,{
+            "id":"11024497980651706801"
+           ,"Identification":{
+              "Column Name":"ENAME"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Ename"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":30
+             ,"Column Alignment":"start"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":true
+            }
+          }
+         ,{
+            "id":"11024498007254706802"
+           ,"Identification":{
+              "Column Name":"DEPTNO"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Deptno"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":40
+             ,"Column Alignment":"start"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":true
+            }
+          }
+         ,{
+            "id":"11024498121018706803"
+           ,"Identification":{
+              "Column Name":"SAL"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Sal"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":50
+             ,"Column Alignment":"start"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":true
+            }
+          }
+         ,{
+            "id":"11024498208361706804"
+           ,"Identification":{
+              "Column Name":"PERTENECE"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Pertenece"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":60
+             ,"Column Alignment":"center"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":false
+            }
+          }
+         ,{
+            "id":"11024498387320706805"
+           ,"Identification":{
+              "Column Name":"IND_CAMBIO"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Ind Cambio"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":70
+             ,"Column Alignment":"start"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":true
+            }
+          }
+        ]
+       ,"Printing":{
+          "Output":{
+            "View File As":"Attachment"
+          }
+         ,"Page":{
+            "Size":"Letter"
+           ,"Orientation":"Landscape"
+           ,"Units":"Inches"
+           ,"Width":8.5
+           ,"Height":11
+           ,"Border Width":0.5
+           ,"Border Color":"#666666"
+          }
+         ,"Page Header":{
+            "Font":"Helvetica"
+           ,"Font Weight":"Normal"
+           ,"Font Size":12
+           ,"Font Color":"#000000"
+           ,"Alignment":"center"
+          }
+         ,"Column Headings":{
+            "Font":"Helvetica"
+           ,"Font Weight":"Normal"
+           ,"Font Size":10
+           ,"Font Color":"#000000"
+           ,"Background Color":"#9bafde"
+          }
+         ,"Columns":{
+            "Font":"Helvetica"
+           ,"Font Weight":"Normal"
+           ,"Font Size":10
+           ,"Font Color":"#000000"
+           ,"Background Color":"#efefef"
+          }
+         ,"Page Footer":{
+            "Font":"Helvetica"
+           ,"Font Weight":"Normal"
+           ,"Font Size":12
+           ,"Font Color":"#000000"
+           ,"Alignment":"center"
+          }
+        }
+      }
+    }
+   ,{
+      "id":"11024498424012706806"
+     ,"Identification":{
+        "Title":"Botones"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"REGION_POSITION_03"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Buttons Container (25436668852353906694)"
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Page Items":[
+    {
+      "id":"10888172048755452643"
+     ,"Identification":{
+        "Name":"P23_DEPARTAMENTO"
+       ,"Type":"Display Only"
+      }
+     ,"Label":{
+        "Label":"Departamento"
+       ,"Alignment":"Left"
+      }
+     ,"Settings":{
+        "Format":"Plain Text"
+       ,"Based On":"Display Value of List of Values"
+       ,"Show Line Breaks":true
+       ,"Send On Page Submit":true
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Departamento (10888171864367452641)"
+       ,"Position":"BODY"
+       ,"Alignment":"Left"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Label Column Span":"Page Template Default"
+      }
+     ,"Appearance":{
+        "Template":"Optional (25436700760668906716)"
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"List of Values":{
+        "Type":"Shared Component"
+       ,"List of Values":"DEPARTAMENTOS (10886977908173517948)"
+       ,"Display Extra Values":true
+      }
+     ,"Advanced":{
+        "Warn on Unsaved Changes":"Page Default"
+      }
+     ,"Source":{
+        "Type":"Null"
+       ,"Used":"Only when current value in session state is null"
+      }
+     ,"Session State":{
+        "Data Type":"VARCHAR2"
+       ,"Storage":"Per Session (Persistent)"
+      }
+     ,"Security":{
+        "Session State Protection":"Unrestricted"
+       ,"Store value encrypted in session state":false
+       ,"Restricted Characters":"All characters can be saved."
+      }
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"11024498571897706807"
+     ,"Identification":{
+        "Button Name":"Actualizar_Empleados"
+       ,"Label":"Actualizar Empleados"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Botones (11024498424012706806)"
+       ,"Position":"BELOW_BOX"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Horizontal Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":true
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Submit Page"
+       ,"Execute Validations":true
+       ,"Warn on Unsaved Changes":"Do Not Check"
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"11024498627917706808"
+     ,"Identification":{
+        "Name":"Click checkbox"
+      }
+     ,"Execution":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"jQuery Selector"
+       ,"jQuery Selector":"#empleados_col tr input[name=\u0027f02\u0027]"
+      }
+     ,"Execution":{
+        "Event Scope":"Dynamic"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"11024498766950706809"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"\/\/console.log(this.triggeringElement);\n\nvar elem = this.triggeringElement;\nvar estaMarcado = $(elem).is(\u0027:checked\u0027);\nvar seqId = $(elem).parent().find(\"input[name=\u0027f01\u0027]\").val();\n\nconsole.log(estaMarcado);\nconsole.log(seqId);\n\n\napex.server.process(\"Actualizar_Coleccion\",\n        {  x01: seqId\n         , x02: estaMarcado\n        }\n      , {success: function(pdata){\n          console.log(pdata.mensaje);\n                  }\n        }\n      \/\/ , {dataType: \"text\"}\n\n    );"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"Click checkbox (11024498627917706808)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+ ,"Computations":[
+    {
+      "id":"10888172127405452644"
+     ,"Identification":{
+        "Item Name":"P23_DEPARTAMENTO"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"Before Regions"
+      }
+     ,"Computation":{
+        "Type":"Item"
+       ,"Item Name":"P22_DEPARTAMENTOS"
+      }
+    }
+  ]
+ ,"Processes":[
+    {
+      "id":"10888172399503452646"
+     ,"Identification":{
+        "Name":"init"
+       ,"Type":"Execute Code"
+       ,"Execution Chain":"None"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"declare\n  l_sql varchar2(4000);\n  l_nombre_coleccion  varchar2(4000) := \u0027EMPLEADOS_COL\u0027;\nbegin\n\n  if apex_collection.collection_exists (p_collection_name =\u003E l_nombre_coleccion)\n  then\n    apex_collection.delete_collection(p_collection_name =\u003E l_nombre_coleccion);\n  end if;\n\n  l_sql :=\u0027select empno\n         , ename\n         , deptno\n         , sal\n         , case when deptno = :P23_DEPARTAMENTO then 1 else 0 end pertenece\n         , 0 ind_cambio\n      from emp\u0027;\n\n  apex_collection.create_collection_from_query_b\n  (\n      p_collection_name =\u003E l_nombre_coleccion\n    , p_query           =\u003E l_sql\n    , p_names           =\u003E apex_util.string_to_table(\u0027P23_DEPARTAMENTO\u0027)\n    , p_values          =\u003E apex_util.string_to_table(:P23_DEPARTAMENTO)\n  );\n\nend;"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"Before Regions"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+   ,{
+      "id":"11024498875579706810"
+     ,"Identification":{
+        "Name":"Actualizar_Coleccion"
+       ,"Type":"Execute Code"
+       ,"Execution Chain":"None"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"\nbegin\n  apex_collection.update_member_attribute (\n      p_collection_name =\u003E  \u0027EMPLEADOS_COL\u0027,\n      p_seq =\u003E apex_application.g_x01,\n      p_attr_number =\u003E 5,\n      p_attr_value =\u003E case when apex_application.g_x02 = \u0027true\u0027 then \u00271\u0027 else \u00270\u0027 end\n      );\n\n  apex_collection.update_member_attribute (\n      p_collection_name =\u003E  \u0027EMPLEADOS_COL\u0027,\n      p_seq =\u003E apex_application.g_x01,\n      p_attr_number =\u003E 6,\n      p_attr_value =\u003E 1\n      );\n\n  apex_json.open_object;\n  apex_json.write(p_name =\u003E \u0027mensaje\u0027, p_value=\u003E \u0027Actualizado correctamente\u0027);\n  apex_json.close_object;\nexception\n  when others then\n  apex_json.open_object;\n  apex_json.write(p_name =\u003E \u0027mensaje\u0027, p_value=\u003E \u0027Error al actualizar\u0027);\n  apex_json.close_object;\n\nend;"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"Ajax Callback"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+   ,{
+      "id":"11024498976083706811"
+     ,"Identification":{
+        "Name":"Actualizar empleados"
+       ,"Type":"Execute Code"
+       ,"Execution Chain":"None"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"for c_emp in (select c001 empno\n                   , c005 pertenece  -- c005 es de pertenencia\n                from apex_collections\n               where collection_name = \u0027EMPLEADOS_COL\u0027\n                 and c006 != 0 -- todos los que han cambiado de valor\n)\nloop\n\n  if c_emp.pertenece = 1 then\n    update emp\n       set deptno = :P23_DEPARTAMENTO\n     where empno = c_emp.empno;\n\n  else\n    update emp\n       set deptno = null\n     where empno = c_emp.empno;\n  end if;\n\nend loop;"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"Processing"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+     ,"Error":{
+        "Display Location":"Inline in Notification"
+      }
+     ,"Server-side Condition":{
+        "When Button Pressed":"Actualizar_Empleados (11024498571897706807)"
+      }
+    }
+   ,{
+      "id":"11024499002031706812"
+     ,"Identification":{
+        "Name":"Close dialog"
+       ,"Type":"Close Dialog"
+       ,"Execution Chain":"None"
+      }
+     ,"Execution":{
+        "Sequence":20
+       ,"Point":"Processing"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+     ,"Error":{
+        "Display Location":"Inline in Notification"
+      }
+     ,"Server-side Condition":{
+        "When Button Pressed":"Actualizar_Empleados (11024498571897706807)"
+      }
+    }
+  ]
+}

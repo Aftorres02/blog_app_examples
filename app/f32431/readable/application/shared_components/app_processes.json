@@ -1,0 +1,21 @@
+[
+  {
+    "id":"25436742066602932353"
+   ,"Identification":{
+      "Name":"GET_IMG"
+     ,"Type":"NATIVE_PLSQL"
+    }
+   ,"Source":{
+      "Location":"Local Database"
+     ,"Language":"PL\/SQL"
+     ,"PL\/SQL Code":"DECLARE\r\n  l_lob      BLOB;\r\n  l_length   NUMBER;\r\n  l_mimetype VARCHAR2(2000);\r\n  l_filename VARCHAR2(2000);\r\nBEGIN\r\n--\r\n\r\nSELECT PRODUCT_IMAGE\r\n       ,mimetype\r\n       ,filename \r\n  INTO l_lob,\r\n       l_mimetype,\r\n       l_filename  FROM DEMO_PRODUCT_INFO \r\n WHERE  NVL(dbms_lob.getlength(PRODUCT_IMAGE),0) \u003E 0  and PRODUCT_ID =  :G_ID_FILE;  \r\n   \r\n  --\r\n  l_length := DBMS_LOB.getlength(l_lob);\r\n  --\r\n  htp.flush;\r\n  htp.init;\r\n  --\r\n  owa_util.mime_header(nvl(l_mimetype,\u0027application\/octet\u0027), FALSE);\r\n \r\n  htp.p(\u0027Content-length:\u0027 || l_length);\r\n  htp.p(\u0027Content-Disposition:inline;filename=\"\u0027 || l_filename || \u0027\"\u0027);\r\n  --\r\n  -- close the headers\r\n  owa_util.http_header_close;\r\n  --\r\n  -- download the BLOB\r\n  wpg_docload.download_file(l_lob);\r\n--\r\nEND;"
+    }
+   ,"Execution":{
+      "Sequence":1
+     ,"Point":"Ajax Callback"
+    }
+   ,"Security":{
+      "Authorization Scheme":"Must Not Be Public User"
+    }
+  }
+]

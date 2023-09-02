@@ -1,0 +1,133 @@
+{
+  "id":"32431"
+ ,"Identification":{
+    "Name":"A little knowledge to share"
+   ,"Alias":"F_32431"
+   ,"Version":"release 1.0"
+  }
+ ,"Row Search":{
+    "Tokenize":false
+  }
+ ,"Availability":{
+    "Status":"Available with Developer Toolbar"
+   ,"Build Status":"Run and Build Application"
+  }
+ ,"Error Handling":{
+    "Default Display Location":"Inline with Field and in Notification"
+  }
+ ,"Report Printing":{
+    "Type":"Use Instance Settings"
+  }
+ ,"Advanced":{
+    "Friendly URLs":false
+   ,"Allow Feedback":false
+   ,"Logging":true
+   ,"Debugging":false
+   ,"Compatibility Mode":"5.1 \/ 18.1 \/ 18.2"
+   ,"Email From Address":"aftorres02@gmail.com"
+  }
+ ,"Authentication":{
+    "Public User":"APEX_PUBLIC_USER"
+   ,"Authentication Scheme":"APEX (25436712244773906728)"
+  }
+ ,"Authorization":{
+    "Source for Role or Group Schemes":"Authentication Scheme"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Disabled"
+  }
+ ,"Session State Protection":{
+    "Enabled":true
+  }
+ ,"Security":{
+    "Deep Linking":"Enabled"
+   ,"Browser Cache":"Disabled"
+   ,"Embed in Frames":"Deny"
+   ,"Referrer Policy":"strict-origin-when-cross-origin"
+   ,"HTML Escaping Mode":"Extended"
+  }
+ ,"Advanced":{
+    "Pass ECID":"N"
+  }
+ ,"Database Session":{
+    "Parsing Schema":"BLOG_ANGEL"
+  }
+ ,"Globalization":{
+    "Primary Language":"English (en)"
+   ,"Document Direction":"Left-To-Right"
+   ,"Language Derived From":"No NLS (Application not translated)"
+   ,"Automatic Time Zone":false
+   ,"Automatic CSV Encoding":true
+  }
+ ,"Character Value Comparison":{
+    "Behavior":"Database session NLS setting (default)"
+  }
+ ,"Logo":{
+    "Type":"Text"
+   ,"Text":"A little knowledge to share"
+  }
+ ,"Progressive Web App":{
+    "Enable":false
+  }
+ ,"Navigation":{
+    "Home URL":{
+      "url":"f?p=\u0026APP_ID.:1:\u0026SESSION."
+     ,"Page":"1"
+    }
+   ,"Login URL":{
+      "url":"f?p=\u0026APP_ID.:LOGIN_DESKTOP:\u0026SESSION."
+     ,"Page":"LOGIN_DESKTOP"
+    }
+  }
+ ,"Navigation Menu":{
+    "List Template":"Side Navigation Menu (25436698657480906714)"
+   ,"Template Options":[
+      "#DEFAULT#"
+     ,"js-defaultCollapsed"
+     ,"js-navCollapsed--hidden"
+     ,"t-TreeNav--styleB"
+    ]
+   ,"List Position":"Side"
+   ,"List":"Desktop Navigation Menu (25436659836122906683)"
+  }
+ ,"Navigation Bar":{
+    "Implementation":"List"
+   ,"List":"Desktop Navigation Bar (25436711947796906726)"
+   ,"List Template":"Navigation Bar (25436698582344906714)"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"JavaScript":{
+    "Include Deprecated or Desupported Javascript Functions":[
+      "18.x"
+    ]
+   ,"Include jQuery Migrate":true
+  }
+ ,"Attributes":{
+    "Theme":"Universal Theme (42)"
+   ,"Global Page":"0"
+   ,"Enable End Users to choose Theme Style":false
+   ,"Add \"Built with APEX\" to Footer":true
+  }
+ ,"Substitutions":[
+    {
+      "id":"1"
+     ,"Identification":{
+        "Name":"FORMAT_MONEY"
+      }
+     ,"Value":{
+        "Static Value":"FML999G999G999G999G990D00"
+      }
+    }
+   ,{
+      "id":"2"
+     ,"Identification":{
+        "Name":"FORMAT_DATE"
+      }
+     ,"Value":{
+        "Static Value":"DD\/MM\/YYYY"
+      }
+    }
+  ]
+}

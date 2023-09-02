@@ -1,0 +1,580 @@
+{
+  "id":"24"
+ ,"Identification":{
+    "Name":"Apex Item parte 3"
+   ,"Title":"Apex Item parte 3"
+  }
+ ,"Appearance":{
+    "Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "Function and Global Variable Declaration":"var empno, hiredate, deptno, sal;\n\n\nfunction actualizarEmpleado(elem){\n\n  empno    = $(elem).find(\"input[name=\u0027f01\u0027]\").val();\n  hiredate = $(elem).find(\"input[name=\u0027f02\u0027]\").val();\n  deptno   = $(elem).find(\"select[name=\u0027f03\u0027]\").val();\n  sal      = $(elem).find(\"input[name=\u0027f04\u0027]\").val(); \n\n  console.log(empno + \u0027 \/ \u0027 +  hiredate + \u0027 \/ \u0027 +  deptno + \u0027 \/ \u0027 + sal)\n  ajax_process_actualizar(empno,hiredate,deptno,sal);\n\n}\n\nfunction ajax_process_actualizar(empno,hiredate,deptno,sal){\n\n  apex.server.process(\"ActualizarEmpleado\",\n       {  x01: empno\n        , x02: hiredate\n        , x03: deptno\n        , x04: sal \n       }\n     , {success: function(pData){ \n       \n           if (pData.ind_error == 1){\n\n             alertify.error(pData.mensaje);\n             apex.event.trigger( \"#empleados_ir\", \"apexrefresh\" );\n           } else {\n             alertify.success(pData.mensaje);\n           }\n\n          }\n       }\n     \/\/, {dataType: \"text\"}\n   ); \n}"
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Unrestricted"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"12166902473786871104"
+     ,"Identification":{
+        "Title":"Empleados"
+       ,"Type":"Interactive Report"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"SQL Query"
+       ,"SQL Query":"select e.empno\n     , e.ename\n   --, e.deptno\n   --, e.sal\n   --, e.hiredate\n    -- apex items\n     , apex_item.hidden( p_idx    =\u003E 1\n                       , p_value  =\u003E e.empno)  ||\n       apex_item.date_popup2(p_idx           =\u003E 2\n                            , p_value        =\u003E e.hiredate\n                            , p_date_format  =\u003E :APP_DATE_TIME_FORMAT\n                            , p_size         =\u003E 20) hiredate\n     , apex_item.select_list_from_lov(p_idx        =\u003E 3\n                                    , p_value      =\u003E e.deptno\n                                    , p_lov        =\u003E \u0027DEPARTAMENTOS\u0027\n                                    , p_attributes =\u003E \u0027style=\"width: 200px;\"\u0027\n                                    , p_show_null  =\u003E \u0027NO\u0027) deptno\n     , apex_item.text(p_idx   =\u003E 4\n                    , p_value =\u003E e.sal\n                    , p_size  =\u003E 5\n                    , p_attributes =\u003E \u0027class=\"item_sal\" \u0027) sal\n  from emp e"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Interactive Report (25436677951057906700)"
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"empleados"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "id":"12166902508946871105"
+       ,"Link":{
+          "Link Column":"Exclude Link Column"
+        }
+       ,"Appearance":{
+          "Show Null Values as":"-"
+        }
+       ,"Pagination":{
+          "Type":"Row Ranges X to Y"
+         ,"Display Position":"Bottom - Right"
+        }
+       ,"Performance":{
+          "Lazy Loading":false
+         ,"Maximum Rows to Process":1000000
+        }
+       ,"Search Bar":{
+          "Include Search Bar":true
+         ,"Search Field":true
+         ,"Finder Drop Down":true
+         ,"Reports Select List":true
+         ,"Rows Per Page Selector":false
+        }
+       ,"Actions Menu":{
+          "Include Actions Menu":true
+         ,"Filter":true
+         ,"Select Columns":true
+         ,"Rows Per Page":true
+         ,"Sort":true
+         ,"Control Break":true
+         ,"Highlight":true
+         ,"Compute":true
+         ,"Aggregate":true
+         ,"Chart":true
+         ,"Group By":true
+         ,"Pivot":true
+         ,"Flashback":true
+         ,"Save Report":true
+         ,"Save Public Report":false
+         ,"Reset":true
+         ,"Help":true
+         ,"Download":true
+         ,"Subscription":true
+        }
+       ,"Download":{
+          "Formats":[
+            "CSV"
+           ,"HTML"
+           ,"Excel"
+           ,"PDF"
+          ]
+         ,"Send as Email":true
+        }
+       ,"Heading":{
+          "Fixed To":"Page"
+        }
+       ,"Icon View":{
+          "Show":false
+        }
+       ,"Detail View":{
+          "Show":false
+        }
+       ,"Saved Reports":[
+          {
+            "id":"12642348902000706430"
+           ,"Identification":{
+              "Name":"Primary Report"
+             ,"Alias":"126423490"
+            }
+          }
+        ]
+       ,"Columns":[
+          {
+            "id":"12166902647520871106"
+           ,"Identification":{
+              "Column Name":"EMPNO"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Empno"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":10
+             ,"Column Alignment":"end"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":true
+            }
+          }
+         ,{
+            "id":"12166902711563871107"
+           ,"Identification":{
+              "Column Name":"ENAME"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Ename"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":20
+             ,"Column Alignment":"start"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":true
+            }
+          }
+         ,{
+            "id":"12166902888753871108"
+           ,"Identification":{
+              "Column Name":"HIREDATE"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Hiredate"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":30
+             ,"Column Alignment":"center"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":false
+            }
+          }
+         ,{
+            "id":"12166902936574871109"
+           ,"Identification":{
+              "Column Name":"DEPTNO"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Deptno"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":40
+             ,"Column Alignment":"center"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":false
+            }
+          }
+         ,{
+            "id":"12166903039522871110"
+           ,"Identification":{
+              "Column Name":"SAL"
+             ,"Type":"Plain Text"
+            }
+           ,"Heading":{
+              "Heading":"Sal"
+             ,"Alignment":"center"
+            }
+           ,"Single Row View":{
+              "Use Column Heading":true
+            }
+           ,"Layout":{
+              "Sequence":50
+             ,"Column Alignment":"center"
+            }
+           ,"Accessibility":{
+              "Value Identifies Row":false
+            }
+           ,"Source":{
+              "Primary Key":false
+            }
+           ,"Column Filter":{
+              "Type":"Default Based on Column Type"
+            }
+           ,"Enable Users To":{
+              "Hide":true
+             ,"Sort":true
+             ,"Filter":true
+             ,"Highlight":true
+             ,"Control Break":true
+             ,"Aggregate":true
+             ,"Compute":true
+             ,"Chart":true
+             ,"Group By":true
+             ,"Pivot":true
+            }
+           ,"Security":{
+              "Escape special characters":false
+            }
+          }
+        ]
+       ,"Printing":{
+          "Output":{
+            "View File As":"Attachment"
+          }
+         ,"Page":{
+            "Size":"Letter"
+           ,"Orientation":"Landscape"
+           ,"Units":"Inches"
+           ,"Width":8.5
+           ,"Height":11
+           ,"Border Width":0.5
+           ,"Border Color":"#666666"
+          }
+         ,"Page Header":{
+            "Font":"Helvetica"
+           ,"Font Weight":"Normal"
+           ,"Font Size":12
+           ,"Font Color":"#000000"
+           ,"Alignment":"center"
+          }
+         ,"Column Headings":{
+            "Font":"Helvetica"
+           ,"Font Weight":"Normal"
+           ,"Font Size":10
+           ,"Font Color":"#000000"
+           ,"Background Color":"#9bafde"
+          }
+         ,"Columns":{
+            "Font":"Helvetica"
+           ,"Font Weight":"Normal"
+           ,"Font Size":10
+           ,"Font Color":"#000000"
+           ,"Background Color":"#efefef"
+          }
+         ,"Page Footer":{
+            "Font":"Helvetica"
+           ,"Font Weight":"Normal"
+           ,"Font Size":12
+           ,"Font Color":"#000000"
+           ,"Alignment":"center"
+          }
+        }
+      }
+    }
+   ,{
+      "id":"65166582057420683973"
+     ,"Identification":{
+        "Title":"Referencia Blog"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ca href=\"https:\/\/aflorestorres.blogspot.com\/2018\/07\/apexitem-parte-3-guardando.html\" target=\"_blank\" \u003E Mira este tutorial aqui \u003C\/a\u003E\n\u003Cp\u003E En esta oportunidad vamos a ver c\u00F3mo usar datepicker, lista de valores y campos de input, haciendo que se guarden autom\u00E1ticamente, cada vez que modifiquemos alg\u00FAn valor  \u003C\/p\u003E"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"REGION_POSITION_01"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"7133043896527419217"
+     ,"Identification":{
+        "Name":"Key press"
+      }
+     ,"Execution":{
+        "Sequence":30
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.KEYPRESS"
+       ,"Selection Type":"jQuery Selector"
+       ,"jQuery Selector":".item_sal"
+      }
+     ,"Execution":{
+        "Event Scope":"Dynamic"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"7133043991609419218"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"\/\/console.log(this.triggeringElement);\n\/\/console.log(this.browserEvent);\n\n var be = this.browserEvent;\n\nif (be.keyCode \u003C 48 || be.keyCode \u003E 57)\n{\n    be.preventDefault();\n  console.log( be.key + \" is not number\");\n}\n\n\n\/*\nif (!\/^([0-9])*$\/.test($v( $(this.triggeringElement) ))) {\nconsole.log(\"El valor \" + numero + \" no es un n\u00FAmero\");\n}*\/"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"Key press (7133043896527419217)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"12166903169898871111"
+     ,"Identification":{
+        "Name":"actualizar empleado"
+      }
+     ,"Execution":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CHANGE"
+       ,"Selection Type":"jQuery Selector"
+       ,"jQuery Selector":"#empleados_ir tr:gt(1)"
+      }
+     ,"Execution":{
+        "Event Scope":"Dynamic"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"12166903228190871112"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"actualizarEmpleado(this.triggeringElement);"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"actualizar empleado (12166903169898871111)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"12166903508315871115"
+     ,"Identification":{
+        "Name":"Alertfy"
+      }
+     ,"Execution":{
+        "Sequence":20
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.READY"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+      }
+     ,"Actions":[
+        {
+          "id":"12166903654887871116"
+         ,"Identification":{
+            "Action":"Alertify"
+          }
+         ,"Settings":{
+            "Message Type":"Dialog"
+           ,"Dialog Type":"Alert"
+           ,"Message":"test"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"Alertfy (12166903508315871115)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+           ,"Wait For Result":true
+          }
+        }
+      ]
+    }
+  ]
+ ,"Processes":[
+    {
+      "id":"12166903472584871114"
+     ,"Identification":{
+        "Name":"ActualizarEmpleado"
+       ,"Type":"Execute Code"
+       ,"Execution Chain":"None"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"begin\n\n  update emp\n     set hiredate = to_date(apex_application.g_x02,:APP_DATE_TIME_FORMAT)\n       , deptno   = apex_application.g_x03\n       , sal      = apex_application.g_x04\n  where empno = apex_application.g_x01;\n\n  apex_json.open_object;\n  apex_json.write(p_name =\u003E \u0027mensaje\u0027, p_value=\u003E \u0027Actualizado correctamente\u0027);\n  apex_json.write(p_name =\u003E \u0027ind_error\u0027, p_value=\u003E 0);\n  apex_json.close_object;\nexception\n  when others then\n  apex_json.open_object;\n  apex_json.write(p_name =\u003E \u0027mensaje\u0027, p_value=\u003E \u0027Error al actualizar\u0027);\n  apex_json.write(p_name =\u003E \u0027ind_error\u0027, p_value=\u003E 1);\n  apex_json.close_object;\n\nend;"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"Ajax Callback"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+  ]
+}

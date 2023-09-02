@@ -1,0 +1,268 @@
+{
+  "id":"10"
+ ,"Identification":{
+    "Name":"DemoCarouselImg"
+   ,"Title":"Demo Carousel Img"
+  }
+ ,"Appearance":{
+    "Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "File URLs":[
+      "#APP_IMAGES#jquery.mousewheel-3.1.12.js"
+     ,"#APP_IMAGES#jquery.jcarousellite.min.js"
+    ]
+   ,"Function and Global Variable Declaration":"$(\u0027body\u0027).append(\u0027\u003Cdiv class=\"product-image-overlay\"\u003E\u003Cspan class=\"product-image-overlay-close\"\u003Ex\u003C\/span\u003E\u003Cimg src=\"\" \/\u003E\u003C\/div\u003E\u0027);\nvar productOverlay = $(\u0027.product-image-overlay\u0027);\nvar productOverlayImage = $(\u0027.product-image-overlay img\u0027);\n\nfunction displayImagen (dir) {\n    \n    productOverlayImage.attr(\u0027src\u0027, dir);\n    productOverlay.fadeIn(100);\n    $(\u0027body\u0027).css(\u0027overflow\u0027, \u0027hidden\u0027);\n\n    $(\u0027.product-image-overlay-close\u0027).click(function () {\n        productOverlay.fadeOut(100);\n        $(\u0027body\u0027).css(\u0027overflow\u0027, \u0027auto\u0027);\n    });\n}; \n\n\nvar htmldb_delete_message=\u0027\"DELETE_CONFIRM_MSG\"\u0027;"
+  }
+ ,"CSS":{
+    "Inline":".carru{\n    width: 85% !important;\n} \n.clist{\n text-align:center;\n height:150px;\n width:140px;\n padding:2px;\n border: 0.3px solid #131313;\n margin: 5px;\n}\n#carousel-container{\n border:2px solid #CCC;\n background-color:#FFF;\n width:600px;\n float:left;  \n}\n#carousel-container li{\n list-style-image:none;\n}\n#carousel-container img{\n width:70px;\n height:80px;\n} \n#carousel-prev,#carousel-next{\n display:block;\n float:left;\n text-decoration:none;\n height:160px;\n width:40px;\n}\n#carousel-prev{\n background: url(\"#APP_IMAGES#arrowl.gif\") no-repeat scroll left 60px transparent;\n}\n#carousel-next{\n background: url(\"#APP_IMAGES#arrowr.gif\") no-repeat scroll right 60px transparent;\n} \n\n\n\n.product-image-overlay {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%; \n    background: rgba(251, 255, 255, 0.71);\n    z-index: 9999;\n    display: none;\n}\n\n.product-image-overlay .product-image-overlay-close {\n    display: block;\n    position: absolute;\n    top: 20px;\n    left: 20px;\n    width: 40px;\n    height: 40px;\n    border-radius: 50%;\n    border: 1px solid #fba3a3;\n    line-height: 35px;\n    font-size: 20px;\n    color: #fbfbfb;\n    text-align: center;\n    cursor: pointer;\n    background-color: #fd0000;\n}\n\n\n.product-image-overlay img {\n    width: auto;\n    max-width: 80%;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n    -moz-transform: translate(-50%, -50%);\n    -o-transform: translate(-50%, -50%);\n    transform: translate(-50%, -50%);\n}\n"
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Unrestricted"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"21978040177071424008"
+     ,"Identification":{
+        "Title":"Referencia Blog"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ca href=\"https:\/\/aflorestorres.blogspot.com\/2017\/06\/4545.html\" target=\"_blank\" \u003E Mira este tutorial aqui \u003C\/a\u003E\n\u003Cp\u003E En este tutorial vamos a ver como visualizar imagenes en forma de carusel usando la libreria jcarousellite y tambien agregaremos el efecto de zoom. \u003C\/p\u003E"
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Parent Region":"No Parent"
+       ,"Position":"REGION_POSITION_01"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"25436801621657957301"
+     ,"Identification":{
+        "Title":"Buttons"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"25436801845950957303"
+     ,"Identification":{
+        "Title":"ImagesRegion"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"container_files"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Header and Footer":{
+        "Header Text":"\u003Cdiv id=\"carousel\"\u003E\n \u003Ca id=\"carousel-prev\" href=\"#\"\u003E\u0026nbsp;\u003C\/a\u003E\n \u003Cdiv id=\"carousel-container\" class=\"carru\" \u003E\n  \u003Cul\u003E"
+       ,"Footer Text":"\u003C\/ul\u003E\n \u003C\/div\u003E\n \u003Ca id=\"carousel-next\" href=\"#\"\u003E\u0026nbsp;\u003C\/a\u003E\n\u003C\/div\u003E"
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"25436801799478957302"
+     ,"Identification":{
+        "Button Name":"Refresh_image"
+       ,"Label":"Refresh images"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Buttons (25436801621657957301)"
+       ,"Position":"CLOSE"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"25436802093638957305"
+     ,"Identification":{
+        "Name":"Refresh images"
+      }
+     ,"Execution":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"Refresh_image (25436801799478957302)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"25436802116012957306"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.server.process(\n    \"Refresh_image\",\n    {}, {\n       dataType: \u0027text\u0027,\n        success: function(data) {\n           $(\u0027#carousel-container\u0027).html(data);\n            console.log(\"dialog close\");\n            \/\/ alert(\"test\")\n        }\n    }\n); "
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"Refresh images (25436802093638957305)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+ ,"Processes":[
+    {
+      "id":"25436801951222957304"
+     ,"Identification":{
+        "Name":"Refresh_image"
+       ,"Type":"Execute Code"
+       ,"Execution Chain":"None"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"DECLARE\n  l_html varchar2(1000);\n  l_img_src varchar2(1000);\nBEGIN\n\n  HTP.prn(\u0027 \u003Cul style=\"margin: 0px; padding: 0px; position: relative; list-style: none; z-index: 1; width: 2800px; \" \u003E\u0027); \n  FOR c1 IN( \n      SELECT PRODUCT_ID,\n             filename\n        FROM DEMO_PRODUCT_INFO\n       WHERE NVL(dbms_lob.getlength(PRODUCT_IMAGE),0) \u003E 0   order by filename asc\n      \n  )LOOP\n \n l_img_src := apex_util.prepare_url(\u0027f?p=\u0027 || :APP_ID || \u0027:\u0027 || :APP_PAGE_ID || \u0027:\u0027 || :APP_SESSION || \u0027:APPLICATION_PROCESS=GET_IMG:NO::G_ID_FILE:\u0027 || c1.PRODUCT_ID);\n\n l_html := \u0027\u003Cimg  src=\"\u0027 || l_img_src || \u0027\"\u003E\u0027;     \n    HTP.prn(\u0027\u003Cli style=\"overflow: hidden; float: left; cursor: pointer;\" \u003E \u0027);            \n    HTP.prn(\u0027\u003Cdiv  class=\"clist\" onclick=\"displayImagen(\u0027\u0027\u0027||l_img_src||\u0027\u0027\u0027)\" \u003E\u0027 ); \n    htp.prn(l_html); \n    HTP.prn(\u0027\u003Cp\u003E\u0027 || c1.filename || \u0027\u003C\/p\u003E\u0027); \n    HTP.prn(\u0027\u003C\/div\u003E\u0027); \n    HTP.prn(\u0027\u003C\/li\u003E\u0027);  \n  END LOOP;\n    HTP.prn(\u0027 \u003C\/ul\u003E\u0027);  \n       \n        htp.p(\u0027\u003Cscript type=\"text\/javascript\"\u003E\u0027);\n            htp.p(\u0027$(\"#carousel-container\").jCarouselLite({\n            circular:true,\n            visible:4,\n            scroll:4,\n            speed:300,\n            btnPrev:\"#carousel-prev\",\n            btnNext:\"#carousel-next\"\n            });\u0027);\n        htp.p(\u0027\u003C\/script\u003E\u0027);  \n   \nEND;"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"Ajax Callback"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+  ]
+}

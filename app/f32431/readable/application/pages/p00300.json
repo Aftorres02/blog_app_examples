@@ -1,0 +1,388 @@
+{
+  "id":"300"
+ ,"Identification":{
+    "Name":"Jet 5.1"
+   ,"Title":"Jet 5.1"
+  }
+ ,"Appearance":{
+    "Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "File URLs":[
+      "https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/knockout\/knockout-3.4.2.js"
+     ,"https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/require\/require.js"
+    ]
+  }
+ ,"CSS":{
+    "File URLs":[
+      "#JET_CSS_DIRECTORY#\/alta\/oj-alta-notag-min.css"
+    ]
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Unrestricted"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"49073380914965167146"
+     ,"Identification":{
+        "Title":"Referencia Blog"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ca href=\"https:\/\/www.aflorestorres.com\/2018\/07\/integrando-oracle-jet-v51-en-oracle.html\" target=\"_blank\" \u003E Mira este tutorial aqui \u003C\/a\u003E\n\u003Cp\u003E En este tutorial vamos a ver como podemos integrar Oracle Jet en APEX \u003C\/p\u003E"
+      }
+     ,"Layout":{
+        "Sequence":40
+       ,"Parent Region":"No Parent"
+       ,"Position":"REGION_POSITION_01"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"54196641292930452339"
+     ,"Identification":{
+        "Title":"Btn"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"54196641401428452340"
+     ,"Identification":{
+        "Title":"TimeLine"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Cdiv id=\u0027timeline-container\u0027\u003E\n          \u003Coj-timeline id=\u0027timeline\u0027 aria-label=\u0027Timeline Context Menu Demo\u0027 \n                     minor-axis=\u0027{\n                       \"scale\": \"weeks\",\n                       \"zoomOrder\": [\"months\", \"weeks\", \"days\"]\n                     }\u0027\n                     major-axis.scale=\u0027quarters\u0027\n                     start=\u0027[[new Date(\"Jan 1, 2013\").toISOString()]]\u0027\n                     end=\u0027[[new Date(\"Dec 31, 2013\").toISOString()]]\u0027\n                     selection-mode=\u0027single\u0027\n                     selection=\u0027[\"e4\"]\u0027\n                     series=\u0027[[timelineSeries]]\u0027\n                     style=\u0027width:100%;height:350px\u0027\u003E\n            \u003Coj-menu slot=\u0027contextMenu\u0027 style=\u0027display:none\u0027 aria-label=\u0027Match Edit\u0027 \n                   on-oj-action=\u0027[[menuItemAction]]\u0027 \n                   on-oj-before-open=\u0027[[beforeOpenFunction]]\u0027\u003E\n              \u003Coj-option value=\u0027action1\u0027\u003EAction 1\u003C\/oj-option\u003E\n              \u003Coj-option value=\u0027action2\u0027\u003EAction 2\u003C\/oj-option\u003E\n              \u003Coj-option value=\u0027action3\u0027\u003EAction 3\u003C\/oj-option\u003E\n            \u003C\/oj-menu\u003E\n          \u003C\/oj-timeline\u003E\n        \n          \u003Cp\u003ELast selected menu item:\n            \u003Cspan id=\u0027results\u0027 class=\u0027italic\u0027 style=\u0027font-weight:bold\u0027 data-bind=\u0027text: selectedMenuItem\u0027\u003E\u003C\/span\u003E\n          \u003C\/p\u003E\n        \u003C\/div\u003E"
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"54196641524542452341"
+     ,"Identification":{
+        "Title":"PictoChart"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"  \u003Cdiv id=\"componentDemoContent\" style=\"width: 1px; min-width: 100%;\"\u003E\n        \n        \u003Cdiv id=\u0027chart-container\u0027\u003E\n          \u003Ch1 data-bind=\"text: header\" \u003E\u003C\/h1\u003E\n          \u003Cdiv class=\"oj-flex\" style=\"display: inline-block; vertical-align:top;margin-right: 5%;width:100%;max-width:200px;\"\u003E\n            \u003Coj-label for=\"radioButtonset2\" class=\"oj-flex-item\" style=\"padding-bottom:8px;width: 100%;\" \u003E\n              layout:\n            \u003C\/oj-label\u003E\n            \u003Coj-buttonset-one id=\"radioButtonset2\" value=\"{{layout}}\" class=\"oj-buttonset-width-auto\" aria-label=\"Choose only one setting.\" aria-controls=\"pictochart1\"\u003E\n                \u003C!-- ko foreach: layoutOptions --\u003E    \n                \u003Coj-option value=\"[[value]]\"\u003E\n                    \u003Cspan data-bind=\"text: label\"\u003E\u003C\/span\u003E\n                \u003C\/oj-option\u003E\n                \u003C!-- \/ko --\u003E\n            \u003C\/oj-buttonset-one\u003E\n          \u003C\/div\u003E\n          \u003Cbr\/\u003E\n          \u003Cdiv class=\"oj-flex\" style=\"display: inline-block;margin-top:10px;\"\u003E\n            \u003Coj-label for=\"radioButtonset\" class=\"oj-flex-item\" style=\"padding-bottom:8px;width: 100%;\" \u003E\n              layoutOrigin:\n            \u003C\/oj-label\u003E\n            \u003Coj-buttonset-one id=\"radioButtonset\" value=\"{{layoutOrigin}}\" class=\"oj-flex-item oj-buttonset-width-auto\" style=\"width:100%;\" aria-label=\"Choose only one setting.\" aria-controls=\"pictochart1\"\u003E\n                \u003C!-- ko foreach: layoutOriginOptions --\u003E    \n                \u003Coj-option value=\"[[value]]\"\u003E  \n                    \u003Cspan data-bind=\"text: label\"\u003E\u003C\/span\u003E\n                \u003C\/oj-option\u003E\n                \u003C!-- \/ko --\u003E\n            \u003C\/oj-buttonset-one\u003E \n          \u003C\/div\u003E\n        \n          \u003Cdiv class=\"oj-flex\" style= \"margin-top:2%; margin-bottom: 2%;\"\u003E\n            \u003Coj-picto-chart id=\"pictochart1\"\n              items=\"[[pictoChartItems]]\"\n              animation-on-data-change=\"auto\"\n              tooltip.renderer=\"[[tooltip]]\"\n              layout=\"[[layout]]\"\n              layout-origin=\"[[layoutOrigin]]\"\n              style=\"width:90%;height:100%;max-width:350px;max-height:400px;display:inline-block; vertical-align: top; margin-top: 10px;margin-right:3%;\"\u003E\n            \u003C\/oj-picto-chart\u003E\n            \u003Coj-legend id=\"legend\" \n              orientation=\"vertical\"\n              sections=\"[[legendSections]]\"\n              symbol-width=\"20\"\n              style=\"height: 240px; vertical-align: top; display: inline-block;\"\u003E\n            \u003C\/oj-legend\u003E\n          \u003C\/div\u003E\n        \n          \u003Cdiv class=\"oj-flex\"\u003E\n            \u003Coj-label for=\"radioButtonset3\" style=\"padding-bottom:8px; padding-right: 5px; display: inline-block; line-height: 33px;\" \u003E\n                Dataset:\n            \u003C\/oj-label\u003E\n            \u003Coj-buttonset-one id=\"radioButtonset3\" value=\"{{dataset}}\" on-value-changed=\"[[datasetChange]]\" class=\"oj-buttonset-width-auto\" style=\"display: inline-flex;\" aria-label=\"Choose only one setting.\" aria-controls=\"pictochart1\"\u003E\n                \u003C!-- ko foreach: datasetOptions --\u003E    \n                \u003Coj-option value=\"[[value]]\"\u003E\n                    \u003Cspan data-bind=\"text: label\"\u003E\u003C\/span\u003E\n                \u003C\/oj-option\u003E\n                \u003C!-- \/ko --\u003E\n            \u003C\/oj-buttonset-one\u003E\n          \u003C\/div\u003E\n        \u003C\/div\u003E\n\n        \n      \u003C\/div\u003E"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"27092634249047823339"
+     ,"Identification":{
+        "Button Name":"TimeLine"
+       ,"Label":"Timeline"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Btn (54196641292930452339)"
+       ,"Position":"BELOW_BOX"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Horizontal Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"27092634567943823341"
+     ,"Identification":{
+        "Button Name":"PictoChart"
+       ,"Label":"Pictochart"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Region":"Btn (54196641292930452339)"
+       ,"Position":"BELOW_BOX"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Horizontal Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"27092636120531823357"
+     ,"Identification":{
+        "Name":"Librerias Jet"
+      }
+     ,"Execution":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.READY"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+      }
+     ,"Actions":[
+        {
+          "id":"27092636666026823359"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"define(\"knockout\",[],function(){return ko;});\n\n\nrequirejs.config({\n  \/\/ Path mappings for the logical module names\n  paths: {\n    \u0027knockout\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/knockout\/knockout-3.4.2\u0027,\n    \u0027jquery\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/jquery\/jquery-3.3.1.min\u0027,\n    \u0027jqueryui-amd\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/jquery\/jqueryui-amd-1.12.1.min\u0027,\n    \u0027ojs\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/default\/js\/min\u0027,\n    \u0027ojL10n\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/default\/js\/ojL10n\u0027,\n    \u0027ojtranslations\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/default\/js\/resources\u0027,\n    \u0027text\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/require\/text\u0027,\n    \u0027promise\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/es6-promise\/es6-promise.min\u0027,\n    \u0027hammerjs\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/hammer\/hammer-2.0.8.min\u0027,\n    \u0027signals\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/js-signals\/signals.min\u0027,\n    \u0027ojdnd\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/dnd-polyfill\/dnd-polyfill-1.0.0.min\u0027,\n    \u0027css\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/require-css\/css.min\u0027,\n    \u0027customElements\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/webcomponents\/custom-elements.min\u0027,\n    \u0027proj4js\u0027: \u0027https:\/\/static.oracle.com\/cdn\/jet\/v5.1.0\/3rdparty\/proj4js\/dist\/proj4\u0027\n  },\n  \/\/ Shim configurations for modules that do not expose AMD\n  shim: {\n    \u0027jquery\u0027: {\n      exports: [\u0027jQuery\u0027, \u0027$\u0027]\n    }\n  }\n});"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"Librerias Jet (27092636120531823357)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"27092637095794823360"
+     ,"Identification":{
+        "Name":"TimeLine JS"
+      }
+     ,"Execution":{
+        "Sequence":20
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"TimeLine (27092634249047823339)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"27092637572217823361"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"\nrequire([\u0027ojs\/ojcore\u0027, \u0027knockout\u0027, \u0027jquery\u0027, \u0027ojs\/ojknockout\u0027, \u0027ojs\/ojmenu\u0027, \u0027ojs\/ojtimeline\u0027],\n  function (oj, ko, $)\n  {\n    function ViewModel()\n    {\n      var self = this;\n      \n      self.seriesData = [{\n          id: \u0027e1\u0027,\n          title: \u0027ATP VTR Open\u0027,\n          start: new Date(\u0027Feb 4, 2013\u0027).toISOString(),\n          end: new Date(\u0027Feb 10, 2013\u0027).toISOString(),\n          description: \u0027Finalist: 3-1\u0027\n        }, {\n          id: \u0027e2\u0027,\n          title: \u0027ATP Brasil Open\u0027,\n          start: new Date(\u0027Feb 11, 2013\u0027).toISOString(),\n          end: new Date(\u0027Feb 17, 2013\u0027).toISOString(),\n          description: \u0027Champion: 4-0\u0027\n        }, {\n          id: \u0027e3\u0027,\n          title: \u0027ATP Abierto Mexicano Telcel\u0027,\n          start: new Date(\u0027Feb 25, 2013\u0027).toISOString(),\n          end: new Date(\u0027Mar 2, 2013\u0027).toISOString(),\n          description: \u0027Champion: 5-0\u0027\n        }, {\n          id: \u0027e4\u0027,\n          title: \u0027ATP BNP Paribas Open\u0027,\n          start: new Date(\u0027Mar 7, 2013\u0027).toISOString(),\n          end: new Date(\u0027Mar 17, 2013\u0027).toISOString(),\n          description: \u0027Champion: 6-0\u0027\n        }\n      ];\n      var items = ko.observableArray(self.seriesData)();\n      self.timelineSeries = [{id: \u0027s1\u0027, emptyText: \u0027No Data.\u0027, label:\u0027Oracle Events\u0027, items: items}];\n\n      self.selectedMenuItem = ko.observable(\u0027(None selected yet)\u0027);\n      var itemTitle;\n      self.beforeOpenFunction = function (event)\n      {\n        var target = event.detail.originalEvent.target;\n        var context = document.getElementById(\u0027timeline\u0027).getContextByNode(target);\n        if (context != null \u0026\u0026 context.subId == \u0027oj-timeline-item\u0027)\n        {\n          var itemIndex = context[\u0027itemIndex\u0027];\n          itemTitle = self.seriesData[itemIndex][\u0027title\u0027];\n        }\n      };\n      self.menuItemAction = function (event)\n      {\n        var text = event.target.textContent;\n        if (itemTitle)\n        {\n          self.selectedMenuItem(text + \u0027 from \u0027 + itemTitle);\n          itemTitle = null;\n        }\n        else\n          self.selectedMenuItem(text + \u0027 from timeline background\u0027);\n      };\n    };\n\n    $(\n        function()\n        {\n            ko.applyBindings(new ViewModel(), document.getElementById(\u0027timeline-container\u0027));\n        }\n    );\n  }\n);\n"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"TimeLine JS (27092637095794823360)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"27092637966432823362"
+     ,"Identification":{
+        "Name":"Picto"
+      }
+     ,"Execution":{
+        "Sequence":30
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"PictoChart (27092634567943823341)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"27092638498562823363"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"  require([\u0027ojs\/ojcore\u0027, \u0027knockout\u0027, \u0027jquery\u0027, \u0027ojs\/ojknockout\u0027, \u0027ojs\/ojpictochart\u0027, \u0027ojs\/ojtoolbar\u0027, \u0027ojs\/ojbutton\u0027, \u0027ojs\/ojlegend\u0027, \u0027ojs\/ojlabel\u0027],\n  function (oj, ko, $) {\n    function PictoChartModel() {\n      var self = this;\n      self.layoutOrigin = ko.observable(\"topStart\");\n      self.layout = ko.observable(\"horizontal\");\n      self.dataset = ko.observable(\"Population\");\n      self.header = ko.observable(\"2014 USA Population Age Brackets\");\n      var colorHandler = new oj.ColorAttributeGroupHandler();\n\n      self.layoutOptions = ko.observable([\n        {id: \u0027vertical\u0027, label: \u0027vertical\u0027, value: \u0027vertical\u0027},\n        {id: \u0027horizontal\u0027, label: \u0027horizontal\u0027, value: \u0027horizontal\u0027}\n      ]);\n      self.layoutOriginOptions = ko.observable([\n          {id: \u0027topStart\u0027, label: \u0027topStart\u0027, value: \u0027topStart\u0027},\n          {id: \u0027topEnd\u0027, label: \u0027topEnd\u0027, value: \u0027topEnd\u0027},\n          {id: \u0027bottomStart\u0027, label: \u0027bottomStart\u0027, value: \u0027bottomStart\u0027},\n          {id: \u0027bottomEnd\u0027, label: \u0027bottomEnd\u0027, value: \u0027bottomEnd\u0027}\n      ]);\n      self.datasetOptions = ko.observable([\n          {id: \u0027population\u0027, label: \u0027Population\u0027, value: \u0027Population\u0027},\n          {id: \u0027medals\u0027, label: \u0027Olympic Medals\u0027, value: \u0027Medals\u0027}\n      ]);\n      var stats = {\n       Population: [\n        {name: \u00270-14 years\u0027, color: colorHandler.getValue(\u00270-14\u0027),shape: \u0027human\u0027, count: 19},\n        {name: \u002715-24 years\u0027, color: colorHandler.getValue(\u002715-24\u0027),shape: \u0027human\u0027, count: 14},\n        {name: \u002725-54 years\u0027, color: colorHandler.getValue(\u002725-54\u0027),shape: \u0027human\u0027, count: 40},\n        {name: \u002755-64 years\u0027, color: colorHandler.getValue(\u002755-64\u0027),shape: \u0027human\u0027, count: 13},\n        {name: \u002765+ years\u0027, color: colorHandler.getValue(\u002765+\u0027),shape: \u0027human\u0027, count: 14}\n      ],\n      Medals: [\n        {name: \u0027Gold\u0027, shape: \u0027circle\u0027, rowSpan:4, columnSpan:4, color: \"#ffd700\", count: 46},\n        {name: \u0027Silver\u0027, shape: \u0027circle\u0027, rowSpan:2, columnSpan:2,color: \"#c0c0c0\", count: 28},\n        {name: \u0027Bronze\u0027, shape: \u0027circle\u0027, rowSpan:1, columnSpan:1,color: \"#cd7f32\", count: 29}\n      ]};\n      var legends = {\n        Population: [{title: \"Sizes\", items: [\n              {text: \"1%\", markerShape: \"human\"}\n            ]},\n            {title: \"Ages\",items: [\n              {text: \"0-14\", color: colorHandler.getValue(\u00270-14\u0027), markerShape: \"human\"},\n              {text: \"15-24\",color: colorHandler.getValue(\u002715-24\u0027), markerShape: \"human\"},\n              {text: \"25-54\",color: colorHandler.getValue(\u002725-54\u0027), markerShape: \"human\"},\n              {text: \"55-64\",color: colorHandler.getValue(\u002755-64\u0027), markerShape: \"human\"},\n              {text: \"65+\",color: colorHandler.getValue(\u002765+\u0027), markerShape: \"human\"}\n          ]}],\n        Medals: [\n            {title: \"Medals\",items: [\n            {text: \"Gold\", color: \"#ffd700\", markerShape: \"circle\"},\n            {text: \"Silver\", color: \"#c0c0c0\", markerShape: \"circle\"},\n            {text: \"Bronze\",color: \"#cd7f32\", markerShape: \"circle\"},\n          ]}]\n      };\n      var header = {\n        Population: \"2014 USA Population Age Brackets\",\n        Medals: \"2012 USA Summer Olympics Medals\"\n      }\n\n      self.pictoChartItems = ko.observableArray(stats[self.dataset()]);\n      self.legendSections = ko.observableArray(legends[self.dataset()]);\n\n      self.datasetChange = function (event) {\n        var dataset = self.dataset();\n        self.pictoChartItems(stats[dataset]);\n        self.legendSections(legends[dataset]);\n        self.header(header[dataset]);\n      }\n      self.tooltip = function (context) {\n        var tooltipElem;\n        if (self.dataset() == \"Population\") {\n          tooltipElem = context.name+\": \"+context.count+\"%\";\n        }\n        else {\n          tooltipElem = context.count+\" \"+context.name+\" Medals\";\n        };\n        return {\u0027insert\u0027:tooltipElem};\n      }\n    }\n    var pictoChartModel = new PictoChartModel();\n\n    $(\n      function() {\n        ko.applyBindings(pictoChartModel, document.getElementById(\u0027chart-container\u0027));\n      }\n    );\n  });"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"Picto (27092637966432823362)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+}

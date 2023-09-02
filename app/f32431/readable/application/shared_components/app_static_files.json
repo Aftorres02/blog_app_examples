@@ -1,0 +1,42 @@
+[
+  {
+    "id":"25770763194020739341"
+   ,"Identification":{
+      "File Name":"jquery.jcarousellite.min.js"
+    }
+   ,"Attributes":{
+      "Mime Type":"text\/javascript"
+     ,"File Character Set":"Unicode UTF-8"
+    }
+  }
+ ,{
+    "id":"25770891467917740357"
+   ,"Identification":{
+      "File Name":"jquery.mousewheel-3.1.12.js"
+    }
+   ,"Attributes":{
+      "Mime Type":"text\/javascript"
+     ,"File Character Set":"Unicode UTF-8"
+    }
+  }
+ ,{
+    "id":"25771968735469940575"
+   ,"Identification":{
+      "File Name":"arrowl.gif"
+    }
+   ,"Attributes":{
+      "Mime Type":"image\/gif"
+     ,"File Character Set":"Unicode UTF-8"
+    }
+  }
+ ,{
+    "id":"25771968948295940576"
+   ,"Identification":{
+      "File Name":"arrowr.gif"
+    }
+   ,"Attributes":{
+      "Mime Type":"image\/gif"
+     ,"File Character Set":"Unicode UTF-8"
+    }
+  }
+]

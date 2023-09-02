@@ -1,0 +1,435 @@
+{
+  "id":"2"
+ ,"Identification":{
+    "Name":"Ordenamiento"
+   ,"Alias":"ORDENAMIENTO"
+   ,"Title":"Ordenamiento"
+  }
+ ,"Appearance":{
+    "Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "Function and Global Variable Declaration":"function save_order(){\n  \n  var rowsOrder = $(\"#department_report\").find(\".t-Report-report tbody tr .arrow_container\")\n  var questionnaireOrder = Array.from(rowsOrder, x =\u003E $(x).data(\u0027id\u0027) );\n   console.log(questionnaireOrder);\n    \n  apex.server.process(\"UPDATE_ORDER\",        \n  { \n    f01: questionnaireOrder\n  }, \n    { success: function(pData){  \n        apex.event.trigger( \"#department_report\", \"apexrefresh\" );\n      }, \n      error: function(e) {   \n           console.log(e);  \n      } \n    }\n  );\n  \n}\n\nfunction move_row(element){\n  \/\/ direcction = up or down\n  var direction =   element.dataset.move_dir;\n  var row = $(element).parents(\"tr:first\");\n  if (direction == \"UP\" ) {\n      row.insertBefore(row.prev());\n  } else {\n    \/\/ down \n      row.insertAfter(row.next());    \n  }\n  save_order();  \n}"
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Unrestricted"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"31332472534773125703"
+     ,"Identification":{
+        "Title":"Departments"
+       ,"Type":"Classic Report"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"Table \/ View"
+       ,"Table Owner":"Parsing Schema"
+       ,"Table Name":"DEPT"
+       ,"Include ROWID Column":false
+      }
+     ,"Order By":{
+        "Type":"Static Value"
+       ,"Order By Clause":"order_dept"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"department_report"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Layout":{
+          "Number of Rows Type":"Static Value"
+         ,"Number of Rows":15
+        }
+       ,"Appearance":{
+          "Template Type":"Theme"
+         ,"Template":"Standard (25436688446187906708)"
+         ,"Template Options":[
+            "#DEFAULT#"
+           ,"t-Report--altRowsDefault"
+           ,"t-Report--rowHighlight"
+          ]
+        }
+       ,"Pagination":{
+          "Type":"Row Ranges X to Y (with next and previous links)"
+         ,"Display Position":"Bottom - Right"
+         ,"Partial Page Refresh":true
+        }
+       ,"Performance":{
+          "Lazy Loading":false
+        }
+       ,"Break Formatting":{
+          "Break Columns":"No Break"
+        }
+       ,"Advanced":{
+          "Strip HTML":false
+         ,"Sort Nulls":"Last"
+        }
+       ,"Heading":{
+          "Type":"Custom Headings"
+        }
+       ,"Download":{
+          "CSV Export Enabled":false
+        }
+       ,"Printing":{
+          "Enabled":false
+        }
+      }
+     ,"Columns":[
+        {
+          "id":"31332472646342125704"
+         ,"Identification":{
+            "Column Name":"DEPTNO"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Deptno"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":1
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Column Formatting":{
+            "HTML Expression":"\u003Cdiv data-id=\"#DEPTNO#\" class=\"arrow_container\" \u003E\n  \u003Cbutton type=\"button\"  data-move_dir=\"UP\" title=\"Up\" aria-label=\"Up\" class=\"move_row t-Button t-Button--noLabel t-Button--icon t-Button--hot t-Button--small t-Button--noUI\"\u003E\n  \u003Cspan aria-hidden=\"true\" class=\"t-Icon fa fa-chevron-up\"\u003E\u003C\/span\u003E\u003C\/button\u003E\n\n  \u003Cbutton type=\"button\"  data-move_dir=\"DOWN\" title=\"Down\" aria-label=\"Down\" class=\"move_row t-Button t-Button--noLabel t-Button--icon t-Button--hot t-Button--small t-Button--noUI\"\u003E\n  \u003Cspan aria-hidden=\"true\" class=\"t-Icon fa fa-chevron-down\"\u003E\u003C\/span\u003E\u003C\/button\u003E\n\u003C\/div\u003E"
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"31332472714465125705"
+         ,"Identification":{
+            "Column Name":"DNAME"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Dname"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":2
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"31332472849854125706"
+         ,"Identification":{
+            "Column Name":"LOC"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Loc"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":3
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+       ,{
+          "id":"31332472944708125707"
+         ,"Identification":{
+            "Column Name":"ORDER_DEPT"
+           ,"Type":"Plain Text"
+          }
+         ,"Heading":{
+            "Heading":"Order Dept"
+           ,"Alignment":"center"
+          }
+         ,"Layout":{
+            "Sequence":4
+           ,"Column Alignment":"start"
+          }
+         ,"Accessibility":{
+            "Value Identifies Row":false
+          }
+         ,"Sorting":{
+            "Sortable":false
+          }
+         ,"Export \/ Printing":{
+            "Include In Export \/ Print":true
+          }
+         ,"Advanced":{
+            "Compute Sum":false
+          }
+         ,"UI Defaults Reference":{
+            "Table Owner":"Parsing Schema"
+          }
+         ,"Security":{
+            "Escape special characters":true
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"32450224458936154847"
+     ,"Identification":{
+        "Title":"Breadcrumb"
+       ,"Type":"Breadcrumb"
+      }
+     ,"Source":{
+        "Breadcrumb":" Breadcrumb (25436713340001906732)"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"REGION_POSITION_01"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Title Bar (25436682878642906704)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-BreadcrumbRegion--useBreadcrumbTitle"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":false
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Appearance":{
+          "Breadcrumb Template":"Breadcrumb (25436701764126906718)"
+         ,"Template Options":[
+            "#DEFAULT#"
+          ]
+        }
+      }
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"31332473304007125711"
+     ,"Identification":{
+        "Button Name":"SAVE_ORDER"
+       ,"Label":"Save Order"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Departments (31332472534773125703)"
+       ,"Position":"CREATE"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":true
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"31332473027756125708"
+     ,"Identification":{
+        "Name":"onClick move row"
+      }
+     ,"Execution":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"jQuery Selector"
+       ,"jQuery Selector":".move_row"
+      }
+     ,"Execution":{
+        "Event Scope":"Dynamic"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"31332473121793125709"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"move_row(this.triggeringElement);"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"onClick move row (31332473027756125708)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"31332473458312125712"
+     ,"Identification":{
+        "Name":"onClick save order"
+      }
+     ,"Execution":{
+        "Sequence":20
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"SAVE_ORDER (31332473304007125711)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"31332473520134125713"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"save_order();"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"onClick save order (31332473458312125712)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+ ,"Processes":[
+    {
+      "id":"31332473249633125710"
+     ,"Identification":{
+        "Name":"UPDATE_ORDER"
+       ,"Type":"Execute Code"
+       ,"Execution Chain":"None"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"declare\n  l_order number;\nbegin \n\n  for i in 1..apex_application.g_f01.count loop \n\n    l_order := i * 10; \n\n   update dept\n      set order_dept = l_order\n    where deptno = to_number(apex_application.g_f01(i))\n      and nvl(order_dept,0) != l_order;\n      \n  end loop;\n\n  apex_json.open_object;\n  apex_json.write(\u0027success\u0027,true);  \n  apex_json.close_object;\n\nexception\n  when others then\n    apex_json.open_object;\n    apex_json.write(\u0027success\u0027,false); \n    apex_json.write(\u0027error_msg\u0027,sqlerrm); \n    apex_json.close_object;\nend;"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"Ajax Callback"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+  ]
+}
