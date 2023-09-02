@@ -1,0 +1,312 @@
+{
+  "id":"12"
+ ,"Identification":{
+    "Name":"Mapas LeaftLeft"
+   ,"Title":"Mapas LeaftLeft"
+  }
+ ,"Appearance":{
+    "Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "Function and Global Variable Declaration":"var map = L.map(\u0027map_id\u0027).setView([15.413083, -66.2136067], 3);\nvar marker_actual; \n\n  L.tileLayer(\u0027https:\/\/{s}.tile.openstreetmap.org\/{z}\/{x}\/{y}.png\u0027, {\n    attribution: \u0027\u0026copy; \u003Ca href=\"http:\/\/osm.org\/copyright\"\u003EOpenStreetMap\u003C\/a\u003E contributors\u0027\n  }).addTo(map);"
+  }
+ ,"CSS":{
+    "Inline":"#map_id{\nheight: 500px;\nwidth: 700px;\n} \n\/* Modal Content *\/\n.modal-content {\n    position: relative;\n    background-color: #fefefe;\n    margin: auto;\n    padding: 0;    \n    width: 100%;\n    \/*border: 1px solid #888;\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);*\/\n    -webkit-animation-name: animatetop;\n    -webkit-animation-duration: 0.4s;\n    animation-name: animatetop;\n    animation-duration: 0.4s\n}\n\n\/* Add Animation *\/\n@-webkit-keyframes animatetop {\n    from {top:-300px; opacity:0} \n    to {top:0; opacity:1}\n}\n\n@keyframes animatetop {\n    from {top:-300px; opacity:0}\n    to {top:0; opacity:1}\n}\n\n\/* The Close Button *\/\n.close {\n    color: white;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n}\n\n.close:hover,\n.close:focus {\n    color: #000;\n    text-decoration: none;\n    cursor: pointer;\n}\n\n.modal-header {\n    text-align: center;\n    background-color: #5cb85c;\n    color: white;\n}\n\n.modal-body {padding: 2px 16px;}\n\n.modal-footer {\n    \/*padding: 2px 16px;*\/\n    text-align: center;\n    background-color: #5cb85c;\n    color: white;\n}\n\n\n\n\n\n\n\n\n\n"
+  }
+ ,"HTML Header":{
+    "HTML Header":"\u003C!-- Load Leaflet from CDN--\u003E\n  \u003Clink rel=\"stylesheet\" href=\"https:\/\/unpkg.com\/leaflet@1.1.0\/dist\/leaflet.css\"\n    integrity=\"sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo\/7yfsqFjQ4S+aKw==\"\n    crossorigin=\"\"\/\u003E\n  \u003Cscript src=\"https:\/\/unpkg.com\/leaflet@1.1.0\/dist\/leaflet-src.js\"\n    integrity=\"sha384-TWB9xRHTlLQmqAngHwD7usGcf4akGf0JP6aHwlgilpmOu2UuBq5aWLsDAh39iSn1\"\n    crossorigin=\"\"\u003E\u003C\/script\u003E\n\n\n  \u003C!-- Load Esri Leaflet from CDN --\u003E\n  \u003Cscript src=\"https:\/\/unpkg.com\/esri-leaflet@2.0.8\"\n    integrity=\"sha384-ze7rgny7\/YGFxBlVgTBdOABNWe5V9BYjju\/qwqJhCU8XJHtuEnRlbUpN5lXyY706\"\n    crossorigin=\"\"\u003E\u003C\/script\u003E\n\n\n  \u003C!-- Load Esri Leaflet Geocoder from CDN --\u003E\n  \u003Clink rel=\"stylesheet\" href=\"https:\/\/unpkg.com\/esri-leaflet-geocoder@2.2.4\/dist\/esri-leaflet-geocoder.css\"\n    integrity=\"sha384-cuElYVOZCs9f5kOmEIvZWm6M0CYP8T8dbA1Bx3XnXGatEha3FV9igr7r+S+AmEBt\"\n    crossorigin=\"\"\u003E\n  \u003Cscript src=\"https:\/\/unpkg.com\/esri-leaflet-geocoder@2.2.4\"\n    integrity=\"sha384-WpOm6fpjH3TUoBE8JthsuXv2+PcXwi3fOwhg6zzbaiu5eshSRP+mEESWp8IPSkvK\"\n    crossorigin=\"\"\u003E\u003C\/script\u003E\n \u003Cstyle\u003E\n    body { margin:0; padding:0; }\n    #map { position: absolute; top:0; bottom:0; right:0; left:0; }\n  \u003C\/style\u003E\n "
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Unrestricted"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"25436803598185957320"
+     ,"Identification":{
+        "Title":"Mi Ubicacion"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"25436803681508957321"
+     ,"Identification":{
+        "Title":"Region Mapa"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"map_id"
+       ,"Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Header and Footer":{
+        "Header Text":"\u003Cdiv class=\"map2\" id=\"map_id\"\u003E"
+       ,"Footer Text":"\u003C\/div\u003E"
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"33087037091186173599"
+     ,"Identification":{
+        "Title":"Referencia Blog"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ca href=\"https:\/\/aflorestorres.blogspot.com\/2017\/09\/mapas-con-leaftleft-y-obtener-la.html\" target=\"_blank\" \u003E Tutorial obtener mi ubicacion \u003C\/a\u003E\n\u003Cbr\u003E\n\u003Ca href=\"https:\/\/aflorestorres.blogspot.com\/2017\/10\/mapas-con-leaflet-agregando-stylo.html\" target=\"_blank\" \u003E Agregando stylo al mensaje \u003C\/a\u003E\n\u003Cp\u003E En este tutorial vamos ver el manejo de leaftleft \u003C\/p\u003E"
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Parent Region":"No Parent"
+       ,"Position":"REGION_POSITION_01"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"25436803751154957322"
+     ,"Identification":{
+        "Button Name":"BuscarMiUbicacion"
+       ,"Label":"Mi Ubicacion"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Mi Ubicacion (25436803598185957320)"
+       ,"Position":"BELOW_BOX"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Horizontal Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":true
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"25436804247206957327"
+     ,"Identification":{
+        "Button Name":"MiUbicacionConStylo"
+       ,"Label":"Mi Ubicacion Css"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Region":"Mi Ubicacion (25436803598185957320)"
+       ,"Position":"BELOW_BOX"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Horizontal Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"25436803844585957323"
+     ,"Identification":{
+        "Name":"MiUbicacion"
+      }
+     ,"Execution":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"BuscarMiUbicacion (25436803751154957322)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"25436803925975957324"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"var browserLat;\nvar browserLong;  \n\nnavigator.geolocation.getCurrentPosition(function(position) {\n    browserLat =  position.coords.latitude;\n    browserLong = position.coords.longitude;\n \n    marker_actual = L.marker([browserLat,browserLong]).addTo(map);\n    marker_actual.bindPopup(\u0027\u003Cb\u003EHola \u003C\/b\u003E\u003Cbr\u003ETu estas aqui\u0027).openPopup();\n   \/\/ marker_actual.bindPopup(\u0027\u003Cdiv class=\"modal-content\"\u003E\u003Cdiv class=\"modal-header\"\u003E\u003Ch4\u003EMi Ubicaci\u00F3n\u003C\/h4\u003E\u003C\/div\u003E\u003Cdiv class=\"modal-body\"\u003E\u003Cp\u003EHola!\u003C\/p\u003E\u003Cp\u003ETu estas aqui...\u003C\/p\u003E\u003C\/div\u003E\u003Cdiv class=\"modal-footer\"\u003E\u003Ch3\u003EApex\u003C\/h3\u003E\u003C\/div\u003E\u003C\/div\u003E\u0027).openPopup();\n    map.setView([browserLat,browserLong], 18);  \n    \n    console.log(browserLat);\n    console.log(browserLong);\n}, function(err) {\n    console.error(err);\n});\n"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"MiUbicacion (25436803844585957323)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"25436804307485957328"
+     ,"Identification":{
+        "Name":"New"
+      }
+     ,"Execution":{
+        "Sequence":20
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"MiUbicacionConStylo (25436804247206957327)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"25436804482577957329"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"var browserLat;\nvar browserLong;  \n\nnavigator.geolocation.getCurrentPosition(function(position) {\n    browserLat =  position.coords.latitude;\n    browserLong = position.coords.longitude;\n \n    marker_actual = L.marker([browserLat,browserLong]).addTo(map);\n   \/\/ marker_actual.bindPopup(\u0027\u003Cb\u003EHola \u003C\/b\u003E\u003Cbr\u003ETu estas aqui\u0027).openPopup();\n    marker_actual.bindPopup(\u0027\u003Cdiv class=\"modal-content\"\u003E\u003Cdiv class=\"modal-header\"\u003E\u003Ch4\u003EMi Ubicaci\u00F3n\u003C\/h4\u003E\u003C\/div\u003E\u003Cdiv class=\"modal-body\"\u003E\u003Cp\u003EHola!\u003C\/p\u003E\u003Cp\u003ETu estas aqui...\u003C\/p\u003E\u003C\/div\u003E\u003Cdiv class=\"modal-footer\"\u003E\u003Ch3\u003EApex\u003C\/h3\u003E\u003C\/div\u003E\u003C\/div\u003E\u0027).openPopup();\n    map.setView([browserLat,browserLong], 18);  \n    \n    console.log(browserLat);\n    console.log(browserLong);\n}, function(err) {\n    console.error(err);\n});\n"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"New (25436804307485957328)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+}

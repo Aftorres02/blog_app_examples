@@ -1,0 +1,1615 @@
+{
+  "id":"400"
+ ,"Identification":{
+    "Name":"Calendar CookBook"
+   ,"Title":"Calendar CookBook"
+  }
+ ,"Appearance":{
+    "Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Unrestricted"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"57059015172038603808"
+     ,"Identification":{
+        "Title":"Opciones"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"3"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--noPadding"
+         ,"t-Region--accent2"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"57059015871951603815"
+     ,"Identification":{
+        "Title":"Relaci\u00F3n de aspecto"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"Opciones (57059015172038603808)"
+       ,"Position":"SUB_REGIONS"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Collapsible (25436673166053906697)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"is-collapsed"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":false
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"57059015923797603816"
+     ,"Identification":{
+        "Title":"Layout"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"Opciones (57059015172038603808)"
+       ,"Position":"SUB_REGIONS"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Collapsible (25436673166053906697)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"is-collapsed"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":false
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"57064986018516244594"
+     ,"Identification":{
+        "Title":"Calendar 1"
+       ,"Type":"Calendar"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Type":"SQL Query"
+       ,"SQL Query":" select id \n      , project\n      , task_name\n      , start_date\n      , end_date  \n      , case status\n           when \u0027Open\u0027    then \u0027apex-cal-green\u0027\n           when \u0027Pending\u0027 then \u0027apex-cal-yellow\u0027\n           when \u0027Closed\u0027  then \u0027apex-cal-red\u0027\n           when \u0027On-Hold\u0027 then \u0027apex-cal-black\u0027\n        end as css_class\nfrom eba_demo_cal_projects"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":false
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Blank with Attributes (25436668461659906694)"
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Static ID":"calendar_demo1"
+       ,"Region Display Selector":false
+       ,"Exclude Title from Translation":false
+      }
+     ,"Security":{
+        "Escape special characters":true
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Display Column":"PROJECT"
+         ,"Start Date Column":"START_DATE"
+         ,"End Date Column":"END_DATE"
+         ,"Show Time":true
+         ,"Time Format":"Default"
+         ,"First Hour":9
+         ,"Supplemental Information":"\u003Cdiv\u003E \u003Cspan\u003E Test TollTip \u003C\/span\u003E \u003CBR\u003E \u003Cb\u003E \u003Cspan\u003E \u0026TASK_NAME. \u003C\/span\u003E \u003Cb\u003E\u003C\/div\u003E"
+         ,"Multiple Line Events":true
+         ,"Show Tooltip":true
+         ,"Calendar Views and Navigation":"month:week:day:list:navigation"
+         ,"Maximum Events \/ Day":10
+         ,"Show Weekend":true
+         ,"CSS Class":"CSS_CLASS"
+         ,"Export":"CSV:ICAL:XML"
+        }
+       ,"Performance":{
+          "Lazy Loading":true
+        }
+      }
+    }
+   ,{
+      "id":"57064998633410424900"
+     ,"Identification":{
+        "Title":"Vista de Tiempo"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Parent Region":"Opciones (57059015172038603808)"
+       ,"Position":"SUB_REGIONS"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Collapsible (25436673166053906697)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"is-collapsed"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":false
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"73599554807224695313"
+     ,"Identification":{
+        "Title":"Referencia Blog"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ca href=\"https:\/\/www.aflorestorres.com\/2019\/08\/manejo-de-calendarioscalendar-oracle.html\" target=\"_blank\" \u003E Mira este tutorial aqui parte 1 \u003C\/a\u003E\n\u003Cbr\u003E\n\u003Ca href=\"https:\/\/www.aflorestorres.com\/2019\/08\/manejo-de-calendariocalendar-oracle.html\" target=\"_blank\" \u003E Mira este tutorial aqui parte 2 \u003C\/a\u003E\n\u003Cp\u003E Aqui podemos visualizar las diferentes formas manipular un calendar \u003C\/p\u003E"
+      }
+     ,"Layout":{
+        "Sequence":40
+       ,"Parent Region":"No Parent"
+       ,"Position":"REGION_POSITION_01"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"13775199736400236714"
+     ,"Identification":{
+        "Button Name":"NAMESHORT"
+       ,"Label":"Cambiar Name"
+      }
+     ,"Layout":{
+        "Sequence":70
+       ,"Region":"Layout (57059015923797603816)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Left center"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--large"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524528326236852467"
+     ,"Identification":{
+        "Button Name":"ASPECTO_0_5"
+       ,"Label":"Aspecto 0 5"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Relaci\u00F3n de aspecto (57059015871951603815)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524528787236852468"
+     ,"Identification":{
+        "Button Name":"ASPECTO_1"
+       ,"Label":"Aspecto 1"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Region":"Relaci\u00F3n de aspecto (57059015871951603815)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524529187492852468"
+     ,"Identification":{
+        "Button Name":"ASPECTO_1_8"
+       ,"Label":"Aspecto 1 8"
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Region":"Relaci\u00F3n de aspecto (57059015871951603815)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524529521056852468"
+     ,"Identification":{
+        "Button Name":"ASPECTO_2"
+       ,"Label":"Aspecto 2"
+      }
+     ,"Layout":{
+        "Sequence":40
+       ,"Region":"Relaci\u00F3n de aspecto (57059015871951603815)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524530219735852469"
+     ,"Identification":{
+        "Button Name":"TITLE_MMMM_D_YYYY"
+       ,"Label":"F. Title MMMM D YYYY"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Layout (57059015923797603816)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Left center"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524530622772852469"
+     ,"Identification":{
+        "Button Name":"TITLE_MMM_YYYY"
+       ,"Label":"F. Title MMM YYYY"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Region":"Layout (57059015923797603816)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524531066088852469"
+     ,"Identification":{
+        "Button Name":"LABEL_ES"
+       ,"Label":"Label ES"
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Region":"Layout (57059015923797603816)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524531414665852469"
+     ,"Identification":{
+        "Button Name":"LABEL_EN"
+       ,"Label":"Label EN"
+      }
+     ,"Layout":{
+        "Sequence":40
+       ,"Region":"Layout (57059015923797603816)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524531861098852470"
+     ,"Identification":{
+        "Button Name":"HEADER_POS"
+       ,"Label":"Header Position"
+      }
+     ,"Layout":{
+        "Sequence":50
+       ,"Region":"Layout (57059015923797603816)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524532232294852470"
+     ,"Identification":{
+        "Button Name":"HEADER_POS_2"
+       ,"Label":"Header Position 2"
+      }
+     ,"Layout":{
+        "Sequence":60
+       ,"Region":"Layout (57059015923797603816)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524532918584852470"
+     ,"Identification":{
+        "Button Name":"WEEKENDS_TRUE"
+       ,"Label":"Weekends true"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Vista de Tiempo (57064998633410424900)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524533356943852471"
+     ,"Identification":{
+        "Button Name":"WEEKENDS_FALSE"
+       ,"Label":"Weekends false"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Region":"Vista de Tiempo (57064998633410424900)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524533780085852471"
+     ,"Identification":{
+        "Button Name":"SLOT_DURATION_30"
+       ,"Label":"Slot 30 min"
+      }
+     ,"Layout":{
+        "Sequence":30
+       ,"Region":"Vista de Tiempo (57064998633410424900)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524534159762852471"
+     ,"Identification":{
+        "Button Name":"SLOT_DURATION_15"
+       ,"Label":"Slot 15 min"
+      }
+     ,"Layout":{
+        "Sequence":40
+       ,"Region":"Vista de Tiempo (57064998633410424900)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524534533944852471"
+     ,"Identification":{
+        "Button Name":"SCROLL_POS_10_AM"
+       ,"Label":"Scroll pos 10:00"
+      }
+     ,"Layout":{
+        "Sequence":50
+       ,"Region":"Vista de Tiempo (57064998633410424900)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524534907432852471"
+     ,"Identification":{
+        "Button Name":"SCROLL_POS_14"
+       ,"Label":"Scroll pos 14:00"
+      }
+     ,"Layout":{
+        "Sequence":60
+       ,"Region":"Vista de Tiempo (57064998633410424900)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524535395008852472"
+     ,"Identification":{
+        "Button Name":"MIN_TIME"
+       ,"Label":"Min Time 10:00"
+      }
+     ,"Layout":{
+        "Sequence":70
+       ,"Region":"Vista de Tiempo (57064998633410424900)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Left center"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+   ,{
+      "id":"28524535792932852473"
+     ,"Identification":{
+        "Button Name":"MAX_TIME"
+       ,"Label":"Max Time 14:00"
+      }
+     ,"Layout":{
+        "Sequence":80
+       ,"Region":"Vista de Tiempo (57064998633410424900)"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Alignment":"Left center"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Button--stretch"
+         ,"t-Button--padBottom"
+        ]
+       ,"CSS Classes":[
+          "btn-options"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"13775199860781236715"
+     ,"Identification":{
+        "Name":"onChange NameShort"
+      }
+     ,"Execution":{
+        "Sequence":190
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"NAMESHORT (13775199736400236714)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"13775199962170236716"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",\n                                                    {\u0027dayNamesShort\u0027:[\u0027Domingo\u0027, \u0027Lunes\u0027, \u0027Martes\u0027, \u0027Miercoles\u0027,\u0027Jueves\u0027, \u0027Viernes\u0027, \u0027S\u00E1bado\u0027] \n                                                    });"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"onChange NameShort (13775199860781236715)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524537086687852482"
+     ,"Identification":{
+        "Name":"setRatio 0.5"
+      }
+     ,"Execution":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"ASPECTO_0_5 (28524528326236852467)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524537500952852484"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027aspectRatio\u0027: 0.5})"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"setRatio 0.5 (28524537086687852482)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524537985645852484"
+     ,"Identification":{
+        "Name":"setRatio 2"
+      }
+     ,"Execution":{
+        "Sequence":20
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"ASPECTO_2 (28524529521056852468)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524538493016852485"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027aspectRatio\u0027: 2})"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"setRatio 2 (28524537985645852484)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524538823173852485"
+     ,"Identification":{
+        "Name":"setRatio 1"
+      }
+     ,"Execution":{
+        "Sequence":30
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"ASPECTO_1 (28524528787236852468)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524539354253852485"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027aspectRatio\u0027: 1})"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"setRatio 1 (28524538823173852485)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524539799801852485"
+     ,"Identification":{
+        "Name":"setRatio 1.8"
+      }
+     ,"Execution":{
+        "Sequence":40
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"ASPECTO_1_8 (28524529187492852468)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524540279444852486"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027aspectRatio\u0027: 1.8 })"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"setRatio 1.8 (28524539799801852485)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524540630049852486"
+     ,"Identification":{
+        "Name":"setTitle MMM D YYYY"
+      }
+     ,"Execution":{
+        "Sequence":50
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"TITLE_MMMM_D_YYYY (28524530219735852469)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524541119603852486"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027titleFormat\u0027: \u0027MMMM D YYYY\u0027})"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"setTitle MMM D YYYY (28524540630049852486)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524541540180852486"
+     ,"Identification":{
+        "Name":"setTitle MMM YYYY"
+      }
+     ,"Execution":{
+        "Sequence":60
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"TITLE_MMM_YYYY (28524530622772852469)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524542022058852486"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027titleFormat\u0027: \u0027MMM YYYY\u0027})"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"setTitle MMM YYYY (28524541540180852486)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524542419286852487"
+     ,"Identification":{
+        "Name":"set Label Es"
+      }
+     ,"Execution":{
+        "Sequence":70
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"LABEL_ES (28524531066088852469)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524542995665852487"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",\n                                                    {\u0027buttonText\u0027: \n                                                         {\n                                                          today:    \u0027Hoy\u0027,\n                                                          month:    \u0027Mes\u0027,\n                                                          week:     \u0027Semana\u0027,\n                                                          day:      \u0027Dia\u0027,\n                                                          list:     \u0027Lista\u0027\n                                                         }\n                                                    });"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set Label Es (28524542419286852487)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524543351894852487"
+     ,"Identification":{
+        "Name":"set Label EN"
+      }
+     ,"Execution":{
+        "Sequence":80
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"LABEL_EN (28524531414665852469)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524543805520852487"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",\n                                                    {\u0027buttonText\u0027: \n                                                         {\n                                                            today:    \u0027today\u0027,\n                                                            month:    \u0027month\u0027,\n                                                            week:     \u0027week\u0027,\n                                                            day:      \u0027day\u0027,\n                                                            list:     \u0027list\u0027\n                                                         }\n                                                    });"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set Label EN (28524543351894852487)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524544277556852488"
+     ,"Identification":{
+        "Name":"set header"
+      }
+     ,"Execution":{
+        "Sequence":90
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"HEADER_POS (28524531861098852470)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524544796486852488"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027header\u0027: {\n  left:   \u0027title\u0027,\n  center: \u0027\u0027,\n  right:  \u0027today prev,next\u0027\n}});"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set header (28524544277556852488)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524545137035852488"
+     ,"Identification":{
+        "Name":"set header_2"
+      }
+     ,"Execution":{
+        "Sequence":100
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"HEADER_POS_2 (28524532232294852470)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524545694888852488"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027header\u0027: {\n  left:   \u0027today prev,next\u0027,\n  center: \u0027title\u0027,\n  right:  \u0027today prev,next\u0027\n}});"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set header_2 (28524545137035852488)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524546021348852489"
+     ,"Identification":{
+        "Name":"set weekends true"
+      }
+     ,"Execution":{
+        "Sequence":110
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"WEEKENDS_TRUE (28524532918584852470)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524546522034852489"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027weekends\u0027: true});"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set weekends true (28524546021348852489)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524546941573852489"
+     ,"Identification":{
+        "Name":"set weekends false"
+      }
+     ,"Execution":{
+        "Sequence":120
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"WEEKENDS_FALSE (28524533356943852471)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524547401143852489"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027weekends\u0027: false});"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set weekends false (28524546941573852489)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524547825370852490"
+     ,"Identification":{
+        "Name":"set slot 30min"
+      }
+     ,"Execution":{
+        "Sequence":130
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"SLOT_DURATION_30 (28524533780085852471)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524548320494852490"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027slotDuration\u0027: \u002700:30:00\u0027})"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set slot 30min (28524547825370852490)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524548701992852490"
+     ,"Identification":{
+        "Name":"set slot 15min"
+      }
+     ,"Execution":{
+        "Sequence":140
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"SLOT_DURATION_15 (28524534159762852471)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524549256814852490"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027slotDuration\u0027: \u002700:15:00\u0027})"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set slot 15min (28524548701992852490)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524549627122852491"
+     ,"Identification":{
+        "Name":"set scroll pos 10:00"
+      }
+     ,"Execution":{
+        "Sequence":150
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"SCROLL_POS_10_AM (28524534533944852471)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524550178700852491"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027scrollTime\u0027:\u002710:00:00\u0027})"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set scroll pos 10:00 (28524549627122852491)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524550519486852491"
+     ,"Identification":{
+        "Name":"set scroll pos 14:00"
+      }
+     ,"Execution":{
+        "Sequence":160
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"SCROLL_POS_14 (28524534907432852471)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524551091494852491"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027scrollTime\u0027:\u002714:00:00\u0027})"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set scroll pos 14:00 (28524550519486852491)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524551440516852492"
+     ,"Identification":{
+        "Name":"set  max time"
+      }
+     ,"Execution":{
+        "Sequence":170
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"MAX_TIME (28524535792932852473)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524551983162852492"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027maxTime\u0027:\u002713:00:00\u0027});"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set  max time (28524551440516852492)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"28524552366967852492"
+     ,"Identification":{
+        "Name":"set min time"
+      }
+     ,"Execution":{
+        "Sequence":180
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"MIN_TIME (28524535395008852472)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"28524552815855852493"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"apex.region(\"calendar_demo1\").widget().fullCalendar(\"option\",{\u0027minTime\u0027:\u002710:00:00\u0027});"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"set min time (28524552366967852492)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+}

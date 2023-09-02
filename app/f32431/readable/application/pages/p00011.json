@@ -1,0 +1,202 @@
+{
+  "id":"11"
+ ,"Identification":{
+    "Name":"Download Txt"
+   ,"Title":"Download Txt"
+  }
+ ,"Appearance":{
+    "Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Unrestricted"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Always"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"21978277776958862005"
+     ,"Identification":{
+        "Title":"Referencia Blog"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ca href=\"https:\/\/aflorestorres.com\/2017\/06\/25\/download-txt-file-from-oracle-database-using-apex-pl-sql-process\/\" target=\"_blank\" \u003E Mira este tutorial aqui \u003C\/a\u003E\n\u003Cp\u003E En este tutorial vamos a ver como podemos descargar un archivo, desde apex. \u003C\/p\u003E"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"REGION_POSITION_01"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"25436802515608957310"
+     ,"Identification":{
+        "Title":"Buttons"
+       ,"Type":"Static Content"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"25436803251281957317"
+     ,"Identification":{
+        "Button Name":"Download"
+       ,"Label":"Download"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Region":"Buttons (25436802515608957310)"
+       ,"Position":"BELOW_BOX"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Horizontal Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Submit Page"
+       ,"Execute Validations":true
+       ,"Warn on Unsaved Changes":"Do Not Check"
+      }
+    }
+  ]
+ ,"Processes":[
+    {
+      "id":"25436802427199957309"
+     ,"Identification":{
+        "Name":"Download"
+       ,"Type":"Execute Code"
+       ,"Execution Chain":"None"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"declare \n    l_xml clob; \n    l_blob blob; \n    l_lang_context integer := DBMS_LOB.DEFAULT_LANG_CTX; \n    l_warning integer := DBMS_LOB.WARN_INCONVERTIBLE_CHAR; \n    l_dest_offset integer := 1; \n    l_source_offset integer := 1; \n    l_name varchar2(250);\nbegin\n    dbms_lob.createtemporary(l_blob, true); \nbegin \n    Select FILE_BLOB,FILENAME \n      into l_blob,l_name \n      from BLOG_FILES \n     where rownum = 1;\n    exception when others then RETURN; \n    --apex_application.stop_apex_engine; \n    --owa_util.http_header_close; \nend; \n    \/*if l_blob is null then return; end if;*\/ \n    \n    htp.init;\n    -- Set the MIME typebranck\n    owa_util.mime_header( \u0027application\/octet-stream\u0027, FALSE,\u0027UTF-8\u0027 );\n    -- Set the name of the file \n    htp.p(\u0027Content-Disposition: attachment; filename=\"\u0027||l_name||\u0027\"\u0027);\n    owa_util.http_header_close; \n    --package that provides an interface to download files (BLOBs and BFILEs)\n    wpg_docload.download_file( l_blob ); \n    --stop further processing and immediately exit\n    apex_application.stop_apex_engine; \n    exception when others then\n    htp.prn(\u0027error: \u0027||sqlerrm); \n    apex_application.stop_apex_engine; \nend; "
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"After Header"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+     ,"Server-side Condition":{
+        "Type":"Request = Value"
+       ,"Value":"DOWNLOAD"
+      }
+    }
+  ]
+ ,"Branches":[
+    {
+      "id":"25436803493425957319"
+     ,"Identification":{
+        "Name":"Descarga"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"After Processing"
+      }
+     ,"Behavior":{
+        "Type":"Page or URL (Redirect)"
+       ,"Target":{
+          "url":"f?p=\u0026APP_ID.:11:\u0026SESSION.:DOWNLOAD:\u0026DEBUG.:RP::\u0026success_msg=#SUCCESS_MSG#"
+         ,"Page":"11"
+         ,"Request":"DOWNLOAD"
+         ,"Clear Cache":"RP"
+        }
+      }
+    }
+  ]
+}

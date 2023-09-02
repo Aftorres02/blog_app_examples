@@ -1,0 +1,306 @@
+{
+  "id":"310"
+ ,"Identification":{
+    "Name":"Jet 7.1 + Ajax + Gantt"
+   ,"Title":"Jet 7.1 + Ajax + Gantt"
+  }
+ ,"Appearance":{
+    "Page Mode":"Normal"
+   ,"Page Template":"Theme Default"
+   ,"Template Options":[
+      "#DEFAULT#"
+    ]
+  }
+ ,"Navigation Menu":{
+    "Override User Interface Level":false
+  }
+ ,"Navigation":{
+    "Cursor Focus":"Do not focus cursor"
+   ,"Warn on Unsaved Changes":true
+  }
+ ,"JavaScript":{
+    "Function and Global Variable Declaration":"var dataArray;"
+  }
+ ,"CSS":{
+    "File URLs":[
+      "#JET_CSS_DIRECTORY#\/alta\/oj-alta-notag-min.css"
+    ]
+  }
+ ,"Security":{
+    "Authentication":"Page Requires Authentication"
+   ,"Deep Linking":"Application Default"
+   ,"Page Access Protection":"Unrestricted"
+   ,"Form Auto Complete":"Off"
+   ,"Browser Cache":"Application Default"
+  }
+ ,"Session Management":{
+    "Rejoin Sessions":"Application Default"
+  }
+ ,"Advanced":{
+    "Enable duplicate page submissions":"Yes - Enable page to be re-posted"
+   ,"Reload on Submit":"Only for Success"
+  }
+ ,"Server Cache":{
+    "Caching":"Disabled"
+  }
+ ,"Regions":[
+    {
+      "id":"54188387492469231654"
+     ,"Identification":{
+        "Title":"Gantt"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":" \u003Cdiv id=\"componentDemoContent\" style=\"width: 1px; min-width: 100%;\"\u003E\n          \n          \u003Coj-gantt id=\"gantt\"\n              axis-position=\"bottom\"\n              start=\"[[projectStartDate.toISOString()]]\"\n              end=\"[[projectEndDate.toISOString()]]\"\n              gridlines.horizontal=\"visible\"\n              gridlines.vertical=\"visible\"\n              major-axis.scale=\"months\"\n              major-axis.zoom-order=\u0027[\"quarters\", \"months\", \"weeks\", \"days\"]\u0027\n              minor-axis.scale=\"weeks\"\n              minor-axis.zoom-order=\u0027[\"quarters\", \"months\", \"weeks\", \"days\"]\u0027\n              row-axis.rendered=\"on\"\n              selection-mode=\"single\"\n              reference-objects=\u0027[[[{\"value\": currentDate.toISOString()}]]]\u0027\n              viewport-start=\"[[viewportStart.toISOString()]]\"\n              viewport-end=\"[[viewportEnd.toISOString()]]\"\n              task-data=\"[[dataProvider]]\"\n              :aria-label=\u0027[[\"Gantt Chart. Current date is \" + currentDateString]]\u0027\n              style=\"width:100%;height:500px\"\u003E\n            \u003Ctemplate slot=\"rowTemplate\" data-oj-as=\"row\"\u003E\n              \u003Coj-gantt-row\n                  label=\"[[row.id]]\"\u003E\n              \u003C\/oj-gantt-row\u003E\n            \u003C\/template\u003E\n            \u003Ctemplate slot=\"taskTemplate\" data-oj-as=\"task\"\u003E\n              \u003Coj-gantt-task\n                  row-id=\"[[task.data.resource]]\"\n                  start=\"[[task.data.begin]]\"\n                  end=\"[[task.data.finish]]\"\n                  label=\"[[task.data.name]]\"\u003E\n              \u003C\/oj-gantt-task\u003E\n            \u003C\/template\u003E\n            \u003Ctemplate slot=\"rowAxisLabelTemplate\" data-oj-as=\"rowAxisLabel\"\u003E\n              \u003Csvg style=\"overflow:visible\"\u003E\n                \u003Cg\u003E\n                  \u003Cimage\n                      :xlink:href=\u0027[[rowLabelImagePath[rowAxisLabel.rowData.id.replace(\" \", \"\")]]]\u0027\n                      xlink:href=\"\"\n                      :x=\"[[getRowImageX()]]\"\n                      width=\"24\" height=\"24\"\u003E\n                  \u003C\/image\u003E\n                  \u003Ctext\n                      :x=\"[[getRowTextX()]]\"\n                      y=\"16\"\n                      :text-anchor=\"[[getRowTextAnchor()]]\"\u003E\n                    \u003Coj-bind-text value=\"[[rowAxisLabel.rowData.label]]\"\u003E\u003C\/oj-bind-text\u003E\n                  \u003C\/text\u003E\n                \u003C\/g\u003E\n              \u003C\/svg\u003E\n            \u003C\/template\u003E\n          \u003C\/oj-gantt\u003E\n  \n          \n        \u003C\/div\u003E"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Parent Region":"No Parent"
+       ,"Position":"BODY"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+   ,{
+      "id":"103271052693697429323"
+     ,"Identification":{
+        "Title":"Referencia Blog"
+       ,"Type":"Static Content"
+      }
+     ,"Source":{
+        "HTML Code":"\u003Ca href=\"https:\/\/www.aflorestorres.com\/2019\/08\/integrando-oracle-jet-71-gantt-data.html\" target=\"_blank\" \u003E Mira este tutorial aqui \u003C\/a\u003E\n\u003Cp\u003E En este tutorial vamos a ver como podemos integrar Oracle Jet en APEX \u003C\/p\u003E"
+      }
+     ,"Layout":{
+        "Sequence":20
+       ,"Parent Region":"No Parent"
+       ,"Position":"REGION_POSITION_01"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+      }
+     ,"Appearance":{
+        "Template":"Standard (25436678417382906701)"
+       ,"Template Options":[
+          "#DEFAULT#"
+         ,"t-Region--scrollBody"
+        ]
+       ,"Render Components":"Above Content"
+      }
+     ,"Advanced":{
+        "Region Display Selector":true
+       ,"Exclude Title from Translation":false
+      }
+     ,"Server Cache":{
+        "Caching":"Disabled"
+      }
+     ,"Customization":{
+        "Customizable":"Not Customizable By End Users"
+      }
+     ,"Attributes":{
+        "Settings":{
+          "Output As":"HTML"
+         ,"Expand Shortcuts":false
+        }
+      }
+    }
+  ]
+ ,"Buttons":[
+    {
+      "id":"27094082547530844598"
+     ,"Identification":{
+        "Button Name":"RANDOM_DATA"
+       ,"Label":"Random Data"
+      }
+     ,"Layout":{
+        "Sequence":10
+       ,"Region":"Gantt (54188387492469231654)"
+       ,"Position":"BELOW_BOX"
+       ,"Start New Layout":false
+       ,"Start New Row":true
+       ,"Column":"Automatic"
+       ,"New Column":true
+       ,"Column Span":"Automatic"
+       ,"Horizontal Alignment":"Right"
+      }
+     ,"Appearance":{
+        "Button Template":"Text (25436701278727906717)"
+       ,"Hot":false
+       ,"Template Options":[
+          "#DEFAULT#"
+        ]
+      }
+     ,"Behavior":{
+        "Action":"Defined by Dynamic Action"
+       ,"Execute Validations":true
+      }
+    }
+  ]
+ ,"Dynamic Actions":[
+    {
+      "id":"27094083787210844601"
+     ,"Identification":{
+        "Name":"Librerias"
+      }
+     ,"Execution":{
+        "Sequence":10
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.READY"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+      }
+     ,"Actions":[
+        {
+          "id":"27094084266052844602"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"requirejs.config({\n\n    \"baseUrl\": \"https:\/\/static.oracle.com\/cdn\/jet\/v7.1.0\", \n    \/\/ Path mappings for the logical module names\n    paths: {\n        \u0027knockout\u0027: \u00273rdparty\/knockout\/knockout-3.5.0\u0027,\n        \u0027jquery\u0027: \u00273rdparty\/jquery\/jquery-3.4.1.min\u0027,\n        \u0027jqueryui-amd\u0027: \u00273rdparty\/jquery\/jqueryui-amd-1.12.1.min\u0027,\n        \u0027promise\u0027: \u00273rdparty\/es6-promise\/es6-promise.min\u0027,\n        \u0027hammerjs\u0027: \u00273rdparty\/hammer\/hammer-2.0.8.min\u0027,\n        \u0027ojdnd\u0027: \u00273rdparty\/dnd-polyfill\/dnd-polyfill-1.0.0.min\u0027,\n        \u0027ojs\u0027: \u0027default\/js\/min\u0027,\n        \u0027ojL10n\u0027: \u0027default\/js\/ojL10n\u0027,\n        \u0027ojtranslations\u0027: \u0027default\/js\/resources\u0027,\n        \u0027text\u0027: \u00273rdparty\/require\/text\u0027,\n        \u0027signals\u0027: \u00273rdparty\/js-signals\/signals.min\u0027,\n        \u0027customElements\u0027: \u00273rdparty\/webcomponents\/custom-elements.min\u0027,\n        \u0027proj4\u0027: \u00273rdparty\/proj4js\/dist\/proj4\u0027,\n        \u0027css\u0027: \u00273rdparty\/require-css\/css.min\u0027,\n        \u0027touchr\u0027: \u00273rdparty\/touchr\/touchr\u0027\n  },    \n  \/\/ Shim configurations for modules that do not expose AMD    \n  shim: {    \n    \u0027jquery\u0027: {    \n      exports: [\u0027jQuery\u0027, \u0027$\u0027]    \n    }    \n  }    \n}); "
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"Librerias (27094083787210844601)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"27094084620141844602"
+     ,"Identification":{
+        "Name":"ajax call"
+      }
+     ,"Execution":{
+        "Sequence":20
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.CLICK"
+       ,"Selection Type":"Button"
+       ,"Button":"RANDOM_DATA (27094082547530844598)"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+       ,"Type":"Immediate"
+      }
+     ,"Actions":[
+        {
+          "id":"27094085168266844603"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"    apex.server.process(\"LOAD_DATA\", {     \n      },   \n      {  \n        success: function(pData) {   \n         console.log(pData);\n          dataArray(pData);\n        }  \n      }                          \n    ); \/\/ apex process  \n"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"ajax call (27094084620141844602)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+   ,{
+      "id":"27094085550712844604"
+     ,"Identification":{
+        "Name":"Init gantt view model"
+      }
+     ,"Execution":{
+        "Sequence":30
+      }
+     ,"When":{
+        "Event":"EVENT.EVENT.BROWSER.READY"
+      }
+     ,"Execution":{
+        "Event Scope":"Static"
+      }
+     ,"Actions":[
+        {
+          "id":"27094086033421844605"
+         ,"Identification":{
+            "Action":"Execute JavaScript Code"
+          }
+         ,"Settings":{
+            "Code":"  require([\u0027knockout\u0027, \u0027ojs\/ojbootstrap\u0027, \u0027ojs\/ojarraydataprovider\u0027, \u0027ojs\/ojknockout\u0027, \u0027ojs\/ojgantt\u0027],  \n    function(ko, Bootstrap, ArrayDataProvider)\n    {\n      function ViewModel(dataArray) \n      {\n        this.dataProvider = new ArrayDataProvider(dataArray, {keyAttributes: \u0027id\u0027});\n        this.projectStartDate = new Date(\"Jan 1, 2019\");\n        this.projectEndDate = new Date(\"Dec 31, 2019\");\n  \n        this.currentDateString = \"Apr 15, 2019\";\n        this.currentDate = new Date(this.currentDateString);\n  \n        \/\/ set viewport to center around the reference object\n        var month = 1000 * 60 * 60 * 24 * 30;\n        this.viewportStart = new Date(Math.max(this.projectStartDate.getTime(), this.currentDate.getTime() - 3*month));\n        this.viewportEnd = new Date(Math.min(this.projectEndDate.getTime(), this.currentDate.getTime() + 3*month));\n  \n        \/\/ Helper function to get appropriate row label image x position depending on document reading direction\n        this.getRowImageX = function() {\n          var dir = document.documentElement.getAttribute(\"dir\");\n          return dir === \u0027ltr\u0027 ? \u00270\u0027 : \u00270\u0027;\n        };\n  \n        \/\/ Helper function to get appropriate row label text x position depending on document reading direction\n        this.getRowTextX = function() {\n          var dir = document.documentElement.getAttribute(\"dir\");\n          return dir === \u0027ltr\u0027 ? \u002730\u0027 : \u002725\u0027;\n        };\n  \n        this.getRowTextAnchor = function() {\n          var dir = document.documentElement.getAttribute(\"dir\");\n          var userAgent = navigator.userAgent.toLowerCase();\n          var isIE = userAgent.indexOf(\u0027trident\u0027) != -1 || userAgent.indexOf(\u0027msie\u0027) != -1 || userAgent.indexOf(\u0027edge\u0027) != -1;\n          \/\/ Unlike other browsers, IE11 and Edge treats left side of svg text as start in RTL, \n          \/\/ so set text-anchor to end to achieve consistent behavior\n          return dir === \u0027rtl\u0027 \u0026\u0026 isIE ? \u0027end\u0027 : \u0027start\u0027;\n        };\n  \n        this.rowLabelImagePath = {\n          \u0027Flag1\u0027: \u0027https:\/\/raw.githubusercontent.com\/stefangabos\/world_countries\/master\/flags\/24x24\/\/pe.png\u0027,\n          \u0027Flag2\u0027: \u0027https:\/\/raw.githubusercontent.com\/stefangabos\/world_countries\/master\/flags\/24x24\/\/pw.png\u0027,\n          \u0027Flag3\u0027: \u0027https:\/\/raw.githubusercontent.com\/stefangabos\/world_countries\/master\/flags\/24x24\/\/aq.png\u0027,\n          \u0027Flag4\u0027: \u0027https:\/\/raw.githubusercontent.com\/stefangabos\/world_countries\/master\/flags\/24x24\/\/bg.png\u0027,\n          \u0027Flag5\u0027: \u0027https:\/\/raw.githubusercontent.com\/stefangabos\/world_countries\/master\/flags\/24x24\/\/bl.png\u0027,\n          \u0027Flag6\u0027: \u0027https:\/\/raw.githubusercontent.com\/stefangabos\/world_countries\/master\/flags\/24x24\/\/ch.png\u0027,\n          \u0027Flag7\u0027: \u0027https:\/\/raw.githubusercontent.com\/stefangabos\/world_countries\/master\/flags\/24x24\/\/es.png\u0027,\n          \u0027Flag8\u0027: \u0027https:\/\/raw.githubusercontent.com\/stefangabos\/world_countries\/master\/flags\/24x24\/\/gg.png\u0027,\n          \u0027Flag9\u0027: \u0027https:\/\/raw.githubusercontent.com\/stefangabos\/world_countries\/master\/flags\/24x24\/\/id.png\u0027,\n          \u0027Flag10\u0027: \u0027https:\/\/raw.githubusercontent.com\/stefangabos\/world_countries\/master\/flags\/24x24\/\/lt.png\u0027,\n        };\n      }\n  \n      Bootstrap.whenDocumentReady().then(\n        function()\n        {\n          dataArray = ko.observableArray([]);  \n          ko.applyBindings(new ViewModel(dataArray), document.getElementById(\u0027gantt\u0027));\n        }\n      );\n    }\n  );"
+          }
+         ,"Execution":{
+            "Sequence":10
+           ,"Event":"Init gantt view model (27094085550712844604)"
+           ,"Fire When Event Result Is":"True"
+           ,"Fire on Initialization":false
+          }
+        }
+      ]
+    }
+  ]
+ ,"Processes":[
+    {
+      "id":"27094082989007844599"
+     ,"Identification":{
+        "Name":"add_requirejs"
+       ,"Type":"Execute Code"
+       ,"Execution Chain":"None"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"APEX_JAVASCRIPT.add_requirejs();"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"After Header"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+   ,{
+      "id":"27094083328850844600"
+     ,"Identification":{
+        "Name":"LOAD_DATA"
+       ,"Type":"Execute Code"
+       ,"Execution Chain":"None"
+      }
+     ,"Source":{
+        "Location":"Local Database"
+       ,"Language":"PL\/SQL"
+       ,"PL\/SQL Code":"declare\n  l_begin_date date;\n  l_end_date date;\nbegin\n   apex_json.open_array();  \n      -- for generate random data\n      for i in 1..20\n      loop      \n        -- tasks 1\n          select TO_DATE(TRUNC(DBMS_RANDOM.VALUE(TO_CHAR(DATE \u00272019-01-01\u0027,\u0027J\u0027),TO_CHAR(DATE \u00272019-12-31\u0027,\u0027J\u0027))),\u0027J\u0027 ) random_date \n            into l_begin_date\n            from dual;\n\n          select TO_DATE(TRUNC(DBMS_RANDOM.VALUE(TO_CHAR(l_begin_date,\u0027J\u0027),TO_CHAR(DATE \u00272019-12-31\u0027,\u0027J\u0027))),\u0027J\u0027 ) random_date \n            into l_end_date\n            from dual;\n\n        apex_json.open_object;  \n        apex_json.write(\u0027id\u0027, \u0027task1-\u0027||i);  \n        apex_json.write(\u0027begin\u0027, l_begin_date );  \n        apex_json.write(\u0027finish\u0027, l_end_date);  \n        apex_json.write(\u0027name\u0027, \u0027Label 1-\u0027||i);  \n        apex_json.write(\u0027resource\u0027, \u0027Flag\u0027||i);  \n        apex_json.close_object;  \n\n        -- tasks 2 \n        select TO_DATE(TRUNC(DBMS_RANDOM.VALUE(TO_CHAR(DATE \u00272019-01-01\u0027,\u0027J\u0027),TO_CHAR(DATE \u00272019-12-31\u0027,\u0027J\u0027))),\u0027J\u0027 ) random_date \n          into l_begin_date\n          from dual;\n\n        select TO_DATE(TRUNC(DBMS_RANDOM.VALUE(TO_CHAR(l_begin_date,\u0027J\u0027),TO_CHAR(DATE \u00272019-12-31\u0027,\u0027J\u0027))),\u0027J\u0027 ) random_date \n          into l_end_date\n          from dual;\n\n        apex_json.open_object;  \n        apex_json.write(\u0027id\u0027, \u0027task1-\u0027||i);  \n        apex_json.write(\u0027begin\u0027, l_begin_date );  \n        apex_json.write(\u0027finish\u0027, l_end_date);  \n        apex_json.write(\u0027name\u0027, \u0027Label 1-\u0027||i);  \n        apex_json.write(\u0027resource\u0027, \u0027Flag\u0027||i);  \n        apex_json.close_object;  \n      end loop;\n\n  apex_json.close_array();  \nend;"
+      }
+     ,"Execution":{
+        "Sequence":10
+       ,"Point":"Ajax Callback"
+       ,"Run Process":"Once Per Page Visit (default)"
+      }
+    }
+  ]
+}

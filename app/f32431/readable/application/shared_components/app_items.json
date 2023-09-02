@@ -1,0 +1,13 @@
+[
+  {
+    "id":"25436715331926911954"
+   ,"Identification":{
+      "Name":"G_ID_FILE"
+     ,"Scope":"Application"
+    }
+   ,"Security":{
+      "Session State Protection":"Unrestricted"
+     ,"Escape special characters":false
+    }
+  }
+]

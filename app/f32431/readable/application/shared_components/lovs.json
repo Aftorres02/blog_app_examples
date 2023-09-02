@@ -1,0 +1,13 @@
+[
+  {
+    "id":"10886977908173517948"
+   ,"Identification":{
+      "Name":"DEPARTAMENTOS"
+    }
+   ,"Source":{
+      "Location":"Local Database"
+     ,"Type":"Legacy SQL Query"
+     ,"SQL Query":"select dname d\r\n     , deptno r\r\n  from dept"
+    }
+  }
+]

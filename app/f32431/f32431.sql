@@ -33,7 +33,6 @@ prompt APPLICATION 32431 - A little knowledge to share
 -- Application Export:
 --   Application:     32431
 --   Name:            A little knowledge to share
---   Date and Time:   15:45 Saturday September 2, 2023
 --   Exported By:     AFTORRES02@GMAIL.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -74,7 +73,7 @@ prompt APPLICATION 32431 - A little knowledge to share
 --       Globalization:
 --       Reports:
 --       E-Mail:
---     Supporting Objects:  Included
+--     Supporting Objects:  Excluded
 --   Version:         23.1.3
 --   Instance ID:     63113759365424
 --
@@ -23266,21 +23265,6 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_when_button_id=>wwv_flow_imp.id(32294629461804894315)
 ,p_internal_uid=>32294629523256894316
 );
-end;
-/
-prompt --application/deployment/definition
-begin
-null;
-end;
-/
-prompt --application/deployment/checks
-begin
-null;
-end;
-/
-prompt --application/deployment/buildoptions
-begin
-null;
 end;
 /
 prompt --application/end_environment
