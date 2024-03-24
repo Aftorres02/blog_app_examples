@@ -18,8 +18,8 @@ whenever sqlerror exit sql.sqlcode rollback
 --------------------------------------------------------------------------------
 begin
 wwv_flow_imp.import_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.3'
+ p_version_yyyy_mm_dd=>'2023.10.31'
+,p_release=>'23.2.4'
 ,p_default_workspace_id=>25436533369635843805
 ,p_default_application_id=>32431
 ,p_default_id_offset=>0
@@ -33,26 +33,26 @@ prompt APPLICATION 32431 - A little knowledge to share
 -- Application Export:
 --   Application:     32431
 --   Name:            A little knowledge to share
---   Date and Time:   15:45 Saturday September 2, 2023
+--   Date and Time:   06:10 Sunday March 24, 2024
 --   Exported By:     AFTORRES02@GMAIL.COM
 --   Flashback:       0
 --   Export Type:     Application Export
---     Pages:                     34
---       Items:                   49
---       Computations:             3
+--     Pages:                     36
+--       Items:                   51
+--       Computations:             4
 --       Validations:              3
 --       Processes:               45
---       Regions:                 76
---       Buttons:                 66
---       Dynamic Actions:         77
+--       Regions:                 81
+--       Buttons:                 72
+--       Dynamic Actions:         82
 --     Shared Components:
 --       Logic:
 --         Items:                  1
 --         Processes:              1
 --       Navigation:
---         Lists:                  2
+--         Lists:                  3
 --         Breadcrumbs:            1
---           Entries:              2
+--           Entries:              4
 --       Security:
 --         Authentication:         1
 --       User Interface:
@@ -75,7 +75,7 @@ prompt APPLICATION 32431 - A little knowledge to share
 --       Reports:
 --       E-Mail:
 --     Supporting Objects:  Included
---   Version:         23.1.3
+--   Version:         23.2.4
 --   Instance ID:     63113759365424
 --
 
@@ -130,10 +130,11 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_02=>'FORMAT_DATE'
 ,p_substitution_value_02=>'DD/MM/YYYY'
 ,p_last_updated_by=>'AFTORRES02@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20230425140114'
+,p_last_upd_yyyymmddhh24miss=>'20240322033844'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>10
 ,p_print_server_type=>'INSTANCE'
+,p_file_storage=>'DB'
 ,p_is_pwa=>'N'
 );
 end;
@@ -396,6 +397,24 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'510'
 );
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(68663816900808097136)
+,p_list_item_display_sequence=>2172
+,p_list_item_link_text=>'Toggle Popup Menu'
+,p_list_item_link_target=>'f?p=&APP_ID.:1010:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_icon=>'fa-accordion'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'1010'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(81900181278211595281)
+,p_list_item_display_sequence=>2182
+,p_list_item_link_text=>'Personalize Menu Popup'
+,p_list_item_link_target=>'f?p=&APP_ID.:1015:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_icon=>'fa-file-o'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'1015'
+);
 end;
 /
 prompt --application/shared_components/navigation/lists/desktop_navigation_bar
@@ -412,6 +431,40 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_link_target=>'&LOGOUT_URL.'
 ,p_list_item_current_for_pages=>'&LOGOUT_URL.'
 );
+end;
+/
+prompt --application/shared_components/navigation/lists/menu_actions
+begin
+wwv_flow_imp_shared.create_list(
+ p_id=>wwv_flow_imp.id(81900133518984588027)
+,p_name=>'Menu Actions'
+,p_list_type=>'SQL_QUERY'
+,p_list_query=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'with menu_test as (',
+'  select 10 id, ''New''        as entry_text, ''#'' as entry_target, ''fa-file-o'' as entry_image  from dual union all',
+'  select 20 id, ''Open''       as entry_text, ''javascript:console.log(''''test parent'''')'' as entry_target, ''fa-folder-open-o'' as entry_image  from dual union all',
+'  select 30 id, ''---''        as entry_text, ''separator'' as entry_target, '''' as entry_image  from dual union all',
+'  select 40 id, ''Exit''       as entry_text, ''#'' as entry_target, '''' as entry_image  from dual union all',
+'  select 50 id, ''Spreadsheet''as entry_text, ''#'' as entry_target, ''fa-file-excel-o'' as entry_image  from dual union all',
+'  select 60 id, ''Image''      as entry_text, ''#'' as entry_target, ''fa-file-image-o'' as entry_image  from dual',
+')',
+'select null',
+'     , ''ID:''||id|| '' - '' || entry_text label',
+'     , entry_target target',
+'     , null is_current',
+'     , entry_image image',
+'     , ''width="20" height="20"'' image_attrib',
+'     , ''image_alt'' image_alt',
+'     , id a01 -- this place is for display the ID',
+'  from menu_test',
+''))
+,p_list_status=>'PUBLIC'
+);
+end;
+/
+prompt --application/shared_components/navigation/listentry
+begin
+null;
 end;
 /
 prompt --application/shared_components/files/jquery_jcarousellite_min_js
@@ -592,6 +645,13 @@ wwv_flow_imp_shared.create_plugin_setting(
 ,p_plugin_type=>'REGION TYPE'
 ,p_plugin=>'NATIVE_MAP_REGION'
 ,p_attribute_01=>'Y'
+,p_version_scn=>1
+);
+wwv_flow_imp_shared.create_plugin_setting(
+ p_id=>wwv_flow_imp.id(11807614938572221)
+,p_plugin_type=>'WEB SOURCE TYPE'
+,p_plugin=>'NATIVE_ADFBC'
+,p_version_scn=>15492788134996
 );
 wwv_flow_imp_shared.create_plugin_setting(
  p_id=>wwv_flow_imp.id(21375095265561593)
@@ -599,6 +659,7 @@ wwv_flow_imp_shared.create_plugin_setting(
 ,p_plugin=>'NATIVE_STAR_RATING'
 ,p_attribute_01=>'fa-star'
 ,p_attribute_04=>'#VALUE#'
+,p_version_scn=>1
 );
 wwv_flow_imp_shared.create_plugin_setting(
  p_id=>wwv_flow_imp.id(21375154182561593)
@@ -606,6 +667,7 @@ wwv_flow_imp_shared.create_plugin_setting(
 ,p_plugin=>'NATIVE_SINGLE_CHECKBOX'
 ,p_attribute_01=>'Y'
 ,p_attribute_02=>'N'
+,p_version_scn=>1
 );
 wwv_flow_imp_shared.create_plugin_setting(
  p_id=>wwv_flow_imp.id(24822470725077016)
@@ -615,6 +677,7 @@ wwv_flow_imp_shared.create_plugin_setting(
 ,p_attribute_02=>'VISIBLE'
 ,p_attribute_03=>'15'
 ,p_attribute_04=>'FOCUS'
+,p_version_scn=>1
 );
 wwv_flow_imp_shared.create_plugin_setting(
  p_id=>wwv_flow_imp.id(2759164988432424569)
@@ -625,12 +688,14 @@ wwv_flow_imp_shared.create_plugin_setting(
 ,p_attribute_03=>'POPUP:ITEM'
 ,p_attribute_04=>'default'
 ,p_attribute_06=>'LIST'
+,p_version_scn=>1
 );
 wwv_flow_imp_shared.create_plugin_setting(
  p_id=>wwv_flow_imp.id(12164281339746534247)
 ,p_plugin_type=>'DYNAMIC ACTION'
 ,p_plugin=>'PLUGIN_BE.CTB.ALERTIFY'
 ,p_attribute_01=>'DEFAULT'
+,p_version_scn=>1
 );
 wwv_flow_imp_shared.create_plugin_setting(
  p_id=>wwv_flow_imp.id(25436659237749906682)
@@ -638,6 +703,7 @@ wwv_flow_imp_shared.create_plugin_setting(
 ,p_plugin=>'NATIVE_COLOR_PICKER'
 ,p_attribute_01=>'FULL'
 ,p_attribute_02=>'POPUP'
+,p_version_scn=>1
 );
 wwv_flow_imp_shared.create_plugin_setting(
  p_id=>wwv_flow_imp.id(25436659379347906683)
@@ -646,18 +712,21 @@ wwv_flow_imp_shared.create_plugin_setting(
 ,p_attribute_01=>'Y'
 ,p_attribute_03=>'N'
 ,p_attribute_05=>'SWITCH'
+,p_version_scn=>1
 );
 wwv_flow_imp_shared.create_plugin_setting(
  p_id=>wwv_flow_imp.id(25436659562967906683)
 ,p_plugin_type=>'REGION TYPE'
 ,p_plugin=>'NATIVE_DISPLAY_SELECTOR'
 ,p_attribute_01=>'Y'
+,p_version_scn=>1
 );
 wwv_flow_imp_shared.create_plugin_setting(
  p_id=>wwv_flow_imp.id(25436659723378906683)
 ,p_plugin_type=>'REGION TYPE'
 ,p_plugin=>'NATIVE_IR'
 ,p_attribute_01=>'IG'
+,p_version_scn=>1
 );
 end;
 /
@@ -711,6 +780,7 @@ wwv_flow_imp_shared.create_flow_process(
 'END;'))
 ,p_process_clob_language=>'PLSQL'
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
+,p_version_scn=>1
 );
 end;
 /
@@ -721,6 +791,7 @@ wwv_flow_imp_shared.create_flow_item(
 ,p_name=>'G_ID_FILE'
 ,p_protection_level=>'N'
 ,p_escape_on_http_output=>'N'
+,p_version_scn=>1
 );
 end;
 /
@@ -771,7 +842,6 @@ wwv_flow_imp_shared.create_menu(
 );
 wwv_flow_imp_shared.create_menu_option(
  p_id=>wwv_flow_imp.id(25436713760583906732)
-,p_parent_id=>0
 ,p_short_name=>'Home'
 ,p_link=>'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.'
 ,p_page_id=>1
@@ -781,6 +851,18 @@ wwv_flow_imp_shared.create_menu_option(
 ,p_short_name=>'Ordenamiento'
 ,p_link=>'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
 ,p_page_id=>2
+);
+wwv_flow_imp_shared.create_menu_option(
+ p_id=>wwv_flow_imp.id(68663817868506097138)
+,p_short_name=>'Toggle Popup Menu'
+,p_link=>'f?p=&APP_ID.:1010:&APP_SESSION.::&DEBUG.:::'
+,p_page_id=>1010
+);
+wwv_flow_imp_shared.create_menu_option(
+ p_id=>wwv_flow_imp.id(81900182190787595283)
+,p_short_name=>'Personalizar Menu Popup'
+,p_link=>'f?p=&APP_ID.:1015:&SESSION.::&DEBUG.:::'
+,p_page_id=>1015
 );
 end;
 /
@@ -14775,6 +14857,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'Close Dialog'
+,p_attribute_02=>'N'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when=>'CREATE,SAVE,DELETE'
 ,p_process_when_type=>'REQUEST_IN_CONDITION'
@@ -15284,6 +15367,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'Close Dialog'
+,p_attribute_02=>'N'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when=>'CREATE,SAVE,DELETE'
 ,p_process_when_type=>'REQUEST_IN_CONDITION'
@@ -17762,6 +17846,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'Close dialog'
+,p_attribute_02=>'N'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_success_message=>'Actualizado correctamente'
 ,p_internal_uid=>10886965477255501834
@@ -18363,6 +18448,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'Cierre'
+,p_attribute_02=>'N'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_internal_uid=>10888169310695452616
 );
@@ -18908,6 +18994,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'Close dialog'
+,p_attribute_02=>'N'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(11024498571897706807)
 ,p_internal_uid=>11024499002031706812
@@ -19821,7 +19908,7 @@ wwv_flow_imp_page.create_page(
 ,p_page_is_public_y_n=>'Y'
 ,p_page_component_map=>'12'
 ,p_last_updated_by=>'AFTORRES02@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210510010741'
+,p_last_upd_yyyymmddhh24miss=>'20240319031624'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(25436712584373906729)
@@ -19887,6 +19974,35 @@ wwv_flow_imp_page.create_page_item(
 ,p_is_persistent=>'N'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_computation(
+ p_id=>wwv_flow_imp.id(81301379536541999301)
+,p_computation_sequence=>10
+,p_computation_item=>'P101_USERNAME'
+,p_computation_point=>'BEFORE_BOX_BODY'
+,p_computation_type=>'STATIC_ASSIGNMENT'
+,p_computation=>'demo'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(81301379711100999303)
+,p_name=>'New'
+,p_event_sequence=>10
+,p_bind_type=>'bind'
+,p_bind_event_type=>'ready'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(81301379826434999304)
+,p_event_id=>wwv_flow_imp.id(81301379711100999303)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SET_VALUE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P101_PASSWORD'
+,p_attribute_01=>'STATIC_ASSIGNMENT'
+,p_attribute_02=>'demo'
+,p_attribute_09=>'N'
+,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(25436713092930906731)
@@ -20515,6 +20631,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'Close Dialog'
+,p_attribute_02=>'N'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when=>'CREATE,SAVE,DELETE'
 ,p_process_when_type=>'REQUEST_IN_CONDITION'
@@ -20526,6 +20643,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'Close Dialog'
+,p_attribute_02=>'N'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when=>'CREATE,SAVE,DELETE'
 ,p_process_when_type=>'REQUEST_IN_CONDITION'
@@ -23262,9 +23380,460 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'onDialogClose'
 ,p_attribute_01=>'P515_EMPNO,P515_SAL'
+,p_attribute_02=>'N'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(32294629461804894315)
 ,p_internal_uid=>32294629523256894316
+);
+end;
+/
+prompt --application/pages/page_01010
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>1010
+,p_name=>'Toggle Popup Menu'
+,p_alias=>'TOGGLE-POPUP-MENU'
+,p_step_title=>'Toggle Popup Menu'
+,p_autocomplete_on_off=>'OFF'
+,p_javascript_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// Creamos nuestra variable *toggleGlobal* que nos servira para guardar el estado del toggle',
+'var toggleGlobal1 = true;',
+'var toggleGlobal2 = true;',
+'var menu$ = $("<div id=''actionsMenu''></div>");',
+'',
+'function _initMenuPopup()  {',
+'',
+'  $("body").append(menu$);',
+'  menu$.menu({',
+'  iconType: "fa",',
+'  items: [',
+'      {',
+'        id:''toggleTest1''',
+'      , type: "toggle"',
+'      , set: function(e) {',
+'        // e tiene el valor de true o false, dependiendo del estado del toggle',
+'        console.log(''set status'',e);',
+'        // lo asignamos a nuestra variable global',
+'        toggleGlobal1 = e;',
+'        apex.item("P1010_TOGGLE_1").setValue(e);',
+'      }',
+'     , get: function(e,f) {',
+'        // aqui devolvemos true o false, dependiendo que queremos mostrar',
+'        // para el ejemplo retornamos el valor de nuestra variable global toggleGlobal1',
+'        console.log(''get'',e,f,toggleGlobal1);',
+'        return toggleGlobal1;',
+'      }',
+'     //, label:  "toggle" // si definimos label , sera prioridad sobre el on / off label',
+'     , onLabel:  "Toggle onLabel"',
+'     , offLabel:  "Toggle offLabel"',
+'     , onIcon: "fa-badge-check"',
+'     , offIcon: "fa-badge"',
+'     //, disabled: false',
+'    },',
+'    {',
+'      type: "separator",',
+'      label: "-",',
+'      href: "separator"',
+'    } ,',
+'    {',
+'        id:''toggleTest1'',',
+'        type: "toggle"',
+'      , label:  "toggle"',
+'      , set: function(e) {',
+'        // e tiene el valor de true o false, dependiendo del estado del toggle',
+'        console.log(''set status'',e);',
+'        // lo asignamos a nuestra variable global',
+'        toggleGlobal2 = e;',
+'        apex.item("P1010_TOGGLE_2").setValue(e);',
+'        }',
+'      , get: function(e,f) {',
+'         // aqui devolvemos true o false, dependiendo que queremos mostrar',
+'         // para el ejemplo retornamos el valor de nuestra variable global toggleGlobal1',
+'         console.log(''get'',e,f,toggleGlobal2);',
+'         return toggleGlobal2;',
+'       }',
+'      , label:  "toggle" // si definimos label , sera prioridad sobre el on / off label',
+'      , onLabel:  "Toggle onLabel"',
+'      , offLabel:  "Toggle offLabel"',
+'      , onIcon: "fa-badge-check"',
+'      , offIcon: "fa-badge"',
+'      //, disabled: false',
+'    }',
+'  ]',
+'  })',
+'};'))
+,p_javascript_code_onload=>'_initMenuPopup();'
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_page_component_map=>'17'
+,p_last_updated_by=>'AFTORRES02@GMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20240221044232'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(68663817337199097137)
+,p_plug_name=>'Breadcrumb'
+,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(25436682878642906704)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_menu_id=>wwv_flow_imp.id(25436713340001906732)
+,p_plug_source_type=>'NATIVE_BREADCRUMB'
+,p_menu_template_id=>wwv_flow_imp.id(25436701764126906718)
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(112970366802985745174)
+,p_plug_name=>'Referencia Blog'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(25436678417382906701)
+,p_plug_display_sequence=>20
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'<a href="https://aflorestorres.blogspot.com/2018/02/usando-el-context-menu-y-botones-click.html" target="_blank" > Mira los pasos aqui </a> ',
+'<p> En este tutorial vamos ver el manejo de Toggle en Popup Menu</p>'))
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(68664221344378595202)
+,p_button_sequence=>10
+,p_button_name=>'TOGGLE_BTN'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(25436701278727906717)
+,p_button_image_alt=>'Toggle Btn'
+,p_warn_on_unsaved_changes=>null
+,p_button_cattributes=>'data-menu="actionsMenu"'
+,p_grid_new_row=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(3310759525745980709)
+,p_name=>'P1010_TOGGLE_1'
+,p_item_sequence=>20
+,p_prompt=>'Toggle 1'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_field_template=>wwv_flow_imp.id(25436700760668906716)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(3310759642309980710)
+,p_name=>'P1010_TOGGLE_2'
+,p_item_sequence=>30
+,p_prompt=>'Toggle 2'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_field_template=>wwv_flow_imp.id(25436700760668906716)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+end;
+/
+prompt --application/pages/page_01015
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>1015
+,p_name=>'Personalizar Menu Popup'
+,p_alias=>'PERSONALIZE-MENU-POPUP'
+,p_step_title=>'Personalizar Menu Popup'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_page_component_map=>'06'
+,p_last_updated_by=>'AFTORRES02@GMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20240322033844'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(81301380656870999312)
+,p_plug_name=>'Body'
+,p_region_template_options=>'#DEFAULT#:t-Region--removeHeader js-removeLandmark:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(25436678417382906701)
+,p_plug_display_sequence=>50
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(81301380141071999307)
+,p_plug_name=>'DemoMenu Popup'
+,p_region_name=>'customized'
+,p_parent_plug_id=>wwv_flow_imp.id(81301380656870999312)
+,p_region_template_options=>'#DEFAULT#'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(25436668461659906694)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'SUB_REGIONS'
+,p_list_id=>wwv_flow_imp.id(81900133518984588027)
+,p_plug_source_type=>'NATIVE_LIST'
+,p_list_template_id=>wwv_flow_imp.id(25436698457855906714)
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(81900181694949595282)
+,p_plug_name=>'Breadcrumb'
+,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(25436682878642906704)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_menu_id=>wwv_flow_imp.id(25436713340001906732)
+,p_plug_source_type=>'NATIVE_BREADCRUMB'
+,p_menu_template_id=>wwv_flow_imp.id(25436701764126906718)
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(81301380233302999308)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(81301380656870999312)
+,p_button_name=>'AGREGAR_NUEVA_ACCION'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(25436701278727906717)
+,p_button_image_alt=>'Agregar Nueva Accion'
+,p_button_position=>'NEXT'
+,p_warn_on_unsaved_changes=>null
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(81301380759210999313)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(81301380656870999312)
+,p_button_name=>'CHANGE_ALL_ICONS'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(25436701278727906717)
+,p_button_image_alt=>'Cambiar todos los iconos'
+,p_button_position=>'NEXT'
+,p_warn_on_unsaved_changes=>null
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(81301381010188999316)
+,p_button_sequence=>30
+,p_button_plug_id=>wwv_flow_imp.id(81301380656870999312)
+,p_button_name=>'CHANGE_ID_40'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(25436701278727906717)
+,p_button_image_alt=>'Cambiar Boton ID=40'
+,p_button_position=>'NEXT'
+,p_warn_on_unsaved_changes=>null
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(81301381383365999319)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_imp.id(81301380656870999312)
+,p_button_name=>'CHANGE_TO_TOGGLE'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(25436701278727906717)
+,p_button_image_alt=>'Cambiar ID=40 a Toggle'
+,p_button_position=>'NEXT'
+,p_warn_on_unsaved_changes=>null
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(81301380080796999306)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(81301380656870999312)
+,p_button_name=>'Actions'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(25436701278727906717)
+,p_button_image_alt=>'Acciones'
+,p_button_position=>'PREVIOUS'
+,p_warn_on_unsaved_changes=>null
+,p_button_css_classes=>'js-menuButton'
+,p_button_cattributes=>'data-menu="customized_menu"'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(81301380335167999309)
+,p_name=>'onClick'
+,p_event_sequence=>10
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_imp.id(81301380233302999308)
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'click'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(81301380448752999310)
+,p_event_id=>wwv_flow_imp.id(81301380335167999309)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+unistr('// Usamos el ID que le dimos a nuestra regi\00F3n del popup menu, para seleccionar el elemento'),
+'$( "#customized_menu" ).menu({',
+'',
+'  // creamos un "listener" del evento beforeOpen',
+'  beforeOpen: function( event, ui ) {',
+'',
+'    // adicional console para ver la informacion que se tiene cuando se habre el menu',
+'    console.log(event, ui);',
+'',
+'    // condicional para verificar si el boton ya existe y no volverlo agregar',
+'    // para este caso los IDs con muy importantes para diferenciarlos',
+'    // El type, label, icon, action son totalmente personalizables de acuerdo a nuestras necesidades',
+'    if ( !ui.menu.items.find(objeto => objeto.id === ''myIdDemo'') ){',
+'            ui.menu.items.push({id: ''myIdDemo''',
+'                              , type: ''action''',
+'                              , label: ''Link Demo''',
+'                              , icon: ''fa-badge-check''',
+'                              , action: function() {',
+unistr('                                  console.log(''Click en el nuevo bot\00F3n'');'),
+'                                }',
+'                              })',
+'    }',
+'',
+'  }',
+'',
+'});'))
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(81301380500581999311)
+,p_event_id=>wwv_flow_imp.id(81301380335167999309)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_ALERT'
+,p_attribute_01=>unistr('Opci\00F3n agregada')
+,p_attribute_03=>'success'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(81301380863453999314)
+,p_name=>'set all'
+,p_event_sequence=>20
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_imp.id(81301380759210999313)
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'click'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(81301380994019999315)
+,p_event_id=>wwv_flow_imp.id(81301380863453999314)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'$( "#customized_menu" ).menu({',
+'',
+'  // creamos un "listener" del evento beforeOpen',
+'  beforeOpen: function( event, ui ) {',
+'',
+'    // guardamos la coleccion de items para luego recorrer uno por uno',
+'    var menuItems = ui.menu.items;',
+'    menuItems = menuItems.map( function ( item ) {',
+'      //por cada elemento cambiamos el icono a fa-bug',
+'      item.icon =  ''fa-bug'';',
+'      // retornamos el item modificado',
+'      return item;',
+'    });',
+'',
+'    }',
+'',
+'});'))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(81301381162930999317)
+,p_name=>'set'
+,p_event_sequence=>30
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_imp.id(81301381010188999316)
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'click'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(81301381283395999318)
+,p_event_id=>wwv_flow_imp.id(81301381162930999317)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+unistr('// Usamos el ID que le dimos a nuestra regi\00F3n del popup menu, para seleccionar el elemento'),
+'$( "#customized_menu" ).menu({',
+'  // creamos un "listener" del evento beforeOpen',
+'  beforeOpen: function( event, ui ) {',
+'',
+'    // guardamos la coleccion de items para luego recorrer uno por uno',
+'    var menuItems = ui.menu.items;',
+'    menuItems = menuItems.map( function ( item ) {',
+'      // buscamos si es el ID 40 y modificamos sus propiedades',
+'      if (item.id == 40 ){',
+'        item.label =  ''Boton cambiado'';',
+'        item.icon  =  ''fa-ban'';',
+'      }',
+'      return item;',
+'    });',
+'',
+'    }',
+'',
+'});'))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(81301381412253999320)
+,p_name=>'set toggle'
+,p_event_sequence=>40
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_imp.id(81301381383365999319)
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'click'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(81301381537731999321)
+,p_event_id=>wwv_flow_imp.id(81301381412253999320)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'var toggleGlobal = true;',
+'',
+unistr('// Usamos el ID que le dimos a nuestra regi\00F3n del popup menu, para seleccionar el elemento'),
+'$( "#customized_menu" ).menu({',
+'  // creamos un "listener" del evento beforeOpen',
+'  beforeOpen: function( event, ui ) {',
+'',
+'    // guardamos la coleccion de items para luego recorrer uno por uno',
+'    var menuItems = ui.menu.items;',
+'',
+'      menuItems = menuItems.map( function ( item ) {',
+'      // buscamos si es el ID 40 y modificamos sus propiedades',
+'      if (item.id == 40 ){',
+'        item.type = "toggle";',
+'        item.set = function(e) {',
+'          // e tiene el valor de true o false, dependiendo del estado del toggle',
+'          console.log(''set status'',e);',
+'          // lo asignamos a nuestra variable global',
+'          toggleGlobal = e;',
+'        }',
+'        item.get = function(e,f) {',
+unistr('         // aqu\00ED devolvemos true o false, dependiendo que queremos mostrar'),
+'         // para el ejemplo retornamos el valor de nuestra variable global toggleGlobal1',
+'         console.log(''get'',e,f,toggleGlobal);',
+'         return toggleGlobal;',
+'       }',
+unistr('       //item.label =  "toggle"; // si definimos label , ser\00E1 prioridad sobre el on / off label;'),
+'       delete item.label; // remover la propiedad label definida inicialmente',
+'       item.onLabel =  "Toggle onLabel";',
+'       item.offLabel =  "Toggle offLabel";',
+'       item.onIcon = "fa-badge-check";',
+'       item.offIcon = "fa-badge";',
+'      }',
+'      return item;',
+'    });',
+'',
+'    }',
+'',
+'});'))
 );
 end;
 /
