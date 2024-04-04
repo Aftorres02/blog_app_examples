@@ -33,7 +33,7 @@ prompt APPLICATION 11000 - TechnoScrum
 -- Application Export:
 --   Application:     11000
 --   Name:            TechnoScrum
---   Date and Time:   06:09 Wednesday April 3, 2024
+--   Date and Time:   16:36 Thursday April 4, 2024
 --   Exported By:     DB_01
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -116,7 +116,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'TechnoScrum'
 ,p_last_updated_by=>'DB_01'
-,p_last_upd_yyyymmddhh24miss=>'20240403060829'
+,p_last_upd_yyyymmddhh24miss=>'20240404160621'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>6
 ,p_print_server_type=>'NATIVE'
@@ -235,7 +235,7 @@ wwv_flow_imp_shared.create_list(
 '  select 50 id, ''Spreadsheet''as entry_text, ''#'' as entry_target, ''fa-file-excel-o'' as entry_image  from dual union all',
 '  select 60 id, ''Image''      as entry_text, ''#'' as entry_target, ''fa-file-image-o'' as entry_image  from dual',
 '  union all',
-'  select 70 id, ''dummy''      as entry_text, ''#'' as entry_target, ''fa-file-image-o'' as entry_image  from dual',
+'   select 70 id, ''dummy''      as entry_text, ''#'' as entry_target, ''fa-file-image-o'' as entry_image  from dual ',
 ')',
 'select null',
 '     , ''ID:''||id|| '' - '' || entry_text label',
@@ -18093,11 +18093,11 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'13'
 ,p_last_updated_by=>'DB_01'
-,p_last_upd_yyyymmddhh24miss=>'20240403060829'
+,p_last_upd_yyyymmddhh24miss=>'20240403162926'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(29823258688182021)
-,p_plug_name=>'References'
+,p_plug_name=>'PopupMenu Tips - References'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(29602539690181585)
 ,p_plug_display_sequence=>10
@@ -18185,8 +18185,8 @@ wwv_flow_imp_page.create_page(
 '      }',
 '     , onLabel:  "Toggle onLabel"',
 '     , offLabel:  "Toggle offLabel"',
-'     , onIcon: "fa-badge-check"',
-'     , offIcon: "fa-badge"',
+'     , onIcon: "fa-toggle-on"',
+'     , offIcon: "fa-toggle-off"',
 '    },',
 '    {',
 '      type: "separator",',
@@ -18209,8 +18209,8 @@ wwv_flow_imp_page.create_page(
 '      , label:  "toggle" // be carefully if you define the label will overwrite the on/off values',
 '      , onLabel:  "Toggle onLabel"',
 '      , offLabel:  "Toggle offLabel"',
-'      , onIcon: "fa-badge-check"',
-'      , offIcon: "fa-badge"',
+'      , onIcon: "fa-toggle-on"',
+'      , offIcon: "fa-toggle-off"',
 '      //, disabled: false',
 '    }',
 '  ]',
@@ -18221,7 +18221,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'17'
 ,p_last_updated_by=>'DB_01'
-,p_last_upd_yyyymmddhh24miss=>'20240403053743'
+,p_last_upd_yyyymmddhh24miss=>'20240404151810'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(30519692261082978)
@@ -18310,7 +18310,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'17'
 ,p_last_updated_by=>'DB_01'
-,p_last_upd_yyyymmddhh24miss=>'20240403053543'
+,p_last_upd_yyyymmddhh24miss=>'20240404151907'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(30522092945084818)
@@ -18497,11 +18497,15 @@ wwv_flow_imp_page.create_page_da_action(
 '',
 '  }',
 '',
-'});'))
+'});',
+'',
+'',
+'apex.message.showPageSuccess(''Option added'');',
+''))
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(30521248417084810)
-,p_name=>'New'
+,p_name=>'onClick c'
 ,p_event_sequence=>20
 ,p_triggering_element_type=>'BUTTON'
 ,p_triggering_button_id=>wwv_flow_imp.id(30521102841084809)
@@ -18532,7 +18536,10 @@ wwv_flow_imp_page.create_page_da_action(
 '',
 '    }',
 '',
-'});'))
+'});',
+'',
+'apex.message.showPageSuccess(''Icons changed'');',
+''))
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(30521589557084813)
@@ -18569,7 +18576,10 @@ wwv_flow_imp_page.create_page_da_action(
 '',
 '    }',
 '',
-'});'))
+'});',
+'',
+'apex.message.showPageSuccess(''Action changed'');',
+''))
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(30521827546084816)
@@ -18612,15 +18622,18 @@ wwv_flow_imp_page.create_page_da_action(
 '       delete item.label; // remover the initial label load property',
 '       item.onLabel =  "Toggle onLabel";',
 '       item.offLabel =  "Toggle offLabel";',
-'       item.onIcon = "fa-badge-check";',
-'       item.offIcon = "fa-badge";',
+'       item.onIcon = "fa-toggle-on";',
+'       item.offIcon = "fa-toggle-off";',
 '      }',
 '      return item;',
 '    });',
 '',
 '    }',
 '',
-'});'))
+'});',
+'',
+'apex.message.showPageSuccess(''Toggle added'');',
+''))
 );
 end;
 /
