@@ -1,0 +1,94 @@
+.reactions-panel {
+  position: absolute;
+  z-index: 9999;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  padding: 8px;
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.reactions-panel.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.reactions-panel.panel-top:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  margin-left: -8px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid white;
+}
+
+.reactions-panel.panel-bottom:after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  margin-left: -8px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid white;
+}
+
+.reaction-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.2s, background-color 0.2s;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.reaction-item:hover {
+  transform: scale(1.2);
+  background-color: #f0f0f0;
+}
+
+.reaction-item i {
+  font-size: 18px;
+  color: #666;
+}
+
+.reaction-title {
+  position: absolute;
+  bottom: -25px;
+  font-size: 12px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.reaction-item:hover .reaction-title {
+  opacity: 1;
+}
+
+.reaction-item[data-reaction-code="like"] i { color: #0077b5; }
+.reaction-item[data-reaction-code="celebrate"] i { color: #f5bd00; }
+.reaction-item[data-reaction-code="support"] i { color: #ff4570; }
+.reaction-item[data-reaction-code="love"] i { color: #ffab00; }
+.reaction-item[data-reaction-code="insightful"] i { color: #7fc15e; }
+.reaction-item[data-reaction-code="curious"] i { color: #738adb; }
