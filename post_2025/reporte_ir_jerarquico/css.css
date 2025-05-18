@@ -1,0 +1,15 @@
+.hierarchy-item {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.hierarchy-item.level-1 { margin-left: 0; }
+.hierarchy-item.level-2 { margin-left: 20px; }
+.hierarchy-item.level-3 { margin-left: 40px; }
+.hierarchy-item.level-4 { margin-left: 60px; }
+.hierarchy-item.level-5 { margin-left: 80px; }
+.hierarchy-item.level-6 { margin-left: 100px; }
+
+.hierarchy-item.parent-node span.fa-folder-o { color: #ffa500; }
+.hierarchy-item.leaf-node span.fa-file-o { color: #6f6f6f; }
