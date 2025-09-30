@@ -1,0 +1,255 @@
+Métodos para Convertir HTML a PDF en Oracle APEX
+
+Convertir contenido HTML a PDF es un requisito común en aplicaciones web. Este artículo de blog demuestra tres enfoques diferentes para lograr esto en aplicaciones Oracle APEX, cada uno con sus propias ventajas y casos de uso.
+
+🔗 Demo en Vivo: https://oracleapex.com/ords/f?p=32431:1210:102704750023317:::::
+
+RESUMEN DE MÉTODOS
+
+• Método 1: jsPDF con Dimensiones Fijas - Generación de PDF simple y predecible con tamaños de página predefinidos
+• Método 2: jsPDF con Escalado Dinámico - Adaptación inteligente del contenido con orientación y escalado automático
+• Método 3: Método de Impresión del Navegador - Aprovecha las capacidades nativas de generación de PDF del navegador
+
+CONFIGURACIÓN DE BASE DE DATOS
+
+Primero, crea la tabla para almacenar documentos HTML. Para el script DDL completo, consulta html_tmp_table.sql.
+
+LIBRERÍAS REQUERIDAS
+
+Agrega estas librerías a tu página APEX (Página > JavaScript > File URLs):
+
+https://github.com/Aftorres02/blog_app_examples/tree/master/post_2025/18_tmp_html_to_pdf_dow/libs
+
+Referencias de Librerías:
+• Documentación jsPDF: https://github.com/parallax/jsPDF
+• Documentación html2canvas: https://github.com/niklasvh/html2canvas
+• Documentación Oracle APEX: https://docs.oracle.com/en/database/oracle/application-express/
+
+PROCESO APEX
+
+Crea un proceso AJAX llamado GET_HTML_CONTENT:
+
+declare
+    l_html_content clob;
+    l_document_id number;
+begin
+    l_document_id := apex_application.g_x01;
+    
+    select html_content, document_name
+    into l_html_content, :P1210_DOCUMENT_NAME
+    from html_documents
+    where id = l_document_id
+    and active_yn = 'Y';
+    
+    apex_json.open_object;
+    apex_json.write('html_content', l_html_content);
+    apex_json.write('document_name', :P1210_DOCUMENT_NAME);
+    apex_json.close_object;
+    
+exception
+    when no_data_found then
+        apex_json.open_object;
+        apex_json.write('error', 'Document not found');
+        apex_json.close_object;
+end;
+
+MÉTODO 1: jsPDF con Dimensiones Fijas
+
+Qué hace: Crea un PDF con dimensiones predefinidas (900x630 puntos) y convierte el contenido HTML directamente al formato PDF. Este método proporciona buen control sobre el tamaño de página pero puede no ajustarse automáticamente a las dimensiones del contenido.
+
+apex.server.process(
+  "GET_HTML_CONTENT",
+  {
+    x01: apex.item("P1210_DOCUMENT_ID").getValue(),
+  },
+  {
+    success: function (data) {
+      var doc = new jspdf.jsPDF("p", "pt", [900, 630]);
+
+      doc.html(data.html_content, {
+        callback: function (doc) {
+          if (doc.getNumberOfPages() >= 2) {
+            doc.deletePage(2);
+          }
+          var filename = data.document_name;
+          doc.save(filename + ".pdf");
+        },
+
+        // Establecer el punto de inicio de renderizado y tamaño
+        x: 0,
+        y: 0,
+        margin: 20,
+        width: 590, // ANCHO completo de la página en puntos
+        windowWidth: 590, // Opcional: ayuda a html2canvas a entender el layout
+
+        html2canvas: {
+          useCORS: true,
+          allowTaint: true,
+          scale: 1, // Ajustar esto para calidad vs rendimiento
+        },
+      });
+    },
+    error: function () {
+      alert("Error loading document content");
+    },
+  }
+);
+
+MÉTODO 2: jsPDF con Orientación y Escalado Dinámico
+
+Qué hace: Detecta automáticamente las dimensiones del contenido y elige la mejor orientación (vertical/horizontal) y factor de escalado para ajustar el contenido perfectamente dentro de la página PDF. Este método proporciona la adaptación de contenido más inteligente.
+
+apex.server.process(
+  "GET_HTML_CONTENT",
+  {
+    x01: apex.item("P1210_DOCUMENT_ID").getValue(),
+  },
+  {
+    success: function (data) {
+      // Crear un contenedor oculto dinámicamente
+      let tempContainer = document.createElement("div");
+      tempContainer.id = "htmlContentHidden";
+      document.body.appendChild(tempContainer);
+
+      // Insertar contenido HTML
+      tempContainer.innerHTML = data.html_content;
+
+      // Medir dimensiones del contenido
+      const contentWidth = tempContainer.scrollWidth;
+      const contentHeight = tempContainer.scrollHeight;
+
+      // Decidir orientación basada en la proporción de aspecto
+      let orientation = contentWidth > contentHeight ? "l" : "p";
+
+      // Inicializar jsPDF con orientación dinámica
+      const { jsPDF } = window.jspdf;
+      let doc = new jsPDF(orientation, "pt", "a4");
+
+      // Obtener dimensiones reales de página de jsPDF
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
+
+      // Calcular escala para que el contenido se ajuste al ancho de página (máx = 1)
+      const scaleFactor = Math.min((pageWidth - 40) / contentWidth, 1);
+
+      // Generar PDF
+      doc.html(tempContainer, {
+        callback: function (doc) {
+          doc.save("dynamic_fit.pdf");
+          // Limpiar
+          document.body.removeChild(tempContainer);
+        },
+        x: 20,
+        y: 20,
+        width: pageWidth - 40, // ancho utilizable con márgenes
+        windowWidth: contentWidth, // ancho HTML original
+        html2canvas: {
+          scale: scaleFactor,
+          useCORS: true,
+          allowTaint: true,
+        },
+      });
+    },
+    error: function () {
+      alert("Error loading document content");
+    },
+  }
+);
+
+MÉTODO 3: Método de Impresión del Navegador
+
+Qué hace: Abre el contenido HTML en una nueva ventana del navegador y activa el diálogo de impresión nativo del navegador, permitiendo a los usuarios guardar como PDF usando la funcionalidad PDF integrada de su navegador. Este método aprovecha las capacidades nativas de generación de PDF del navegador.
+
+apex.server.process(
+  "GET_HTML_CONTENT",
+  {
+    x01: apex.item("P1210_DOCUMENT_ID").getValue(),
+  },
+  {
+    success: function (data) {
+      var printWindow = window.open('', '_blank', 'width=800,height=600');
+      printWindow.document.write('<!DOCTYPE html>');
+      printWindow.document.write('<html><head><title>Document</title>');
+      printWindow.document.write('<style>body{font-family:Arial,sans-serif;margin:20px;}</style>');
+      printWindow.document.write('</head><body>');
+      printWindow.document.write(data.html_content);
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+      
+      setTimeout(function() {
+          printWindow.print();
+          setTimeout(function() {
+              printWindow.close();
+          }, 1000);
+      }, 500);
+    },
+    error: function () {
+      alert("Error loading document content");
+    },
+  }
+);
+
+COMPARACIÓN DE MÉTODOS
+
+MÉTODO 1: JSPDF CON DIMENSIONES FIJAS
+
+VENTAJAS:
+• Simple de implementar
+• Salida predecible y consistente
+• Control total sobre las dimensiones del PDF
+• Ideal para documentos con formato estándar
+
+DESVENTAJAS:
+• Puede no ajustar todo el contenido automáticamente
+• Requiere ajuste manual de parámetros
+• Menos flexible para contenido variable
+
+MEJOR PARA:
+• Documentos estándar con formato fijo
+• Casos de uso simples y rápidos
+• Prototipos y demos básicos
+• Aplicaciones con requisitos de formato específico
+
+---
+
+MÉTODO 2: JSPDF CON ESCALADO DINÁMICO
+
+VENTAJAS:
+• Adaptación inteligente del contenido
+• Orientación automática (vertical/horizontal)
+• Ajuste perfecto del contenido a la página
+• Optimización automática de espacio
+
+DESVENTAJAS:
+• Código más complejo de implementar
+• Requiere más recursos computacionales
+• Mayor tiempo de procesamiento
+• Más difícil de depurar
+
+MEJOR PARA:
+• Tamaños de contenido variables
+• Documentos dinámicos con contenido cambiante
+• Aplicaciones profesionales
+• Casos donde la optimización del espacio es crítica
+
+---
+
+MÉTODO 3: IMPRESIÓN DEL NAVEGADOR
+
+VENTAJAS:
+• No necesita librerías externas
+• Usa capacidades nativas del navegador
+• Compatible con todos los navegadores modernos
+• Implementación muy simple
+
+DESVENTAJAS:
+• Requiere interacción del usuario
+• Menos control sobre el formato final
+• Dependiente de la configuración del navegador
+• No es completamente automatizable
+
+MEJOR PARA:
+• Implementaciones simples y rápidas
+• Prototipos y pruebas de concepto
+• Demos y presentaciones
+• Casos donde la simplicidad es prioritaria
