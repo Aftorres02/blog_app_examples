@@ -1,4 +1,4 @@
-# Oracle Advanced Queue (AQ): Automatic Callback with Retry Mechanism for Data Synchronization
+# A Simple Oracle Advanced Queue (DBMS AQ) Example: Automatic Callback
 
 Oracle Advanced Queuing (AQ) provides a powerful mechanism for **automatic, event-driven data processing** with built-in retry mechanisms and callback functions.
 
@@ -105,20 +105,23 @@ create or replace type sync_task_type as object (
 The queue is configured with retry mechanisms:
 
 ```sql
--- Create queue table
-dbms_aqadm.create_queue_table(
-    queue_table        => 'SYNC_QUEUE_TABLE',
-    queue_payload_type => 'SYNC_TASK_TYPE'
-);
+  -- Create queue table
+  dbms_aqadm.create_queue_table(
+    queue_table        => 'AQ_DEMO.SYNC_QUEUE_TABLE',
+    queue_payload_type => 'AQ_DEMO.SYNC_TASK_TYPE',
+    multiple_consumers => false,
+    comment            => 'Queue table for data synchronization tasks'
+  );
 
--- Create queue with retry configuration
-dbms_aqadm.create_queue(
-    queue_name     => 'SYNC_QUEUE',
-    queue_table    => 'SYNC_QUEUE_TABLE',
-    max_retries    => 3,        -- Retry failed messages 3 times
-    retry_delay    => 30,       -- Wait 30 seconds between retries
-    retention_time => 3600      -- Keep messages for 1 hour
-);
+  -- Create queue with retry configuration
+  dbms_aqadm.create_queue(
+    queue_name     => 'AQ_DEMO.SYNC_QUEUE',
+    queue_table    => 'AQ_DEMO.SYNC_QUEUE_TABLE',
+    max_retries    => 3,        -- Maximum number of retry attempts
+    retry_delay    => 30,       -- Delay in seconds between retries
+    retention_time => 3600,     -- Retention time in seconds (1 hour)
+    comment        => 'Queue for data synchronization tasks with retry configuration'
+  );
 ```
 
 **Retry Configuration Benefits:**
@@ -132,31 +135,99 @@ The callback procedure processes messages automatically:
 
 ```sql
 create or replace procedure sync_callback(
-    context   in raw,
-    reginfo   in sys.aq$_reg_info,
-    descr     in sys.aq$_descriptor,
-    payloadl  in number,
-    payload   in varchar2
+    context   in raw
+  , reginfo   in sys.aq$_reg_info
+  , descr     in sys.aq$_descriptor
+  , payloadl  in number
+  , payload   in varchar2
 ) as
-    l_message sync_task_type;
+  l_message sync_task_type;
+  l_dequeue_options dbms_aq.dequeue_options_t;
+  l_message_props   dbms_aq.message_properties_t;
+  l_message_id      raw(16);
+
+  l_sync_type       varchar2(100);
 begin
-    -- Dequeue the message
-    dbms_aq.dequeue(
-        queue_name => 'SYNC_QUEUE',
-        payload    => l_message
-    );
-    
-    -- Process the sync task
-    insert into sync_operations (
-        source_system, target_system, 
-        sync_type, record_count, sync_status
-    ) values (
-        l_message.source_system, l_message.target_system,
-        l_message.sync_type, l_message.record_count, 'COMPLETED'
-    );
-    
-    dbms_output.put_line('Sync completed: ' || 
-        l_message.source_system || ' -> ' || l_message.target_system);
+  dbms_output.put_line('Sync callback triggered at ' || to_char(systimestamp, 'HH24:MI:SS'));
+  logger.log(' .. AAA START dbms_aq.LOCKED: ' || l_sync_type);
+
+
+  -- Configure dequeue options
+  -- WAIT: Controls how long to wait for messages
+  --   • NO_WAIT: Return immediately if no message available
+  --   • FOREVER: [default] Wait indefinitely for a message
+  --   • Number: Wait specified seconds (0-4294967295)
+  l_dequeue_options.wait := dbms_aq.no_wait;
+  
+  -- NAVIGATION: Which message to retrieve from queue
+  --   • FIRST_MESSAGE: [default] Get first available message
+  --   • NEXT_MESSAGE: Get next message in sequence
+  --   • FIRST_MESSAGE_MULTI_GROUP: First message across consumer groups
+  --   • NEXT_MESSAGE_MULTI_GROUP: Next message across consumer groups
+  --l_dequeue_options.navigation := dbms_aq.first_message;
+  
+  -- VISIBILITY: When dequeue operation becomes visible to other transactions
+  --   • ON_COMMIT: [default] Changes visible only after transaction commit
+  --   • IMMEDIATE: Changes visible immediately
+  l_dequeue_options.visibility := dbms_aq.on_commit;
+  
+  -- DEQUEUE_MODE: What happens to the message after dequeue
+  --   • BROWSE: Read message but keep it in queue
+  --   • LOCKED: Lock message for exclusive access
+  --   • REMOVE: [default] Delete message after reading
+  --   • REMOVE_NODATA: Delete message but don't return payload
+  l_dequeue_options.dequeue_mode := dbms_aq.remove;
+  
+  -- DELIVERY_MODE: How messages are stored and delivered
+  --   • PERSISTENT: [default] Messages stored in database tables (durable)
+  --   • BUFFERED: Messages kept in memory (faster)
+  --   • PERSISTENT_OR_BUFFERED: Use either mode as appropriate
+  --l_dequeue_options.delivery_mode := dbms_aq.persistent;
+  
+  -- Additional dequeue options available:
+  -- l_dequeue_options.consumer_name := 'consumer_name';  -- Target specific consumer in multi-consumer queues
+  -- l_dequeue_options.msgid := raw_message_id;           -- Dequeue specific message by its unique ID
+  -- l_dequeue_options.correlation := 'correlation_id';   -- Filter messages by correlation identifier
+  -- l_dequeue_options.deq_condition := 'priority > 5';   -- SQL WHERE condition to filter which messages to dequeue
+  -- l_dequeue_options.transformation := 'transform_name'; -- Apply transformation function to message payload before returning
+
+  -- Available descriptor properties for logging/debugging:
+  -- descr.msg_id          - Message ID (RAW)
+  -- descr.queue_name      - Queue name where message is located
+  -- descr.consumer_name   - Consumer name (for multi-consumer queues)
+  -- Note: msg_priority and msg_state are not directly available on descriptor
+  
+  
+  logger.log('msg_id: ' || descr.msg_id);
+/*   logger.log('queue_name: ' || descr.queue_name);
+  logger.log('consumer_name: ' || descr.consumer_name);
+  logger.log('payload: ' || payload);
+  logger.log('payloadl: ' || payloadl);
+   */
+  l_dequeue_options.msgid := descr.msg_id;
+
+  -- Dequeue the message
+  dbms_aq.dequeue(
+      queue_name         => 'AQ_DEMO.SYNC_QUEUE'
+    , dequeue_options    => l_dequeue_options
+    , message_properties => l_message_props
+    , payload            => l_message
+    , msgid              => l_message_id
+  );
+  l_sync_type := l_message.sync_type;
+
+  -- Process the sync task
+  insert into sync_operations (source_system, target_system, sync_type, record_count, sync_status)
+  values (l_message.source_system, l_message.target_system, l_message.sync_type, l_message.record_count, 'COMPLETED');
+
+  dbms_output.put_line('Sync operation completed: ' || l_message.source_system || ' -> ' || l_message.target_system);
+  --commit;
+exception
+  when others then
+    --rollback;
+    dbms_output.put_line('Error in sync callback: ' || sqlerrm);
+    logger.log_error(' .. AAA END dbms_aq.LOCKED: ' || l_sync_type);
+    raise;
 end;
 ```
 
@@ -166,27 +237,48 @@ A simple procedure to queue sync tasks:
 
 ```sql
 create or replace procedure queue_sync_task(
-    p_source_system in varchar2,
-    p_target_system in varchar2,
-    p_sync_type     in varchar2,
-    p_record_count  in number,
-    p_priority      in number default 5
+    p_source_system in varchar2
+  , p_target_system in varchar2
+  , p_sync_type     in varchar2
+  , p_record_count  in number
+  , p_priority      in number default 5
 ) as
-    l_message sync_task_type;
+  l_enqueue_options dbms_aq.enqueue_options_t;
+  l_message_props   dbms_aq.message_properties_t;
+  l_message         sync_task_type;
+  l_msgid           raw(16);
 begin
-    -- Create sync task message
-    l_message := sync_task_type(
-        p_source_system, p_target_system, 
-        p_sync_type, p_record_count, p_priority
-    );
-    
-    -- Enqueue the task
-    dbms_aq.enqueue(
-        queue_name => 'SYNC_QUEUE',
-        payload    => l_message
-    );
-    
-    commit;
+  dbms_output.put_line('Queueing sync task: ' || p_source_system || ' -> ' || p_target_system);
+
+  -- Create sync task message
+  l_message := sync_task_type(
+      source_system => p_source_system,
+      target_system => p_target_system,
+      sync_type     => p_sync_type,
+      record_count  => p_record_count,
+      priority      => p_priority
+  );
+
+  -- Configure enqueue options
+  l_enqueue_options.visibility := dbms_aq.on_commit;
+
+  -- Enqueue the sync task
+  dbms_aq.enqueue(
+      queue_name         => 'AQ_DEMO.SYNC_QUEUE'
+    , enqueue_options    => l_enqueue_options
+    , message_properties => l_message_props
+    , payload            => l_message
+    , msgid              => l_msgid
+  );
+
+  commit;
+  dbms_output.put_line('Sync task queued successfully');
+
+exception
+  when others then
+    rollback;
+    dbms_output.put_line('Error queueing sync task: ' || sqlerrm);
+    raise;
 end;
 ```
 

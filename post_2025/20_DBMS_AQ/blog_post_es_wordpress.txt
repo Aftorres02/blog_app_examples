@@ -1,4 +1,4 @@
-Oracle Advanced Queue (AQ): Callbacks Automáticos con Mecanismos de Reintento para Sincronización de Datos
+Un ejemplo sencillo de Oracle Advanced Queue (DBMS AQ): Callback automático
 
 Oracle Advanced Queuing (AQ) proporciona un mecanismo poderoso para procesamiento automático de datos basado en eventos con mecanismos de reintento integrados y funciones de callback.
 
@@ -98,17 +98,20 @@ La cola se configura con mecanismos de reintento:
 
 -- Crear tabla de cola
 dbms_aqadm.create_queue_table(
-    queue_table        => 'SYNC_QUEUE_TABLE',
-    queue_payload_type => 'SYNC_TASK_TYPE'
+    queue_table        => 'AQ_DEMO.SYNC_QUEUE_TABLE',
+    queue_payload_type => 'AQ_DEMO.SYNC_TASK_TYPE',
+    multiple_consumers => false,
+    comment            => 'Tabla de cola para tareas de sincronización de datos'
 );
 
 -- Crear cola con configuración de reintento
 dbms_aqadm.create_queue(
-    queue_name     => 'SYNC_QUEUE',
-    queue_table    => 'SYNC_QUEUE_TABLE',
+    queue_name     => 'AQ_DEMO.SYNC_QUEUE',
+    queue_table    => 'AQ_DEMO.SYNC_QUEUE_TABLE',
     max_retries    => 3,        -- Reintentar mensajes fallidos 3 veces
     retry_delay    => 30,       -- Esperar 30 segundos entre reintentos
-    retention_time => 3600      -- Mantener mensajes por 1 hora
+    retention_time => 3600,     -- Mantener mensajes por 1 hora
+    comment        => 'Cola para tareas de sincronización con configuración de reintento'
 );
 
 Beneficios de la Configuración de Reintento:
@@ -127,25 +130,45 @@ create or replace procedure sync_callback(
     payloadl  in number,
     payload   in varchar2
 ) as
-    l_message sync_task_type;
+    l_message           sync_task_type;
+    l_dequeue_options   dbms_aq.dequeue_options_t;
+    l_message_props     dbms_aq.message_properties_t;
+    l_message_id        raw(16);
 begin
+    -- Configurar opciones de desencolado
+    -- NO_WAIT: regresar inmediatamente si no hay mensaje
+    l_dequeue_options.wait := dbms_aq.no_wait;
+    -- Visibilidad ON_COMMIT: visible tras commit
+    l_dequeue_options.visibility := dbms_aq.on_commit;
+    -- Modo REMOVE: elimina el mensaje después de leerlo
+    l_dequeue_options.dequeue_mode := dbms_aq.remove;
+    -- Usar el msg_id de la notificación para obtener el mensaje específico
+    l_dequeue_options.msgid := descr.msg_id;
+
     -- Desencolar el mensaje
     dbms_aq.dequeue(
-        queue_name => 'SYNC_QUEUE',
-        payload    => l_message
+        queue_name         => 'AQ_DEMO.SYNC_QUEUE',
+        dequeue_options    => l_dequeue_options,
+        message_properties => l_message_props,
+        payload            => l_message,
+        msgid              => l_message_id
     );
-    
+
     -- Procesar la tarea de sincronización
     insert into sync_operations (
-        source_system, target_system, 
+        source_system, target_system,
         sync_type, record_count, sync_status
     ) values (
         l_message.source_system, l_message.target_system,
         l_message.sync_type, l_message.record_count, 'COMPLETED'
     );
-    
-    dbms_output.put_line('Sincronización completada: ' || 
+
+    dbms_output.put_line('Sincronización completada: ' ||
         l_message.source_system || ' -> ' || l_message.target_system);
+exception
+    when others then
+        dbms_output.put_line('Error en callback de sincronización: ' || sqlerrm);
+        raise;
 end;
 
 6. API de Gestión de Cola
@@ -159,21 +182,37 @@ create or replace procedure queue_sync_task(
     p_record_count  in number,
     p_priority      in number default 5
 ) as
-    l_message sync_task_type;
+    l_enqueue_options dbms_aq.enqueue_options_t;
+    l_message_props   dbms_aq.message_properties_t;
+    l_message         sync_task_type;
+    l_msgid           raw(16);
 begin
+    dbms_output.put_line('Encolando tarea de sincronización: ' || p_source_system || ' -> ' || p_target_system);
+
     -- Crear mensaje de tarea de sincronización
     l_message := sync_task_type(
-        p_source_system, p_target_system, 
+        p_source_system, p_target_system,
         p_sync_type, p_record_count, p_priority
     );
-    
+
+    -- Opciones de encolado: visibilidad ON_COMMIT
+    l_enqueue_options.visibility := dbms_aq.on_commit;
+
     -- Encolar la tarea
     dbms_aq.enqueue(
-        queue_name => 'SYNC_QUEUE',
-        payload    => l_message
+        queue_name         => 'AQ_DEMO.SYNC_QUEUE',
+        enqueue_options    => l_enqueue_options,
+        message_properties => l_message_props,
+        payload            => l_message,
+        msgid              => l_msgid
     );
-    
+
     commit;
+exception
+    when others then
+        rollback;
+        dbms_output.put_line('Error encolando tarea de sincronización: ' || sqlerrm);
+        raise;
 end;
 
 Ejemplos de Uso
