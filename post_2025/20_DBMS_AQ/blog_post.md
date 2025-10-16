@@ -149,7 +149,7 @@ create or replace procedure sync_callback(
   l_sync_type       varchar2(100);
 begin
   dbms_output.put_line('Sync callback triggered at ' || to_char(systimestamp, 'HH24:MI:SS'));
-  logger.log(' .. AAA START dbms_aq.LOCKED: ' || l_sync_type);
+
 
 
   -- Configure dequeue options
@@ -158,32 +158,32 @@ begin
   --   • FOREVER: [default] Wait indefinitely for a message
   --   • Number: Wait specified seconds (0-4294967295)
   l_dequeue_options.wait := dbms_aq.no_wait;
-  
+
   -- NAVIGATION: Which message to retrieve from queue
   --   • FIRST_MESSAGE: [default] Get first available message
   --   • NEXT_MESSAGE: Get next message in sequence
   --   • FIRST_MESSAGE_MULTI_GROUP: First message across consumer groups
   --   • NEXT_MESSAGE_MULTI_GROUP: Next message across consumer groups
   --l_dequeue_options.navigation := dbms_aq.first_message;
-  
+
   -- VISIBILITY: When dequeue operation becomes visible to other transactions
   --   • ON_COMMIT: [default] Changes visible only after transaction commit
   --   • IMMEDIATE: Changes visible immediately
   l_dequeue_options.visibility := dbms_aq.on_commit;
-  
+
   -- DEQUEUE_MODE: What happens to the message after dequeue
   --   • BROWSE: Read message but keep it in queue
   --   • LOCKED: Lock message for exclusive access
   --   • REMOVE: [default] Delete message after reading
   --   • REMOVE_NODATA: Delete message but don't return payload
   l_dequeue_options.dequeue_mode := dbms_aq.remove;
-  
+
   -- DELIVERY_MODE: How messages are stored and delivered
   --   • PERSISTENT: [default] Messages stored in database tables (durable)
   --   • BUFFERED: Messages kept in memory (faster)
   --   • PERSISTENT_OR_BUFFERED: Use either mode as appropriate
   --l_dequeue_options.delivery_mode := dbms_aq.persistent;
-  
+
   -- Additional dequeue options available:
   -- l_dequeue_options.consumer_name := 'consumer_name';  -- Target specific consumer in multi-consumer queues
   -- l_dequeue_options.msgid := raw_message_id;           -- Dequeue specific message by its unique ID
@@ -196,8 +196,8 @@ begin
   -- descr.queue_name      - Queue name where message is located
   -- descr.consumer_name   - Consumer name (for multi-consumer queues)
   -- Note: msg_priority and msg_state are not directly available on descriptor
-  
-  
+
+
   logger.log('msg_id: ' || descr.msg_id);
 /*   logger.log('queue_name: ' || descr.queue_name);
   logger.log('consumer_name: ' || descr.consumer_name);
@@ -224,9 +224,8 @@ begin
   --commit;
 exception
   when others then
-    --rollback;
+    rollback;
     dbms_output.put_line('Error in sync callback: ' || sqlerrm);
-    logger.log_error(' .. AAA END dbms_aq.LOCKED: ' || l_sync_type);
     raise;
 end;
 ```
@@ -299,7 +298,7 @@ end;
 
 ```sql
 -- Check completed sync operations
-select 
+select
     source_system,
     target_system,
     sync_type,
