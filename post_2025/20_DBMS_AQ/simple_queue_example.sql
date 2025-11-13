@@ -73,7 +73,7 @@ begin
   dbms_aqadm.create_queue(
     queue_name     => 'AQ_DEMO.SYNC_QUEUE',
     queue_table    => 'AQ_DEMO.SYNC_QUEUE_TABLE',
-    max_retries    => 3,        -- Maximum number of retry attempts
+    max_retries    => 5,        -- Maximum number of retry attempts
     retry_delay    => 30,       -- Delay in seconds between retries
     retention_time => 3600,     -- Retention time in seconds (1 hour)
     comment        => 'Queue for data synchronization tasks with retry configuration'
@@ -90,7 +90,7 @@ begin
   dbms_aqadm.alter_queue(
     queue_name     => 'AQ_DEMO.SYNC_QUEUE',
      max_retries    => 5       -- Changed from 3 to 5
-     , retry_delay    => 0       -- Changed from 30 to 60 seconds
+     , retry_delay    => 10       -- Changed from 30 to 60 seconds
     --, retention_time => 15      -- Changed from 3600 to 7200 seconds (2 hours)
   );
   commit;
@@ -116,7 +116,7 @@ create or replace procedure sync_callback(
   l_sync_type       varchar2(100);
 begin
   dbms_output.put_line('Sync callback triggered at ' || to_char(systimestamp, 'HH24:MI:SS'));
-  logger.log(' .. AAA START dbms_aq.LOCKED: ' || l_sync_type);
+  logger.log(' .. START');
 
 
   -- Configure dequeue options
@@ -188,12 +188,14 @@ begin
   values (l_message.source_system, l_message.target_system, l_message.sync_type, l_message.record_count, 'COMPLETED');
 
   dbms_output.put_line('Sync operation completed: ' || l_message.source_system || ' -> ' || l_message.target_system);
+  -- raise_application_error(-20001,'custom error');
+  logger.log(' .. END');
   --commit;
 exception
   when others then
-    --rollback;
-    dbms_output.put_line('Error in sync callback: ' || sqlerrm);
-    logger.log_error(' .. AAA END dbms_aq.LOCKED: ' || l_sync_type);
+    rollback;
+    dbms_output.put_line('Error in sync callback: ' || sqlerrm); 
+    logger.log_error('Error in sync callback: '|| sqlerrm);
     raise;
 end;
 /
@@ -214,6 +216,9 @@ begin
   );
   dbms_output.put_line('Sync notification registered');
 end;
+/
+
+select * from user_subscr_registrations
 /
 
 -- 7. Sync API - Queue Sync Task
@@ -269,11 +274,6 @@ end;
 prompt '=== DATA SYNCHRONIZATION AQ SETUP COMPLETE ==='
 prompt ''
 
--- Validate setup
-select 'Message type exists: ' || count(*) as validation
-from user_types
-where type_name = 'SYNC_TASK_TYPE';
-
 select *
 from all_queues -- user_queues
 where name = 'SYNC_QUEUE';
@@ -288,14 +288,31 @@ prompt '=== TESTING DATA SYNCHRONIZATION ==='
 
 -- Test sync tasks
 begin
-  queue_sync_task('CRM_SYSTEM', 'DATA_WAREHOUSE', 'INCREMENTAL', 1250, 3);
-  queue_sync_task('ERP_SYSTEM', 'ANALYTICS_DB', 'FULL', 50000, 5);
-  queue_sync_task('WEB_APP', 'BACKUP_SYSTEM', 'DELTA', 340, 1);
+  queue_sync_task('CRM_SYSTEM', 'DATA_WAREHOUSE-' ||  to_char(SYSTIMESTAMP AT TIME ZONE 'America/Montreal', 'HH24:MI:SS') , 'INCREMENTAL', 1250, 3);
+  --queue_sync_task('ERP_SYSTEM', 'ANALYTICS_DB-'||  to_char(systimestamp, 'HH24:MI:SS'), 'FULL', 50000, 5);
+  --queue_sync_task('WEB_APP', 'BACKUP_SYSTEM-'||  to_char(systimestamp, 'HH24:MI:SS'), 'DELTA', 340, 1);
+  commit;
 end;
 /
+select * from logger_logs
+where id > 18573
+order by 1 desc
+/
+prompt ''
+prompt '=== QUEUE STATUS ==='
+select
+    treat(user_data as sync_task_type).source_system as source_system
+  , treat(user_data as sync_task_type).target_system as target_system
+  , treat(user_data as sync_task_type).sync_type as sync_type
+  , treat(user_data as sync_task_type).record_count as record_count
+  , enq_time
+  , deq_time
+  , retry_count
+  , msg_state
+from aq$sync_queue_table
+order by enq_time desc;
 
--- Wait a moment for processing
-dbms_lock.sleep(2);
+
 
 -- Check results
 prompt ''
@@ -311,19 +328,6 @@ select
 from sync_operations
 order by created_on desc;
 
-prompt ''
-prompt '=== QUEUE STATUS ==='
-select
-    treat(user_data as sync_task_type).source_system as source_system
-  , treat(user_data as sync_task_type).target_system as target_system
-  , treat(user_data as sync_task_type).sync_type as sync_type
-  , treat(user_data as sync_task_type).record_count as record_count
-  , enq_time
-  , deq_time
-  , retry_count
-  , msg_state
-from aq$sync_queue_table
-order by enq_time desc;
 
 prompt ''
 prompt '=== RETRY CONFIGURATION ==='

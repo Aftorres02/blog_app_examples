@@ -1,8 +1,9 @@
 # A Simple Oracle Advanced Queue (DBMS AQ) Example: Automatic Callback
-
 Oracle Advanced Queuing (AQ) provides a powerful mechanism for **automatic, event-driven data processing** with built-in retry mechanisms and callback functions.
 
-In this post, we'll explore how to implement a **fully automated data synchronization system** using DBMS_AQ callbacks that automatically processes messages as they arrive, with intelligent retry handling for failed operations.
+In this post, we'll explore how to implement a **fully automated data synchronization system** using DBMS_AQ callbacks that automatically process messages as they arrive, with intelligent retry handling for failed operations.
+
+[Complete Implementation on GitHub](https://github.com/Aftorres02/blog_app_examples/blob/master/post_2025/20_DBMS_AQ/simple_queue_example.sql) - Full working code example
 
 ## What is Oracle Advanced Queuing?
 
@@ -46,7 +47,7 @@ This implementation extends the [Oracle-Base AQ tutorial](https://oracle-base.co
                               ▼                      ▼
                        ┌──────────────┐
                        │ Retry Logic  │
-                       │ (3 attempts) │
+                       │ (5 attempts) │
                        └──────────────┘
 ```
 
@@ -117,11 +118,17 @@ The queue is configured with retry mechanisms:
   dbms_aqadm.create_queue(
     queue_name     => 'AQ_DEMO.SYNC_QUEUE',
     queue_table    => 'AQ_DEMO.SYNC_QUEUE_TABLE',
-    max_retries    => 3,        -- Maximum number of retry attempts
+    max_retries    => 5,        -- Maximum number of retry attempts
     retry_delay    => 30,       -- Delay in seconds between retries
     retention_time => 3600,     -- Retention time in seconds (1 hour)
     comment        => 'Queue for data synchronization tasks with retry configuration'
   );
+
+  --
+  begin
+    -- Start the queue
+    dbms_aqadm.start_queue('AQ_DEMO.SYNC_QUEUE');
+  end;
 ```
 
 **Retry Configuration Benefits:**
@@ -150,40 +157,38 @@ create or replace procedure sync_callback(
 begin
   dbms_output.put_line('Sync callback triggered at ' || to_char(systimestamp, 'HH24:MI:SS'));
 
-
-
   -- Configure dequeue options
   -- WAIT: Controls how long to wait for messages
   --   • NO_WAIT: Return immediately if no message available
   --   • FOREVER: [default] Wait indefinitely for a message
   --   • Number: Wait specified seconds (0-4294967295)
   l_dequeue_options.wait := dbms_aq.no_wait;
-
+  
   -- NAVIGATION: Which message to retrieve from queue
   --   • FIRST_MESSAGE: [default] Get first available message
   --   • NEXT_MESSAGE: Get next message in sequence
   --   • FIRST_MESSAGE_MULTI_GROUP: First message across consumer groups
   --   • NEXT_MESSAGE_MULTI_GROUP: Next message across consumer groups
   --l_dequeue_options.navigation := dbms_aq.first_message;
-
+  
   -- VISIBILITY: When dequeue operation becomes visible to other transactions
   --   • ON_COMMIT: [default] Changes visible only after transaction commit
   --   • IMMEDIATE: Changes visible immediately
   l_dequeue_options.visibility := dbms_aq.on_commit;
-
+  
   -- DEQUEUE_MODE: What happens to the message after dequeue
   --   • BROWSE: Read message but keep it in queue
   --   • LOCKED: Lock message for exclusive access
   --   • REMOVE: [default] Delete message after reading
   --   • REMOVE_NODATA: Delete message but don't return payload
   l_dequeue_options.dequeue_mode := dbms_aq.remove;
-
+  
   -- DELIVERY_MODE: How messages are stored and delivered
   --   • PERSISTENT: [default] Messages stored in database tables (durable)
   --   • BUFFERED: Messages kept in memory (faster)
   --   • PERSISTENT_OR_BUFFERED: Use either mode as appropriate
   --l_dequeue_options.delivery_mode := dbms_aq.persistent;
-
+  
   -- Additional dequeue options available:
   -- l_dequeue_options.consumer_name := 'consumer_name';  -- Target specific consumer in multi-consumer queues
   -- l_dequeue_options.msgid := raw_message_id;           -- Dequeue specific message by its unique ID
@@ -196,8 +201,8 @@ begin
   -- descr.queue_name      - Queue name where message is located
   -- descr.consumer_name   - Consumer name (for multi-consumer queues)
   -- Note: msg_priority and msg_state are not directly available on descriptor
-
-
+  
+  
   logger.log('msg_id: ' || descr.msg_id);
 /*   logger.log('queue_name: ' || descr.queue_name);
   logger.log('consumer_name: ' || descr.consumer_name);
@@ -224,13 +229,45 @@ begin
   --commit;
 exception
   when others then
-    rollback;
+    --rollback;
     dbms_output.put_line('Error in sync callback: ' || sqlerrm);
+
     raise;
 end;
 ```
+### 6. Regiter the callBack
 
-### 6. Queue Management API
+``` sql
+-- When our queue SYNC_QUEUE will receibe an element,
+-- this PLSQL is going to triger
+begin
+  dbms_aq.register(
+      sys.aq$_reg_info_list(
+          sys.aq$_reg_info(
+              'AQ_DEMO.SYNC_QUEUE'
+            , dbms_aq.namespace_aq
+            , 'PLSQL://AQ_DEMO.SYNC_CALLBACK'
+            , null
+          )
+      )
+    , 1
+  );
+  dbms_output.put_line('Sync notification registered');
+end;
+/
+```
+
+### 8. Start the queue
+
+``` sql
+begin
+  -- Start the queue
+  dbms_aqadm.start_queue('AQ_DEMO.SYNC_QUEUE');
+end;
+/
+```
+
+### 8. Queue Management API
 
 A simple procedure to queue sync tasks:
 
@@ -298,30 +335,28 @@ end;
 
 ```sql
 -- Check completed sync operations
-select
-    source_system,
-    target_system,
-    sync_type,
-    record_count,
-    sync_status,
-    created_on
-from sync_operations
-order by created_on desc;
+select source_system
+      , target_system
+      , sync_type
+      , record_count
+      , sync_status
+      , created_on
+   from sync_operations
+  order by created_on desc;
 ```
 
 ### Queue Status Monitoring
 
 ```sql
 -- Monitor queue status and retry counts
-select
-    treat(user_data as sync_task_type).source_system,
-    treat(user_data as sync_task_type).target_system,
-    enq_time,
-    deq_time,
-    retry_count,
-    msg_state
-from aq$sync_queue_table
-order by enq_time desc;
+select treat(user_data as sync_task_type).source_system
+     , treat(user_data as sync_task_type).target_system
+     , enq_time
+     , deq_time
+     , retry_count
+     , msg_state
+  from aq$sync_queue_table
+ order by enq_time desc;
 ```
 
 ## Benefits of This Approach
@@ -333,7 +368,7 @@ order by enq_time desc;
 
 ### 2. **Scalability**
 - Asynchronous processing doesn't block source systems
-- Multiple consumers can process messages in parallel
+- Multiple consumers can process messages in parallel, This is a different example, where the multiple_consumers = TRUE and you need to register consumers, this example is only single consumer.
 - Queue-based architecture handles load spikes
 
 ## Real-World Applications
@@ -370,7 +405,3 @@ The implementation shown here demonstrates how to create a production-ready sync
 
 ### Troubleshooting
 - [Stack Overflow: Oracle AQ Dequeue Issues](https://stackoverflow.com/questions/30502535/oracle-advance-queue-dequeue-not-working) - Common dequeue problems and solutions
-
----
-
-*This implementation extends the basic AQ tutorial from [Oracle-Base](https://oracle-base.com/articles/9i/advanced-queuing-9i) by adding automatic callback processing, retry mechanisms, and comprehensive monitoring capabilities.*
