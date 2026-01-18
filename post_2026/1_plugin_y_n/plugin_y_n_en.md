@@ -4,7 +4,7 @@ Oracle APEX Interactive Reports often display boolean or flag columns (like `act
 
 In this post, we'll explore how to create a **custom template component plugin** that automatically displays **green checkmarks (✓)** for "Y" values and **red crosses (✗)** for "N" values in your APEX reports, providing instant visual feedback to users.
 
-[Complete Implementation on GitHub](https://github.com/Aftorres02/blog_app_examples/blob/master/post_2026/1_plugin_y_n/) - Full working code examples
+[Complete Implementation on GitHub](https://github.com/Aftorres02/blog_app_examples/tree/master/post_2026/1_plugin_y_n) - Full working code examples
 
 ## What is a Template Component Plugin?
 
@@ -26,7 +26,7 @@ The plugin displays values as shown in the following table:
 
 ### Step 1: Install the CSS File
 
-First, upload the CSS file as a workspace static file at `css/y_n.css`. The file contains the following styles:
+First, upload the [`y_n.css`](https://github.com/Aftorres02/blog_app_examples/blob/master/post_2026/1_plugin_y_n/y_n.css) file as a workspace static file at `css/y_n.css`. The file contains the following styles:
 
 ```css
 .icon-check {
@@ -41,7 +41,7 @@ First, upload the CSS file as a workspace static file at `css/y_n.css`. The file
 
 ### Step 2: Install the Template Component Plugin
 
-Install the template component plugin:
+Install the template component plugin by running the [`template_component_plugin_y_n.sql`](https://github.com/Aftorres02/blog_app_examples/blob/master/post_2026/1_plugin_y_n/template_component_plugin_y_n.sql) script:
 
 ```sql
 -- Run the plugin installation script
@@ -114,8 +114,8 @@ To modify the colors, edit the `css/y_n.css` file:
 ---
 
 **Files in this post:**
-- `template_component_plugin_y_n.sql` - Plugin installation script
-- `y_n.css` - CSS styling file
+- [`template_component_plugin_y_n.sql`](https://github.com/Aftorres02/blog_app_examples/blob/master/post_2026/1_plugin_y_n/template_component_plugin_y_n.sql) - Plugin installation script
+- [`y_n.css`](https://github.com/Aftorres02/blog_app_examples/blob/master/post_2026/1_plugin_y_n/y_n.css) - CSS styling file
 - `plugin_y_n_en.md` - This blog post (English)
 - `plugin_y_n_es.md` - Blog post (Spanish)
 
