@@ -1,4 +1,4 @@
-# Custom Y/N Template Component Plugin for Oracle APEX Interactive Reports
+# Y/N Template Component Plugin for Oracle APEX
 
 Oracle APEX Interactive Reports often display boolean or flag columns (like `active_yn`, `enabled_yn`) with plain text values "Y" or "N". While functional, this approach lacks visual clarity and modern UX standards.
 
@@ -19,7 +19,7 @@ This implementation creates a **template component plugin** that transforms Y/N 
 
 The plugin displays values as shown in the following table:
 
-(Insert Image)
+![Report Result with Y/N Icons](https://raw.githubusercontent.com/Aftorres02/blog_app_examples/master/post_2026/1_plugin_y_n/images/report_result.png)
 
 
 ## Installation Instructions
@@ -62,7 +62,7 @@ This creates a plugin named **Y_N** that can be used as a column template in Int
 
 ### Example
 
-(add image)
+![Applying Y_N Template Component](https://raw.githubusercontent.com/Aftorres02/blog_app_examples/master/post_2026/1_plugin_y_n/images/implementation.png)
 
 After applying the Y_N template component to the `active_yn` column, the values will automatically display as green checkmarks (✓) for "Y" and red crosses (✗) for "N".
 
@@ -72,17 +72,26 @@ After applying the Y_N template component to the `active_yn` column, the values 
 
 The plugin uses APEX's declarative template syntax to conditionally render icons based on the column value:
 
-```68:79:post_2026/1_plugin_y_n/template_component_plugin_y_n.sql
-'  {if ?VALUE/}',
-'',
-'      {case VALUE/}',
-unistr('        {when Y/} <span class="icon-check" title="#VALUE#">\2713</span>'),
-'',
-unistr('        {when N/} <span class="icon-x">\2717</span>'),
-'        {otherwise/}',
-'      {endcase/}',
-'    ',
-'  {endif/}',
+``` html
+68:79:post_2026/1_plugin_y_n/template_component_plugin_y_n.sql
+{if APEX$IS_LAZY_LOADING/}
+  <div>#VALUE#</div>
+   
+{else/}
+ 
+  {if ?VALUE/}
+
+      {case VALUE/}
+        {when Y/} <span class="icon-check" title="#VALUE#">✓</span>
+
+        {when N/} <span class="icon-x">✗</span>
+        {otherwise/}
+      {endcase/}
+    
+  {endif/}
+ 
+
+{endif/}
 ```
 
 ### CSS Styling
@@ -116,6 +125,3 @@ To modify the colors, edit the `css/y_n.css` file:
 **Files in this post:**
 - [`template_component_plugin_y_n.sql`](https://github.com/Aftorres02/blog_app_examples/blob/master/post_2026/1_plugin_y_n/template_component_plugin_y_n.sql) - Plugin installation script
 - [`y_n.css`](https://github.com/Aftorres02/blog_app_examples/blob/master/post_2026/1_plugin_y_n/y_n.css) - CSS styling file
-- `plugin_y_n_en.md` - This blog post (English)
-- `plugin_y_n_es.md` - Blog post (Spanish)
-
