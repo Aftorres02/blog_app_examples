@@ -1,126 +1,52 @@
-# Visualizing Color Data in Oracle APEX: A Pure CSS Approach
+# APEX HEX Color Visualizer - Oracle APEX Plugin
 
-Have you ever built an Oracle APEX report containing hex color codes (e.g., `#FF5733`) and wished you could display them as actual visual elements instead of just plain text? While raw hex strings are functional, they aren't the most user-friendly way to present color data.
+One of the most powerful and often underutilized features of Oracle APEX is **Template Components**. These allow us to encapsulate complex UI logic into reusable and easy-to-configure components.
 
-In this post, I'll share a generic column template for Oracle APEX that transforms these raw hex strings into beautiful UI components.
+In this post, we'll see how to "display colors" using a plugin. The goal is to go from showing a simple hex code (e.g., `#FF4436`) to a rich visual component with multiple customization options—dot, radio, square, badge, pill, etc.—usable in Interactive Reports.
 
-## Key Features
+![APEX Color Visualizer Preview](https://github.com/Aftorres02/blog_app_examples/raw/master/post_2026/2_apex_color_visualizer/basic_hex_example.png)
+_(This is the final result: a single plugin, multiple visual representations)_
 
-1.  **Visual Variety**: The template includes 5 built-in styles: **Radio**, **Pill**, **Square**, **Badge**, and **Dot**. This variety covers most use cases, from status indicators to product color selection.
-2.  **Zero Dependencies**: The entire solution runs on pure CSS. No JavaScript libraries or heavy frameworks are required, keeping your app fast and lightweight.
+## Anatomy of Our "APEX Color Visualizer" Plugin
 
-## How It Works
+For this example, we have designed a plugin that supports a large number of visual variations controlled by custom attributes.
 
-This solution works as an **APEX Template Component** (or a generic Column Template). It essentially accepts a hex string and a few configuration parameters, then renders the appropriate HTML structure.
+### 1. Multiple Display Styles
 
-### Parameters
+The core of the plugin allows you to choose how to render the data using the `STYLE` attribute:
 
-The component accepts the following parameters:
+- **Pill**: Ideal for prominent statuses.
+- **Badge**: Subtle, light background with colored border.
+- **Radio / Dot**: Minimalist indicators alongside the text.
+- **Square**: Palette-style color swatches.
 
-- **STYLE**: The visual style (`RADIO`, `PILL`, `SQUARE`, `BADGE`, `DOT`).
-- **SIZE**: Hability to change the size.
-- **SHOW_TEXT**: Toggle (`Y`/`N`) to show or hide the hex code text.
-- **SHADOW**: Toggle (`Y`/`N`) for shadow effects.
-- **BORDER**: Toggle (`Y`/`N`/`thin`/`thick`) for borders (applies to Radio, Square, Badge).
-- **POSITION**: Position of the text relative to the indicator (`left`, `right`, `top`, `bottom`).
-- **HEX_COLOR**: The actual data column containing the hex string (e.g., `#FF5733`).
+### 2. Custom Attributes
 
-## The Visual Styles
+What makes this plugin truly useful is its flexibility. We have defined attributes that can be configured directly from the Page Designer:
 
-Here is a breakdown of the CSS that powers these components. You can include this in your page's "Inline CSS" or your application's global CSS file.
+- **Size**: Full size control (Extra Small, Small, Medium, Large, Extra Large).
+- **Show Text**: Option to hide the Hex code and leave only the visual indicator.
+- **Shadow & Border**: Boolean attributes to add depth or defined borders.
+- **Position**: Flexible alignment of the indicator relative to the text (left, right, top, bottom).
 
-```css
-/* Base size classes */
-.color-size-xs {
-  font-size: 10px;
-}
-.color-size-s {
-  font-size: 11px;
-}
-.color-size-m {
-  font-size: 12px;
-}
-.color-size-l {
-  font-size: 14px;
-}
-.color-size-xl {
-  font-size: 16px;
-}
+![Plugin Options](https://github.com/Aftorres02/blog_app_examples/raw/master/post_2026/2_apex_color_visualizer/hex_plugin%20options.png)
 
-/* Radio button appearance */
-.color-radio {
-  display: inline-block;
-  border-radius: 50%;
-  border-style: solid;
-  border-color: #fff;
-  vertical-align: middle;
-  box-shadow:
-    0 0 0 2px #ddd,
-    inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-}
+You can view the full styles here: [apex_color_visualizer.css](https://github.com/Aftorres02/blog_app_examples/blob/master/post_2026/2_apex_color_visualizer/apex_color_visualizer.css)
 
-/* Pill appearance */
-.color-pill {
-  display: inline-block;
-  color: #fff;
-  font-weight: 500;
-  vertical-align: middle;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-}
+## How to Use
 
-/* ... (See full CSS in source) */
-```
+Implementing it in your applications is simple, follow these steps:
 
-## The Template Logic
+1.  **Create Your Report**: Create an Interactive Report that contains a column with hex color codes.
+2.  **Select the Column**: In Page Designer, select the color column.
+3.  **Change the Type**: Change the column type to **APEX Color Visualizer**.
+4.  **Configure**: Adjust the attributes (Style, Size, Shadow, etc.) according to your needs.
 
-The logic inside the plugin handles the rendering. Here is a snippet showing how we handle the "Radio" and "Pill" styles using APEX template directives:
+![Plugin Configuration](https://github.com/Aftorres02/blog_app_examples/raw/master/post_2026/2_apex_color_visualizer/hex%20color%20plugin.png)
+_(Plugin configuration panel in Page Designer)_
 
-```html
-{if APEX$IS_LAZY_LOADING/}
-<div>#HEX_COLOR#</div>
-{else/} {if ?HEX_COLOR/} {case STYLE/} {when RADIO/}
-<!-- Radio button style: Large circular with white border and shadow ring -->
-<span class="color-container color-position-#POSITION#">
-  <span
-    class="color-radio color-radio-#SIZE#"
-    style="background-color:#HEX_COLOR#;"
-    title="#HEX_COLOR#"
-  >
-  </span>
-  {if ?SHOW_TEXT/}
-  <!-- Text Logic Here -->
-  {endif/}
-</span>
+## Resources
 
-{when PILL/}
-<!-- Pill style: Rounded badge with color background -->
-<span
-  class="color-pill color-pill-#SIZE# color-size-#SIZE#"
-  style="background-color:#HEX_COLOR#;"
-  title="#HEX_COLOR#"
->
-  #HEX_COLOR#
-</span>
-
-<!-- Other styles (SQUARE, BADGE, DOT) follow similar patterns... -->
-
-{endcase/} {endif/} {endif/}
-```
-
-By leveraging `APEX$IS_LAZY_LOADING`, we ensure that if the user scrolls quickly through a massive grid, the browser isn't bogged down trying to render complex styles for rows that aren't even visible yet.
-
-## Installation Steps
-
-1.  **Create Custom Component**: In your APEX application, go to **Shared Components** > **Plug-ins** (or **Templates**) and create a new **Template Component**.
-2.  **Define Attributes**: add the custom attributes listed above (Style, Size, etc.) and define their List of Values.
-3.  **Add Code**: Paste the CSS and Template HTML into the respective fields.
-4.  **Use in Report**: Open your Interactive Grid or Classic Report, select the column containing your hex color, and change the type to use your new plugin. Map the `HEX_COLOR` attribute to your database column.
-
-## Conclusion
-
-Visualizing data is a powerful way to enhance user experience. With this simple, pure-CSS template, you can transform technical color codes into vibrant, intuitive interface elements that make your Oracle APEX applications feel more premium and professional.
-
----
-
-_Check out the full source code for all styles and options in the `apex_color_styles_template.sql` file._
+- **Full Repository**: [Access the source code here](https://github.com/Aftorres02/blog_app_examples/tree/master/post_2026/2_apex_color_visualizer)
+- **Plugin Installation**: [template_component_plugin_apex_color_visualizer.sql](https://github.com/Aftorres02/blog_app_examples/blob/master/post_2026/2_apex_color_visualizer/template_component_plugin_apex_color_visualizer.sql)
+- **CSS Styles**: [apex_color_visualizer.css](https://github.com/Aftorres02/blog_app_examples/blob/master/post_2026/2_apex_color_visualizer/apex_color_visualizer.css)
