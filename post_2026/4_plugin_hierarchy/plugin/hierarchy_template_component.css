@@ -1,0 +1,86 @@
+/* Base Layout */
+.hierarchy-item {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1.5;
+  width: 100%;
+  box-sizing: border-box;
+  /* Removed padding-left from container, handled by spacer/leader now */
+}
+
+/* Spacer for purely indented modes (Icons, Spaces, Chevrons) */
+.indent-spacer {
+  flex-shrink: 0;
+  display: inline-block;
+  height: 1px;
+  /* Width set inline */
+}
+
+/* Common Icon/Leader Styling */
+.hierarchy-icon,
+.line-leader,
+.dot-leader,
+.ascii-icon {
+  margin-right: 8px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Style: ICONS --- */
+.mode-ICONS .hierarchy-icon {
+  font-size: 14px;
+  width: 20px;
+}
+.mode-ICONS.parent-node .hierarchy-icon {
+  color: #ffa500;
+}
+.mode-ICONS.leaf-node .hierarchy-icon {
+  color: #6f6f6f;
+}
+
+/* --- Style: CHEVRONS --- */
+.mode-CHEVRONS .hierarchy-icon {
+  font-size: 12px;
+  width: 16px;
+}
+.mode-CHEVRONS.parent-node .hierarchy-icon {
+  color: #555;
+}
+.mode-CHEVRONS.leaf-node .hierarchy-icon {
+  color: #999;
+}
+
+/* --- Style: L-STEPS (└─) --- */
+.ascii-icon {
+  font-family: monospace;
+  font-weight: bold;
+  color: #ccc;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* --- Style: LINES (──────) --- */
+.line-leader {
+  height: 1px;
+  /* Width set inline dynamic */
+  background-color: #ccc;
+  align-self: center;
+}
+
+/* --- Style: DOTS (......) --- */
+.dot-leader {
+  height: 1px;
+  /* Width set inline dynamic */
+  border-bottom: 2px dotted #ccc;
+  align-self: center;
+  margin-bottom: 4px; /* Align visual center of dots */
+}
+
+/* Text Truncation */
+.hierarchy-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
