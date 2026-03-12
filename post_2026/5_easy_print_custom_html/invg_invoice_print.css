@@ -1,0 +1,235 @@
+/* =============================================================================
+   Invoice document styles — Oracle APEX modal page 120
+   Ported from the HTML/JS Invoice Generator (styles.css).
+   Paste into Page > CSS > Inline  OR  upload as Static Application File.
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   Invoice document (inside the modal body)
+   ----------------------------------------------------------------------------- */
+.invoice-doc {
+  max-width: 700px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #1a1a1a;
+}
+
+.invoice-title {
+  margin: 0 0 1rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.02em;
+}
+
+.invoice-meta {
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.invoice-meta p {
+  margin: 0.2rem 0;
+}
+
+.invoice-parties {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.invoice-from,
+.invoice-to {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.invoice-from strong,
+.invoice-to strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #2c3e50;
+}
+
+/* Services table */
+.invoice-services {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.invoice-services th,
+.invoice-services td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.invoice-services th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.invoice-services .amount {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Summary totals */
+.invoice-summary {
+  width: 100%;
+  max-width: 320px;
+  margin-left: auto;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.invoice-summary td {
+  padding: 0.4rem 0.75rem;
+  border-bottom: 1px solid #e8e8e8;
+  text-align: right;
+}
+
+.invoice-summary .summary-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+}
+
+.invoice-summary .amount {
+  white-space: nowrap;
+  min-width: 5.5rem;
+}
+
+/* Currency symbol left, value right */
+.invoice-summary .amount,
+.invoice-services .amount {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.15rem;
+}
+
+.invoice-summary .amount .currency,
+.invoice-services .amount .currency {
+  flex-shrink: 0;
+}
+
+.invoice-summary .amount .amount-value,
+.invoice-services .amount .amount-value {
+  text-align: right;
+}
+
+.invoice-summary .summary-total-row td {
+  border-bottom: none;
+  border-top: 1px solid #ccc;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  background: #e8e8e8;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Bank / payment details */
+.invoice-bank {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.invoice-bank h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.invoice-bank p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Notes */
+.invoice-notes {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.invoice-notes p {
+  margin: 0;
+}
+
+/* Error state */
+.invg-error {
+  padding: 2rem;
+  text-align: center;
+  color: #c0392b;
+  font-weight: 600;
+}
+
+/* =============================================================================
+   Print — hide APEX chrome, show only the invoice
+   Called via window.print() from the modal page.
+   Strategy: hide ALL elements, then selectively show .invoice-doc only.
+   ============================================================================= */
+
+@page {
+  margin: 12mm;
+}
+
+@media print {
+  /* 1. Hide every element on the page */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* 2. Show the invoice document and all its children */
+  .invoice-doc,
+  .invoice-doc * {
+    visibility: visible !important;
+  }
+
+  /* 3. Pull the invoice to the top-left of the page */
+  .invoice-doc {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* 4. Ensure parent containers don't clip the invoice */
+  .ui-dialog,
+  .ui-dialog-content,
+  .t-Dialog-body,
+  .t-Region-body {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    position: static !important;
+    width: auto !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* 5. Clean background */
+  body {
+    background: #fff !important;
+  }
+}
