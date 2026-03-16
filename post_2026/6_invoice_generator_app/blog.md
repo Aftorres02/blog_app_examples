@@ -100,7 +100,7 @@ Log in to APEX and your invoicing app is ready.
 ## Get the code
 
 - **Full application**: [OracleApex-Invoice-Generator](https://github.com/Aftorres02/OracleApex-Invoice-Generator)
-- **Blog screenshots**: [blog_app_examples/post_2026/6_invoice_generator_app](https://github.com/Aftorres02/blog_app_examples/tree/master/post_2026/6_invoice_generator_app)
+
 
 Clone, run the release script, and go send that invoice.
 
