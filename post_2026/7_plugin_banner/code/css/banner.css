@@ -1,0 +1,95 @@
+/*
+ * ==========================================================================
+ * banner.css
+ * ==========================================================================
+ *
+ * Top-of-page environment banner (DEV / QA / TRAIN) that mimics the
+ * native APEX Builder `.a-EnvBanner` strip.
+ *
+ * Author:  Angel Flores (Consultant)
+ * Created: April 2026
+ * Version: 1.0
+ * ==========================================================================
+ */
+
+:root {
+  --cw-env-banner-height: 24px;
+  --cw-env-banner-color:  #6B3E7F;
+  /* Stacking: banner < modal < APEX developer toolbar (see below). */
+  --cw-env-banner-z:       2000;
+  --cw-env-dialog-z:       calc(var(--cw-env-banner-z) + 100);
+  --cw-env-dev-toolbar-z:  calc(var(--cw-env-banner-z) + 500);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Banner strip                                                               */
+/* -------------------------------------------------------------------------- */
+.cw-env-banner {
+  position:        fixed;
+  top:             0;
+  left:            0;
+  right:           0;
+  height:          var(--cw-env-banner-height);
+  line-height:     var(--cw-env-banner-height);
+  background-color: var(--cw-env-banner-color);
+  color:           #fff;
+  text-align:      center;
+  font-family:     var(--a-base-font-family, system-ui, sans-serif);
+  font-size:       12px;
+  font-weight:     600;
+  letter-spacing:  0.5px;
+  text-transform:  uppercase;
+  user-select:     none;
+  pointer-events:  none;
+  z-index:         var(--cw-env-banner-z);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Dialog / drawer pages (Universal Theme): no strip inside embedded chrome   */
+/* -------------------------------------------------------------------------- */
+body.t-Dialog-page .cw-env-banner,
+body.t-Drawer-page .cw-env-banner {
+  display: none !important;
+}
+
+body.t-Dialog-page.cw-has-env-banner .t-Header,
+body.t-Drawer-page.cw-has-env-banner .t-Header {
+  top: 0;
+}
+
+body.t-Dialog-page.cw-has-env-banner .t-Body,
+body.t-Drawer-page.cw-has-env-banner .t-Body,
+body.t-Dialog-page.cw-has-env-banner .t-Body-side,
+body.t-Drawer-page.cw-has-env-banner .t-Body-side {
+  padding-top: 0;
+}
+
+.cw-env-banner-label {
+  display:        inline-block;
+  vertical-align: middle;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Shift Universal Theme down so the banner doesn't cover anything            */
+/* -------------------------------------------------------------------------- */
+body.cw-has-env-banner .t-Header {
+  top: var(--cw-env-banner-height);
+}
+
+body.cw-has-env-banner .t-Body {
+  padding-top: var(--cw-env-banner-height);
+}
+
+body.cw-has-env-banner .t-Body-side {
+  padding-top: var(--cw-env-banner-height);
+}
+
+/* Modal above the banner; dev toolbar above the modal overlay (clickable bar). */
+body.cw-has-env-banner .ui-dialog.ui-widget {
+  z-index: var(--cw-env-dialog-z);
+}
+
+body.cw-has-env-banner #apexDevToolbar,
+body.cw-has-env-banner #apexdevtoolbar {
+  z-index: var(--cw-env-dev-toolbar-z) !important;
+}
