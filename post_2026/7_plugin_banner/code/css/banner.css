@@ -1,95 +1,347 @@
-/*
- * ==========================================================================
- * banner.css
- * ==========================================================================
- *
- * Top-of-page environment banner (DEV / QA / TRAIN) that mimics the
- * native APEX Builder `.a-EnvBanner` strip.
- *
- * Author:  Angel Flores (Consultant)
- * Created: April 2026
- * Version: 1.0
- * ==========================================================================
- */
+/* Environment banner and navbar variants (Universal Theme). */
 
 :root {
-  --cw-env-banner-height: 24px;
-  --cw-env-banner-color:  #6B3E7F;
-  /* Stacking: banner < modal < APEX developer toolbar (see below). */
+  --cw-env-banner-color:  #6b3e7f;
   --cw-env-banner-z:       2000;
   --cw-env-dialog-z:       calc(var(--cw-env-banner-z) + 100);
   --cw-env-dev-toolbar-z:  calc(var(--cw-env-banner-z) + 500);
 }
 
 /* -------------------------------------------------------------------------- */
-/* Banner strip                                                               */
+/* Strip heights (body carries class cw-env-strip-h--*)                       */
+/* -------------------------------------------------------------------------- */
+body.cw-env-strip-h--classic {
+  --cw-env-banner-height: 26px;
+}
+
+body.cw-env-strip-h--corporate {
+  --cw-env-banner-height: 40px;
+}
+
+body.cw-env-strip-h--eco {
+  --cw-env-banner-height: 42px;
+}
+
+body.cw-env-strip-h--clean {
+  --cw-env-banner-height: 34px;
+}
+
+body.cw-env-strip-h--future {
+  --cw-env-banner-height: 48px;
+}
+
+body.cw-env-strip-h--icons {
+  --cw-env-banner-height: 38px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Base strip                                                                 */
 /* -------------------------------------------------------------------------- */
 .cw-env-banner {
-  position:        fixed;
-  top:             0;
-  left:            0;
-  right:           0;
-  height:          var(--cw-env-banner-height);
-  line-height:     var(--cw-env-banner-height);
-  background-color: var(--cw-env-banner-color);
-  color:           #fff;
-  text-align:      center;
-  font-family:     var(--a-base-font-family, system-ui, sans-serif);
-  font-size:       12px;
-  font-weight:     600;
-  letter-spacing:  0.5px;
-  text-transform:  uppercase;
-  user-select:     none;
-  pointer-events:  none;
-  z-index:         var(--cw-env-banner-z);
+  position:         fixed;
+  top:              0;
+  left:             0;
+  right:            0;
+  height:           var(--cw-env-banner-height);
+  box-sizing:       border-box;
+  z-index:          var(--cw-env-banner-z);
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  padding:          0 12px;
+  font-family:      var(--a-base-font-family, system-ui, sans-serif);
+  font-size:        12px;
+  font-weight:      600;
+  letter-spacing:   0.5px;
+  text-transform:   uppercase;
+  user-select:      none;
+  pointer-events:   none;
+  border-radius:    0;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Dialog / drawer pages (Universal Theme): no strip inside embedded chrome   */
-/* -------------------------------------------------------------------------- */
-body.t-Dialog-page .cw-env-banner,
-body.t-Drawer-page .cw-env-banner {
-  display: none !important;
+/* Left rail: full height strip on the start edge (LTR = left) */
+.cw-env-banner.cw-env-banner--position-left {
+  top:              0;
+  bottom:           0;
+  right:            auto;
+  left:             0;
+  width:            var(--cw-env-banner-rail-width, 40px);
+  height:           auto;
+  min-height:       100vh;
+  min-height:       100dvh;
+  max-height:       100vh;
+  flex-direction:   column;
+  justify-content:  center;
+  padding:          16px 6px;
+  writing-mode:     vertical-rl;
+  text-orientation: mixed;
+  overflow:         hidden;
 }
 
-body.t-Dialog-page.cw-has-env-banner .t-Header,
-body.t-Drawer-page.cw-has-env-banner .t-Header {
-  top: 0;
+.cw-env-banner.cw-env-banner--position-left .cw-env-banner-label {
+  max-width:  100%;
+  line-height: 1.35;
 }
 
-body.t-Dialog-page.cw-has-env-banner .t-Body,
-body.t-Drawer-page.cw-has-env-banner .t-Body,
-body.t-Dialog-page.cw-has-env-banner .t-Body-side,
-body.t-Drawer-page.cw-has-env-banner .t-Body-side {
-  padding-top: 0;
+.cw-env-banner.cw-env-banner--position-left .cw-env-banner-row {
+  flex-direction: column;
+  max-width:        100%;
+  gap:              8px;
 }
 
 .cw-env-banner-label {
-  display:        inline-block;
-  vertical-align: middle;
+  display:     inline-block;
+  text-align:  center;
+  line-height: 1.2;
+}
+
+/* --- Style 1: classic strip (label text only) — square edges --- */
+.cw-env-banner--strip-classic {
+  background-color: var(--cw-env-user-color, #508223);
+  color:            #fff;
+}
+
+/* --- Formal / corporate: slate bar + env color as narrow accent (not full fill) --- */
+.cw-env-banner--strip-corporate {
+  background:       linear-gradient(180deg, #1a2332 0%, #0f1419 100%);
+  color:            #e8eaed;
+  border-bottom:    1px solid rgba(184, 154, 98, 0.42);
+  box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 10px 0 0 0 var(--cw-env-user-color, #3d5a80);
+  font-weight:      500;
+  font-size:        11px;
+  letter-spacing:   0.12em;
+  text-transform:     uppercase;
+}
+
+.cw-env-banner--strip-corporate .cw-env-banner-label {
+  opacity:   0.98;
+  font-size: 11px;
+}
+
+.cw-env-banner--strip-corporate.cw-env-banner--position-left {
+  border-bottom:  none;
+  border-right:   1px solid rgba(184, 154, 98, 0.35);
+  box-shadow:     inset 0 4px 0 0 var(--cw-env-user-color, #3d5a80), inset -1px 0 0 rgba(255, 255, 255, 0.04);
+}
+
+/* --- Eco / green theme --- */
+.cw-env-banner--strip-eco {
+  background-color:  #e8f5e9;
+  color:             #1b5e20;
+  text-transform:    uppercase;
+  position:          fixed;
+  overflow:          hidden;
+}
+
+.cw-env-banner--strip-eco::after {
+  content:           '';
+  position:          absolute;
+  right:             -20px;
+  top:               -10px;
+  width:             140px;
+  height:            140%;
+  opacity:           0.35;
+  pointer-events:    none;
+  background:        no-repeat right center;
+  background-image:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 100'%3E%3Cpath fill='%232e7d32' d='M78 90c8-25 4-48-12-62 10 2 20 10 26 22 6-18 2-38-10-50 20 8 32 35 28 60 4-8 6-18 5-28 12 14 14 36 6 58H20c-2-22 8-42 24-52 8 12 10 28 6 44 10-10 16-24 18-40 6 8 8 18 6 28z'/%3E%3C/svg%3E");
+  background-size:   contain;
+}
+
+/* --- Clean / light --- */
+.cw-env-banner--strip-clean {
+  background-color:  #f0f4f8;
+  color:             #0d47a1;
+  border-bottom:     1px solid #cfd8dc;
+  font-weight:       600;
+  text-transform:    uppercase;
+}
+
+/* --- Futuristic (center notch) --- */
+.cw-env-banner--strip-future {
+  background:        #0a0a0a;
+  color:             #4dd0e1;
+  padding-top:       6px;
+  box-shadow:        inset 0 2px 0 0 #4dd0e1;
+  text-shadow:       0 0 8px rgba(77, 208, 225, 0.65);
+}
+
+.cw-env-banner--strip-future .cw-env-banner-notch {
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  min-width:        200px;
+  padding:          2px 28px 4px;
+  margin-top:       -2px;
+  background:       #0a0a0a;
+  clip-path:        polygon(8% 0, 92% 0, 100% 100%, 0 100%);
+  border-top:       2px solid #4dd0e1;
+}
+
+.cw-env-banner--strip-future .cw-env-banner-label {
+  font-size:     11px;
+  letter-spacing: 1.2px;
+}
+
+/* --- Icon row (symbols left / right of label) --- */
+.cw-env-banner--strip-icons {
+  background:       #fff;
+  color:            #1565c0;
+  border-bottom:    1px solid #e3f2fd;
+  font-weight:      700;
+  text-transform:   uppercase;
+}
+
+.cw-env-banner-row {
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  width:            100%;
+  max-width:        1200px;
+  gap:              16px;
+  pointer-events:   none;
+}
+
+.cw-env-banner--strip-icons .cw-env-banner-label {
+  flex:          1 1 auto;
+  text-align:    center;
+}
+
+.cw-env-banner-icons {
+  flex:           0 0 auto;
+  font-size:      14px;
+  font-weight:    400;
+  letter-spacing: 6px;
+  opacity:        0.85;
+  color:          #42a5f5;
+}
+
+.cw-env-banner-icons--left {
+  text-align:  left;
+}
+
+.cw-env-banner-icons--right {
+  text-align:  right;
 }
 
 /* -------------------------------------------------------------------------- */
-/* Shift Universal Theme down so the banner doesn't cover anything            */
+/* Header badge (style 3)                                                     */
 /* -------------------------------------------------------------------------- */
-body.cw-has-env-banner .t-Header {
-  top: var(--cw-env-banner-height);
+.cw-env-badge {
+  display:          inline-flex;
+  align-items:      center;
+  margin-left:      10px;
+  padding:          2px 10px;
+  border-radius:    999px;
+  font-size:        11px;
+  font-weight:      700;
+  letter-spacing:   0.4px;
+  text-transform:   uppercase;
+  vertical-align:   middle;
+  background-color: var(--cw-env-user-color, #377e55);
+  color:            #fff;
+  line-height:      1.3;
+  pointer-events:   auto;
 }
 
-body.cw-has-env-banner .t-Body {
-  padding-top: var(--cw-env-banner-height);
+.t-Header-branding .cw-env-badge {
+  align-self:  center;
 }
 
-body.cw-has-env-banner .t-Body-side {
-  padding-top: var(--cw-env-banner-height);
+.t-Header-branding:has(.cw-env-badge) {
+  display:      flex;
+  align-items:  center;
+  flex-wrap:    wrap;
+  gap:          4px;
 }
 
-/* Modal above the banner; dev toolbar above the modal overlay (clickable bar). */
-body.cw-has-env-banner .ui-dialog.ui-widget {
-  z-index: var(--cw-env-dialog-z);
+/* -------------------------------------------------------------------------- */
+/* Tinted navbar / environment color (style 4)                                */
+/* -------------------------------------------------------------------------- */
+body.cw-has-env-banner--navbar .t-Header {
+  background-color:  var(--cw-env-navbar-bg, #377e55) !important;
 }
 
-body.cw-has-env-banner #apexDevToolbar,
-body.cw-has-env-banner #apexdevtoolbar {
-  z-index: var(--cw-env-dev-toolbar-z) !important;
+body.cw-has-env-banner--navbar .t-Header .t-Header-branding,
+body.cw-has-env-banner--navbar .t-Header .t-Header-controls,
+body.cw-has-env-banner--navbar .t-Header a,
+body.cw-has-env-banner--navbar .t-Header .t-Button--header {
+  color:  #fff !important;
+}
+
+body.cw-has-env-banner--navbar .t-Header .t-Icon {
+  color:  #fff !important;
+}
+
+.cw-env-navbar-suffix {
+  font-weight:    600;
+  margin-left:    4px;
+  opacity:        0.95;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Dialog / drawer: no strip in iframe                                        */
+/* -------------------------------------------------------------------------- */
+body.t-Dialog-page .cw-env-banner,
+body.t-Drawer-page .cw-env-banner {
+  display:  none !important;
+}
+
+body.t-Dialog-page.cw-has-env-banner--strip .t-Header,
+body.t-Drawer-page.cw-has-env-banner--strip .t-Header {
+  top:  0;
+}
+
+body.t-Dialog-page.cw-has-env-banner--strip .t-Body,
+body.t-Drawer-page.cw-has-env-banner--strip .t-Body,
+body.t-Dialog-page.cw-has-env-banner--strip .t-Body-side,
+body.t-Drawer-page.cw-has-env-banner--strip .t-Body-side {
+  padding-top:  0;
+  padding-left: 0;
+}
+
+body.t-Dialog-page.cw-has-env-banner--strip.cw-has-env-banner--strip-left .t-Header,
+body.t-Drawer-page.cw-has-env-banner--strip.cw-has-env-banner--strip-left .t-Header {
+  left:   0;
+  width:  100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Universal Theme offset (fixed strip only)                                  */
+/* -------------------------------------------------------------------------- */
+body.cw-has-env-banner--strip .t-Header {
+  top:  var(--cw-env-banner-height);
+}
+
+body.cw-has-env-banner--strip .t-Body {
+  padding-top:  var(--cw-env-banner-height);
+}
+
+body.cw-has-env-banner--strip .t-Body-side {
+  padding-top:  var(--cw-env-banner-height);
+}
+
+/* Left rail: shift content sideways; header flush to top, inset from the rail */
+body.cw-has-env-banner--strip.cw-has-env-banner--strip-left {
+  --cw-env-banner-rail-width: var(--cw-env-banner-height, 32px);
+}
+
+body.cw-has-env-banner--strip.cw-has-env-banner--strip-left .t-Header {
+  top:    0;
+  left:   var(--cw-env-banner-rail-width, 40px);
+  width:  calc(100% - var(--cw-env-banner-rail-width, 40px));
+}
+
+body.cw-has-env-banner--strip.cw-has-env-banner--strip-left .t-Body,
+body.cw-has-env-banner--strip.cw-has-env-banner--strip-left .t-Body-side {
+  padding-top:   0;
+  padding-left:  var(--cw-env-banner-rail-width, 40px);
+}
+
+body.cw-has-env-banner--strip .ui-dialog.ui-widget {
+  z-index:  var(--cw-env-dialog-z);
+}
+
+body.cw-has-env-banner--strip #apexDevToolbar,
+body.cw-has-env-banner--strip #apexdevtoolbar {
+  z-index:  var(--cw-env-dev-toolbar-z) !important;
 }
